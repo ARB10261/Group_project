@@ -1,23 +1,31 @@
-import logo from './logo.svg';
 import './App.css';
 import Navbar from './Landingpage/Navbar';
-import HeroSection from './Landingpage/Herosection';
-import BodySection from './Landingpage/BodySection';
-import ServicesSection from './Landingpage/ServicesSection';
-import AppointmentSection from './Landingpage/AppointmentSection';
-import FeedbackSection from './Landingpage/FeedbackSection';
 import FooterSection from './Landingpage/FooterSection';
+import LandingPage from './Landingpage/LandingPage';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import About from './Aboutpage/About';
+import Contact from './Contactpage/Contact';
+import Department from './Departments/Department';
+import Service from './Servicespage/Service';
+
 function App() {
   return (
-    <div >
-    <Navbar/>
-    <HeroSection/>
-    <BodySection/>
-    <ServicesSection/>
-    <AppointmentSection/>
-    <FeedbackSection/>
-    <FooterSection/>
-    </div>
+    <Router>
+      {/* Navbar is now inside Router */}
+      <Navbar />
+
+      {/* Page routes */}
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/department" element={<Department />} />
+        <Route path="/service" element={<Service />} />
+      </Routes>
+
+      {/* Footer stays visible */}
+      <FooterSection />
+    </Router>
   );
 }
 

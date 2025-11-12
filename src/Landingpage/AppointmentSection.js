@@ -9,6 +9,7 @@ const AppointmentSection = () => {
           /* ✅ Section Layout */
           .appointment-section {
             display: flex;
+            
             align-items: center;
             justify-content: center;
             gap: 10px;
