@@ -7,24 +7,27 @@ import About from './Aboutpage/About';
 import Contact from './Contactpage/Contact';
 import Department from './Departments/Department';
 import Service from './Servicespage/Service';
+import LoginPage from "./LoginPage";
+import SignupPage from "./SignupPage";
 
 function App() {
   return (
     <Router>
-      {/* Navbar is now inside Router */}
+
       <Navbar />
 
-      {/* Page routes */}
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/department" element={<Department />} />
         <Route path="/service" element={<Service />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<SignupPage />} />
       </Routes>
 
-      {/* Footer stays visible */}
       <FooterSection />
+      
     </Router>
   );
 }
