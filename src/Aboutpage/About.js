@@ -2,7 +2,7 @@ import React from "react";
 import babyImage from "../Images/baby image.jpg";
 import cancerimage from "../Images/cancer image.jpg";
 import cardioimage from "../Images/Cardio image.jpg";
-import Healthcareimage from "../Images/Healthcareimage.png";
+import Healthcareimage from "../Images/Healthcareimage.jpg";
 
 
 
