@@ -36,7 +36,6 @@ const HeroSection = () => {
     type();
   }, [currentWord, typing]);
 
-  // Each letter bubbles in sync (no stagger delay)
   const bubbleLetters = (text) =>
     text.split("").map((char, i) => (
       <span
@@ -70,8 +69,8 @@ const HeroSection = () => {
 
           .hero-wrapper {
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: flex-start;
             padding: 80px 100px;
             min-height: 100vh;
             background: url(${doctorImg}) no-repeat center center/cover;
@@ -79,7 +78,6 @@ const HeroSection = () => {
             position: relative;
           }
 
-          /* Add overlay for better text visibility */
           .hero-wrapper::before {
             content: "";
             position: absolute;
@@ -91,9 +89,15 @@ const HeroSection = () => {
           }
 
           .hero-left {
-            position: relative; /* make sure text is above overlay */
-            max-width: 550px;
-          }
+  position: relative;
+  max-width: 650px;
+  width: 100%;
+  text-align: left;       /* Align all text to LEFT */
+  margin-right: auto;     /* Push the content to the LEFT side */
+  margin-bottom: 60px;
+  z-index: 2;
+}
+
 
           .tagline {
             color: #4a6bff;
@@ -113,7 +117,6 @@ const HeroSection = () => {
           .typing-word {
             color: #00cfff;
             font-weight: 800;
-            white-space: nowrap;
           }
 
           .hero-subtitle {
@@ -138,17 +141,87 @@ const HeroSection = () => {
             background: linear-gradient(to right, #1a4bff, #3e7bff);
           }
 
-          @media (max-width: 992px) {
-            .hero-wrapper {
-              flex-direction: column;
-              text-align: center;
-              padding: 50px 20px;
-            }
+          /* ---------------- SEARCH BAR ---------------- */
+          .search-container {
+            width: 80%;
+            max-width: 900px;
+            display: flex;
+            align-items: center;
+            background: rgba(0, 67, 87, 0.4);
+            padding: 10px 20px;
+            border-radius: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(4px);
+            z-index: 2;
+          }
+
+          .search-input {
+            flex: 1;
+            border: none;
+            background: transparent;
+            color: #fff;
+            font-size: 1rem;
+            outline: none;
+          }
+
+          .search-input::placeholder {
+            color: #d2d2d2;
+          }
+
+          .search-btn {
+            background: #ff8800;
+            border: none;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: #fff;
+            font-size: 1.2rem;
+          }
+
+          /* ---------------- OPTIONS BAR ---------------- */
+          .options-container {
+            margin-top: 30px;
+            width: 90%;
+            max-width: 1050px;
+            display: flex;
+            justify-content: space-between;
+            gap: 8px;
+            z-index: 2;
+          }
+
+          .option-box {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.75);
+            padding: 14px 20px;
+            border-radius: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 2px solid rgba(0, 0, 0, 0.15);
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: 0.2s ease;
+          }
+
+          .option-box i {
+            font-size: 1.3rem;
+          }
+
+          .option-box:hover {
+            background: #fff;
+            border-color: #000;
           }
         `}
       </style>
 
       <section className="hero-wrapper">
+
+        {/* ORIGINAL LEFT CONTENT (unchanged) */}
         <div className="hero-left">
           <div className="tagline">COMMITTED TO SUCCESS</div>
 
@@ -164,6 +237,42 @@ const HeroSection = () => {
 
           <button className="appointment-btn">Appointment →</button>
         </div>
+
+        {/* ✅ ADDED SEARCH BAR */}
+        <div className="search-container">
+          <input
+            type="text"
+            placeholder="Search For Doctors & Specialities..."
+            className="search-input"
+          />
+          <button className="search-btn">
+            <i className="bi bi-search"></i>
+          </button>
+        </div>
+
+        {/* ✅ ADDED OPTIONS BAR */}
+        <div className="options-container">
+          <div className="option-box">
+            <span>Book Appointment</span>
+            <i className="bi bi-arrow-right-circle"></i>
+          </div>
+
+          <div className="option-box">
+            <span>Find Hospital</span>
+            <i className="bi bi-arrow-right-circle"></i>
+          </div>
+
+          <div className="option-box">
+            <span>Book Health Check</span>
+            <i className="bi bi-arrow-right-circle"></i>
+          </div>
+
+          <div className="option-box">
+            <span>Get Expert Opinion</span>
+            <i className="bi bi-arrow-right-circle"></i>
+          </div>
+        </div>
+
       </section>
     </>
   );

@@ -78,7 +78,7 @@ export default function SignupPage() {
 
         .brand {
           font-size: 40px;
-          color: #1c3c87;
+          color: #00cfff;
           font-weight: bold;
         }
 
@@ -121,23 +121,23 @@ export default function SignupPage() {
         .otp-btn {
           padding: 10px 14px;
           border-radius: 8px;
-          border: 1px solid #193a81;
+          border: 1px solid #00cfff;
           background: transparent;
-          color: #193a81;
+          color: #00cfff;
           cursor: pointer;
           transition: 0.3s ease;
         }
 
         .active-otp {
-          background: #193a81 !important;
+          background: #00cfff !important;
           color: white !important;
-          border-color: #193a81 !important;
+          border-color: #00cfff!important;
         }
 
         .register-btn {
           width: 100%;
           padding: 12px;
-          background: #193a81;
+          background: #00cfff;
           border: none;
           color: white;
           border-radius: 8px;
@@ -161,14 +161,14 @@ export default function SignupPage() {
           flex: 1;
           padding: 10px;
           border-radius: 40px;
-          border: 1px solid #193a81;
+          border: 1px solid #00cfff;
           background: transparent;
           display: flex;
           justify-content: center;
           align-items: center;
           gap: 8px;
           cursor: pointer;
-          color: #193a81;
+          color: #00cfff;
           font-size: 14px;
         }
 

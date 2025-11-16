@@ -72,7 +72,7 @@ export default function LoginPage() {
 
         .brand {
           font-size: 40px;
-          color: #1c3c87;
+          color: #00cfff;
           font-weight: bold;
         }
 
@@ -107,7 +107,7 @@ export default function LoginPage() {
         .login-btn {
           width: 100%;
           padding: 12px;
-          background: #193a81;
+          background: #00cfff;
           border: none;
           color: white;
           border-radius: 8px;
