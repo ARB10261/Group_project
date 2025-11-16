@@ -1,95 +1,168 @@
-import React from "react";
-import heroimage from "../assets/heroimage.jpg"; // ✅ make sure this image exists in src/assets/
+import React, { useEffect, useState } from "react";
+import doctorImg from "../assets/heroimage.jpg";
+
+const words = ["health", "sushi", "steak"];
 
 const HeroSection = () => {
+  const [currentWord, setCurrentWord] = useState(0);
+  const [displayText, setDisplayText] = useState("");
+  const [typing, setTyping] = useState(true);
+
+  useEffect(() => {
+    let charIndex = 0;
+    const typingSpeed = 120;
+
+    const type = () => {
+      if (typing) {
+        if (charIndex < words[currentWord].length) {
+          setDisplayText(words[currentWord].slice(0, charIndex + 1));
+          charIndex++;
+          setTimeout(type, typingSpeed);
+        } else {
+          setTimeout(() => setTyping(false), 1200);
+        }
+      } else {
+        if (charIndex > 0) {
+          setDisplayText(words[currentWord].slice(0, charIndex - 1));
+          charIndex--;
+          setTimeout(type, typingSpeed / 2);
+        } else {
+          setTyping(true);
+          setCurrentWord((prev) => (prev + 1) % words.length);
+        }
+      }
+    };
+
+    type();
+  }, [currentWord, typing]);
+
+  // Each letter bubbles in sync (no stagger delay)
+  const bubbleLetters = (text) =>
+    text.split("").map((char, i) => (
+      <span
+        key={i}
+        style={{
+          display: "inline-block",
+          animationName: "bubble",
+          animationDuration: "2s",
+          animationIterationCount: "infinite",
+          animationTimingFunction: "ease-in-out",
+        }}
+      >
+        {char}
+      </span>
+    ));
+
   return (
     <>
       <style>
         {`
-          /* ✅ Hero Section */
-          .hero-section {
-            background: url(${heroimage}) no-repeat center center/cover;
-            min-height: 100vh;
+          @keyframes bubble {
+            0%, 100% {
+              transform: translateY(0) scale(1);
+              opacity: 1;
+            }
+            50% {
+              transform: translateY(-6px) scale(1.15);
+              opacity: 0.8;
+            }
+          }
+
+          .hero-wrapper {
             display: flex;
             align-items: center;
             justify-content: flex-start;
-            padding: 60px 80px;
+            padding: 80px 100px;
+            min-height: 100vh;
+            background: url(${doctorImg}) no-repeat center center/cover;
+            color: #fff;
             position: relative;
           }
 
-          /* ✅ Hero Content Card */
-          .hero-content {
-            max-width: 600px;
-            background: rgba(255, 255, 255, 0.5); /* reduced opacity */
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(6px); /* nice glassmorphism effect */
+          /* Add overlay for better text visibility */
+          .hero-wrapper::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+          }
+
+          .hero-left {
+            position: relative; /* make sure text is above overlay */
+            max-width: 550px;
+          }
+
+          .tagline {
+            color: #4a6bff;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            font-weight: 600;
           }
 
           .hero-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #000;
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1.2;
             margin-bottom: 20px;
+          }
+
+          .typing-word {
+            color: #00cfff;
+            font-weight: 800;
+            white-space: nowrap;
           }
 
           .hero-subtitle {
             font-size: 1.1rem;
-            color: #222;
+            color: #f0f0f0;
+            margin-bottom: 35px;
             line-height: 1.6;
-            margin-bottom: 30px;
           }
 
-          .btn-primary-custom {
-            background-color: #8A2BE2;
+          .appointment-btn {
+            background: linear-gradient(to right, #3e7bff, #1a4bff);
             color: #fff;
-            border: none;
-            border-radius: 30px;
             padding: 12px 30px;
-            font-weight: 600;
+            border: none;
+            border-radius: 8px;
             font-size: 1rem;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: 0.3s ease;
           }
 
-          .btn-primary-custom:hover {
-            background-color: #000;
-            color: #fff;
+          .appointment-btn:hover {
+            background: linear-gradient(to right, #1a4bff, #3e7bff);
           }
 
-          /* ✅ Responsive Design */
           @media (max-width: 992px) {
-            .hero-section {
-              padding: 60px 30px;
-              justify-content: center;
+            .hero-wrapper {
+              flex-direction: column;
               text-align: center;
-            }
-
-            .hero-content {
-              background: rgba(255, 255, 255, 0.75);
-              padding: 30px 20px;
-            }
-
-            .hero-title {
-              font-size: 2rem;
+              padding: 50px 20px;
             }
           }
         `}
       </style>
 
-      {/* ✅ Hero Section */}
-      <section className="hero-section">
-        <div className="hero-content">
+      <section className="hero-wrapper">
+        <div className="hero-left">
+          <div className="tagline">COMMITTED TO SUCCESS</div>
+
           <h1 className="hero-title">
-            Empowering Digital Healthcare with{" "}
-            <span style={{ color: "#8A2BE2" }}>HealthCare+</span>
+            WE CARE ABOUT YOUR{" "}
+            <span className="typing-word">{bubbleLetters(displayText)}</span>
           </h1>
+
           <p className="hero-subtitle">
-            Simplify patient management, doctor scheduling, and appointments — all from a single platform.
-            Deliver smarter, faster, and better healthcare services with modern digital tools.
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+            uquip ex ea commodo consequat is aute irure.
           </p>
-          <button className="btn-primary-custom">Book Appointment</button>
+
+          <button className="appointment-btn">Appointment →</button>
         </div>
       </section>
     </>
