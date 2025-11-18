@@ -222,7 +222,7 @@ const cardStyle = {
   transition: "transform 0.3s ease, boxShadow 0.3s ease",
 };
 
-/* Add Hover Effect */
+/* Add Hover Effec */
 document.addEventListener("mouseover", (e) => {
   if (e.target.closest(".hover-card")) {
     const card = e.target.closest(".hover-card");
