@@ -3,13 +3,32 @@ import babyImage from "../Images/baby image.jpg";
 import cancerimage from "../Images/cancer image.jpg";
 import cardioimage from "../Images/Cardio image.jpg";
 import Healthcareimage from "../Images/Healthcareimage.jpg";
+import Womencareimage from "../Images/Womencare image.jpg";
+import Healthcareimage1 from "../Images/Healthcare image1.jpg";
+import Healthserviceimage from "../Images/Healthservice image.jpg";
 
-
+const countryList = [
+  { name: "Bosnia", code: "BA" },
+  { name: "Bulgaria", code: "BG" },
+  { name: "Denmark", code: "DK" },
+  { name: "Georgia", code: "GE" },
+  { name: "Greece", code: "GR" },
+  { name: "India", code: "IN" },
+  { name: "Norway", code: "NO" },
+  { name: "Romania", code: "RO" },
+  { name: "Sweden", code: "SE" },
+  { name: "Ukraine", code: "UA" },
+  { name: "Cyprus", code: "CY" },
+  { name: "Hungary", code: "HU" },
+  { name: "Poland", code: "PL" },
+  { name: "Serbia", code: "RS" },
+  { name: "Turkey", code: "TR" },
+];
 
 const CompleteWebsite = () => {
   return (
     <div style={{ fontFamily: "Arial, sans-serif", background: "#fff" }}>
-
+      
       {/* --------------------------------------------------
           HERO SECTION  
       -------------------------------------------------- */}
@@ -22,28 +41,12 @@ const CompleteWebsite = () => {
           color: "#fff",
         }}
       >
-        <h1
-          style={{
-            fontSize: "48px",
-            fontWeight: "700",
-            maxWidth: "600px",
-            lineHeight: "1.2",
-          }}
-        >
+        <h1 style={{ fontSize: "48px", fontWeight: "700", maxWidth: "600px", lineHeight: "1.2" }}>
           Where caring for your <br /> Health is all we do
         </h1>
 
-        <p
-          style={{
-            maxWidth: "600px",
-            marginTop: "20px",
-            fontSize: "18px",
-            lineHeight: "1.6",
-          }}
-        >
+        <p style={{ maxWidth: "600px", marginTop: "20px", fontSize: "18px", lineHeight: "1.6" }}>
           Experience world-class healthcare with Healthcare+ Hospitals.
-          Personalized care, advanced treatments, and expert doctors dedicated
-          to your well-being.
         </p>
 
         <button
@@ -66,48 +69,28 @@ const CompleteWebsite = () => {
           ABOUT SECTION
       -------------------------------------------------- */}
       <section style={{ padding: "60px 5%", background: "#fff" }}>
-        <div
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            alignItems: "center",
-            gap: "40px",
-          }}
-        >
-
-          {/* IMAGE GRID */}
+        <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: "40px" }}>
           <div style={{ display: "flex", gap: "15px" }}>
             <div style={{ display: "flex", flexDirection: "column", gap: "15px" }}>
-              <img src="/assets/about1.jpg" style={aboutSmallImage} alt="About 1" />
-              <img src="/assets/about3.jpg" style={aboutSmallImage} alt="About 3" />
+              <img src={Womencareimage} style={aboutSmallImage} alt="" />
+              <img src={Healthcareimage1} style={aboutSmallImage} alt="" />
             </div>
 
             <div>
-              <img
-                src={Healthcareimage}
-                alt="Healthcare About"
-                style={aboutLargeImage}
-              />
+              <img src={Healthserviceimage} alt="" style={aboutLargeImage} />
             </div>
           </div>
 
-          {/* TEXT CONTENT */}
           <div style={{ flex: 1, minWidth: "300px" }}>
             <h2 style={heading}>Personal care & healthy living</h2>
-
-            <p style={para}>
-              HealthCare+ is a digital healthcare management system designed to
-              simplify hospital operations. It connects patients, doctors, and
-              administrators on a single platform, enabling seamless management
-              of appointments, records, and schedules with just a few clicks.
-            </p>
+            <p style={para}>HealthCare+ is a digital healthcare management system.</p>
 
             <ul style={{ padding: 0, listStyle: "none" }}>
               {[
-                "✔ Easy patient registration and record tracking",
-                "✔ Doctor availability and scheduling system",
-                "✔ Smart appointment management with reminders",
-                "✔ Real-time analytics and performance reports",
+                "✔ Easy patient registration",
+                "✔ Doctor availability system",
+                "✔ Smart appointment reminders",
+                "✔ Real-time performance reports",
               ].map((item, i) => (
                 <li key={i} style={listItem}>{item}</li>
               ))}
@@ -117,7 +100,7 @@ const CompleteWebsite = () => {
       </section>
 
       {/* --------------------------------------------------
-          SPECIALTY CENTERS
+          SPECIALTY CENTERS (Hover Effect Only)
       -------------------------------------------------- */}
       <section style={{ padding: "60px 5%", background: "#f7faff" }}>
         <h2 style={headingCenter}>Our Specialty Centers</h2>
@@ -136,20 +119,11 @@ const CompleteWebsite = () => {
             { name: "Cancer Institute", img: cancerimage },
             { name: "Cardiology Care", img: cardioimage },
           ].map((item) => (
-            <div
-              key={item.name}
-              style={{
-                width: "300px",
-                background: "#fff",
-                borderRadius: "14px",
-                boxShadow: "0px 4px 12px rgba(0,0,0,0.1)",
-                overflow: "hidden",
-              }}
-            >
+            <div key={item.name} className="hover-card" style={cardStyle}>
               <img
                 src={item.img}
                 style={{ width: "100%", height: "200px", objectFit: "cover" }}
-                alt={item.name}
+                alt=""
               />
               <div style={{ padding: "16px" }}>
                 <h3 style={{ fontSize: "20px", fontWeight: "600" }}>{item.name}</h3>
@@ -160,70 +134,41 @@ const CompleteWebsite = () => {
       </section>
 
       {/* --------------------------------------------------
-          WORLD MAP SECTION
+          WORLD MAP SECTION + FLAGS
       -------------------------------------------------- */}
       <section style={{ padding: "60px 5%" }}>
         <h2 style={headingCenter}>We serve across the globe</h2>
 
-        <div
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            marginTop: "40px",
-            gap: "40px",
-            justifyContent: "center",
-          }}
-        >
+        <div style={{ display: "flex", flexWrap: "wrap", marginTop: "40px", gap: "40px", justifyContent: "center" }}>
+          
           <img
             src="https://img.freepik.com/free-vector/professional-medical-infographic-with-photo_23-2148370869.jpg?w=740"
             style={{ width: "600px", maxWidth: "100%", borderRadius: "12px" }}
-            alt="Map"
+            alt=""
           />
 
-          <ul style={{ fontSize: "18px", lineHeight: "2" }}>
-            {[
-              "Bosnia",
-              "Bulgaria",
-              "Denmark",
-              "Georgia",
-              "Greece",
-              "India",
-              "Norway",
-              "Romania",
-              "Sweden",
-              "Ukraine",
-              "Cyprus",
-              "Hungary",
-              "Poland",
-              "Serbia",
-              "Turkey",
-            ].map((country) => (
-              <li key={country}>🌍 {country}</li>
+          <ul style={{ fontSize: "18px", lineHeight: "2", padding: 0, listStyle: "none" }}>
+            {countryList.map((c) => (
+              <li key={c.name} style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "10px" }}>
+                <img
+                  src={`https://flagsapi.com/${c.code}/flat/32.png`}
+                  alt=""
+                  width="32"
+                  height="22"
+                  style={{ borderRadius: "4px" }}
+                />
+                {c.name}
+              </li>
             ))}
           </ul>
         </div>
       </section>
-
-      {/* --------------------------------------------------
-          RESPONSIVE DESIGN
-      -------------------------------------------------- */}
-      <style>
-        {`
-          @media (max-width: 768px) {
-            h1 { font-size: 32px !important; }
-            h2 { text-align: center !important; }
-            section div { flex-direction: column !important; text-align: center !important; }
-            img { width: 100% !important; height: 240px !important; }
-          }
-        `}
-      </style>
     </div>
   );
 };
 
-
 /* ---------------------------------------------
-    REUSABLE STYLE OBJECTS
+    STYLES 
 --------------------------------------------- */
 
 const aboutSmallImage = {
@@ -246,8 +191,6 @@ const heading = {
   fontSize: "36px",
   fontWeight: "700",
   color: "#0057d9",
-  marginBottom: "12px",
-  lineHeight: "1.3",
 };
 
 const headingCenter = {
@@ -260,15 +203,40 @@ const headingCenter = {
 const para = {
   fontSize: "17px",
   color: "#444",
-  lineHeight: "1.6",
-  marginBottom: "20px",
 };
 
 const listItem = {
   fontSize: "16px",
   marginBottom: "10px",
   fontWeight: "500",
-  color: "#333",
 };
+
+/* Hover Card Style */
+const cardStyle = {
+  width: "300px",
+  background: "#fff",
+  borderRadius: "14px",
+  boxShadow: "0px 4px 12px rgba(0,0,0,0.1)",
+  overflow: "hidden",
+  cursor: "pointer",
+  transition: "transform 0.3s ease, boxShadow 0.3s ease",
+};
+
+/* Add Hover Effect */
+document.addEventListener("mouseover", (e) => {
+  if (e.target.closest(".hover-card")) {
+    const card = e.target.closest(".hover-card");
+    card.style.transform = "scale(1.05)";
+    card.style.boxShadow = "0px 6px 18px rgba(0,0,0,0.15)";
+  }
+});
+
+document.addEventListener("mouseout", (e) => {
+  if (e.target.closest(".hover-card")) {
+    const card = e.target.closest(".hover-card");
+    card.style.transform = "scale(1)";
+    card.style.boxShadow = "0px 4px 12px rgba(0,0,0,0.1)";
+  }
+});
 
 export default CompleteWebsite;
