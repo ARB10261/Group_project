@@ -11,91 +11,92 @@ import {
 const ServicesSection = () => {
   return (
     <>
-      <style>
-        {`
-          /* ✅ Services Section */
-          .services-section {
-            background-color: #f9f6ff;
-            padding: 80px 100px;
-            text-align: center;
-          }
+<style>
+{`
+  /* Services Section */
+  .services-section {
+    background-color: #e6f7ff; /* light blue tint */
+    padding: 80px 100px;
+    text-align: center;
+  }
 
-          .services-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #8A2BE2;
-            margin-bottom: 20px;
-          }
+  .services-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #0ea5e9;  /* MAIN COLOR */
+    margin-bottom: 20px;
+  }
 
-          .services-subtitle {
-            font-size: 1.1rem;
-            color: #555;
-            margin-bottom: 60px;
-          }
+  .services-subtitle {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 60px;
+  }
 
-          /* ✅ Grid Layout */
-          .services-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-          }
+  /* Grid Layout */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+  }
 
-          /* ✅ Service Card */
-          .service-card {
-            background: #fff;
-            border-radius: 20px;
-            padding: 50px 25px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            height: 100%;
-          }
+  /* Service Card */
+  .service-card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 50px 25px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+  }
 
-          .service-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
-          }
+  .service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+  }
 
-          .service-icon {
-            font-size: 3.5rem;
-            color: #8A2BE2;
-            margin-bottom: 20px;
-          }
+  .service-icon {
+    font-size: 3.5rem;
+    color: #0ea5e9; /* MAIN COLOR */
+    margin-bottom: 20px;
+  }
 
-          .service-title {
-            font-size: 1.4rem;
-            font-weight: 600;
-            color: #000;
-            margin-bottom: 15px;
-          }
+  .service-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #000;
+    margin-bottom: 15px;
+  }
 
-          .service-desc {
-            font-size: 1rem;
-            color: #555;
-            line-height: 1.6;
-          }
+  .service-desc {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.6;
+  }
 
-          /* ✅ Responsive Design */
-          @media (max-width: 992px) {
-            .services-grid {
-              grid-template-columns: repeat(2, 1fr);
-            }
-          }
+  /* Responsive Design */
+  @media (max-width: 992px) {
+    .services-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
 
-          @media (max-width: 600px) {
-            .services-grid {
-              grid-template-columns: 1fr;
-            }
+  @media (max-width: 600px) {
+    .services-grid {
+      grid-template-columns: 1fr;
+    }
 
-            .services-section {
-              padding: 60px 30px;
-            }
+    .services-section {
+      padding: 60px 30px;
+    }
 
-            .services-title {
-              font-size: 2rem;
-            }
-          }
-        `}
-      </style>
+    .services-title {
+      font-size: 2rem;
+    }
+  }
+`}
+</style>
+
 
       <section className="services-section" id="departments">
         <h2 className="services-title">Award winning patient care</h2>
