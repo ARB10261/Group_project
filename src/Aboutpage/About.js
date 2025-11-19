@@ -28,11 +28,11 @@ const countryList = [
 const CompleteWebsite = () => {
   return (
     <div style={{ fontFamily: "Arial, sans-serif", background: "#fff" }}>
-      
+
       {/* --------------------------------------------------
-          HERO SECTION  
+        HERO SECTION
       -------------------------------------------------- */}
-      <section
+      <header
         style={{
           padding: "80px 5%",
           backgroundImage: `linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url(${Healthcareimage})`,
@@ -41,11 +41,11 @@ const CompleteWebsite = () => {
           color: "#fff",
         }}
       >
-        <h1 style={{ fontSize: "48px", fontWeight: "700", maxWidth: "600px", lineHeight: "1.2" }}>
+        <h1 style={{ fontSize: "48px", fontWeight: "700", maxWidth: "600px" }}>
           Where caring for your <br /> Health is all we do
         </h1>
 
-        <p style={{ maxWidth: "600px", marginTop: "20px", fontSize: "18px", lineHeight: "1.6" }}>
+        <p style={{ maxWidth: "600px", marginTop: "20px", fontSize: "18px" }}>
           Experience world-class healthcare with Healthcare+ Hospitals.
         </p>
 
@@ -63,44 +63,74 @@ const CompleteWebsite = () => {
         >
           Book an Appointment
         </button>
-      </section>
+      </header>
 
       {/* --------------------------------------------------
-          ABOUT SECTION
+        ABOUT SECTION (improved spacing)
       -------------------------------------------------- */}
-      <section style={{ padding: "60px 5%", background: "#fff" }}>
-        <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: "40px" }}>
-          <div style={{ display: "flex", gap: "15px" }}>
-            <div style={{ display: "flex", flexDirection: "column", gap: "15px" }}>
-              <img src={Womencareimage} style={aboutSmallImage} alt="" />
-              <img src={Healthcareimage1} style={aboutSmallImage} alt="" />
-            </div>
+      <section
+        style={{
+          padding: "80px 10%",
+          background: "#fff",
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
+        <div style={{ maxWidth: "900px", width: "100%" }}>
+          <h2
+            style={{
+              fontSize: "40px",
+              fontWeight: "700",
+              color: "#0057d9",
+              marginBottom: "25px",
+            }}
+          >
+            Personal care & healthy living
+          </h2>
 
-            <div>
-              <img src={Healthserviceimage} alt="" style={aboutLargeImage} />
-            </div>
-          </div>
+          <p style={para}>
+            HealthCare+ is a next–generation digital healthcare management system
+            designed to streamline patient experiences and improve clinical
+            efficiency. Our goal is to make healthcare more accessible, reliable,
+            and seamlessly connected for everyone.
+          </p>
 
-          <div style={{ flex: 1, minWidth: "300px" }}>
-            <h2 style={heading}>Personal care & healthy living</h2>
-            <p style={para}>HealthCare+ is a digital healthcare management system.</p>
+          <p style={para}>
+            From appointment bookings to real-time medical data management,
+            HealthCare+ empowers both patients and healthcare professionals to
+            engage with the latest technology in the medical field.
+          </p>
 
-            <ul style={{ padding: 0, listStyle: "none" }}>
-              {[
-                "✔ Easy patient registration",
-                "✔ Doctor availability system",
-                "✔ Smart appointment reminders",
-                "✔ Real-time performance reports",
-              ].map((item, i) => (
-                <li key={i} style={listItem}>{item}</li>
-              ))}
-            </ul>
-          </div>
+          <ul style={{ padding: 0, listStyle: "none", marginTop: "25px" }}>
+            {[
+              "✔ Easy patient registration",
+              "✔ Doctor availability system",
+              "✔ Smart appointment reminders",
+              "✔ Real-time performance reports",
+            ].map((item, index) => (
+              <li
+                key={index}
+                style={{
+                  marginBottom: "12px",
+                  fontSize: "18px",
+                  fontWeight: "500",
+                }}
+              >
+                {item}
+              </li>
+            ))}
+          </ul>
+
+          <p style={{ ...para, marginTop: "25px" }}>
+            With a strong focus on personalized care and healthy living, our
+            platform helps individuals stay informed, stay connected, and stay
+            healthy—ensuring they always receive the best possible care.
+          </p>
         </div>
       </section>
 
       {/* --------------------------------------------------
-          SPECIALTY CENTERS (Hover Effect Only)
+        SPECIALTY CARDS (6 Hover Cards)
       -------------------------------------------------- */}
       <section style={{ padding: "60px 5%", background: "#f7faff" }}>
         <h2 style={headingCenter}>Our Specialty Centers</h2>
@@ -115,6 +145,9 @@ const CompleteWebsite = () => {
           }}
         >
           {[
+            { name: "Women's Health Center", img: Womencareimage },
+            { name: "Medical Diagnostics", img: Healthcareimage1 },
+            { name: "Global Health Services", img: Healthserviceimage },
             { name: "Women & Child Hospital", img: babyImage },
             { name: "Cancer Institute", img: cancerimage },
             { name: "Cardiology Care", img: cardioimage },
@@ -122,11 +155,17 @@ const CompleteWebsite = () => {
             <div key={item.name} className="hover-card" style={cardStyle}>
               <img
                 src={item.img}
-                style={{ width: "100%", height: "200px", objectFit: "cover" }}
+                style={{
+                  width: "100%",
+                  height: "200px",
+                  objectFit: "cover",
+                }}
                 alt=""
               />
               <div style={{ padding: "16px" }}>
-                <h3 style={{ fontSize: "20px", fontWeight: "600" }}>{item.name}</h3>
+                <h3 style={{ fontSize: "20px", fontWeight: "600" }}>
+                  {item.name}
+                </h3>
               </div>
             </div>
           ))}
@@ -134,33 +173,63 @@ const CompleteWebsite = () => {
       </section>
 
       {/* --------------------------------------------------
-          WORLD MAP SECTION + FLAGS
+        WORLD MAP + 2 COLUMN COUNTRIES + Hover
       -------------------------------------------------- */}
       <section style={{ padding: "60px 5%" }}>
         <h2 style={headingCenter}>We serve across the globe</h2>
 
-        <div style={{ display: "flex", flexWrap: "wrap", marginTop: "40px", gap: "40px", justifyContent: "center" }}>
-          
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            gap: "40px",
+            justifyContent: "center",
+            marginTop: "40px",
+          }}
+        >
+          {/* MAP WITH HOVER */}
           <img
             src="https://img.freepik.com/free-vector/professional-medical-infographic-with-photo_23-2148370869.jpg?w=740"
-            style={{ width: "600px", maxWidth: "100%", borderRadius: "12px" }}
+            className="map-hover"
+            style={{
+              width: "600px",
+              maxWidth: "100%",
+              borderRadius: "12px",
+              border: "4px solid #0057d9",
+              transition: "0.3s",
+            }}
             alt=""
           />
 
-          <ul style={{ fontSize: "18px", lineHeight: "2", padding: 0, listStyle: "none" }}>
+          {/* COUNTRY LIST (2 columns) */}
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr",
+              gap: "15px 40px",
+              fontSize: "18px",
+            }}
+          >
             {countryList.map((c) => (
-              <li key={c.name} style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "10px" }}>
+              <div
+                key={c.name}
+                className="flag-hover"
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "10px",
+                  transition: "0.3s",
+                }}
+              >
                 <img
                   src={`https://flagsapi.com/${c.code}/flat/32.png`}
                   alt=""
-                  width="32"
-                  height="22"
                   style={{ borderRadius: "4px" }}
                 />
                 {c.name}
-              </li>
+              </div>
             ))}
-          </ul>
+          </div>
         </div>
       </section>
     </div>
@@ -168,31 +237,8 @@ const CompleteWebsite = () => {
 };
 
 /* ---------------------------------------------
-    STYLES 
+    STYLE VARIABLES
 --------------------------------------------- */
-
-const aboutSmallImage = {
-  width: "240px",
-  height: "180px",
-  objectFit: "cover",
-  borderRadius: "12px",
-  boxShadow: "0px 4px 12px rgba(0,0,0,0.1)",
-};
-
-const aboutLargeImage = {
-  width: "260px",
-  height: "380px",
-  objectFit: "cover",
-  borderRadius: "12px",
-  boxShadow: "0px 4px 12px rgba(0,0,0,0.1)",
-};
-
-const heading = {
-  fontSize: "36px",
-  fontWeight: "700",
-  color: "#0057d9",
-};
-
 const headingCenter = {
   fontSize: "36px",
   fontWeight: "700",
@@ -203,31 +249,35 @@ const headingCenter = {
 const para = {
   fontSize: "17px",
   color: "#444",
+  lineHeight: "1.8",
 };
 
-const listItem = {
-  fontSize: "16px",
-  marginBottom: "10px",
-  fontWeight: "500",
-};
-
-/* Hover Card Style */
 const cardStyle = {
   width: "300px",
   background: "#fff",
   borderRadius: "14px",
-  boxShadow: "0px 4px 12px rgba(0,0,0,0.1)",
   overflow: "hidden",
   cursor: "pointer",
-  transition: "transform 0.3s ease, boxShadow 0.3s ease",
+  boxShadow: "0px 4px 12px rgba(0,0,0,0.1)",
+  transition: "transform 0.3s ease, box-shadow 0.3s ease",
 };
 
-/* Add Hover Effec */
+/* ---------------------------------------------
+    GLOBAL HOVER EVENTS
+--------------------------------------------- */
+
 document.addEventListener("mouseover", (e) => {
   if (e.target.closest(".hover-card")) {
     const card = e.target.closest(".hover-card");
     card.style.transform = "scale(1.05)";
     card.style.boxShadow = "0px 6px 18px rgba(0,0,0,0.15)";
+  }
+  if (e.target.closest(".map-hover")) {
+    e.target.style.transform = "scale(1.03)";
+    e.target.style.boxShadow = "0px 6px 18px rgba(0,0,0,0.2)";
+  }
+  if (e.target.closest(".flag-hover")) {
+    e.target.closest(".flag-hover").style.transform = "translateX(6px)";
   }
 });
 
@@ -236,6 +286,13 @@ document.addEventListener("mouseout", (e) => {
     const card = e.target.closest(".hover-card");
     card.style.transform = "scale(1)";
     card.style.boxShadow = "0px 4px 12px rgba(0,0,0,0.1)";
+  }
+  if (e.target.closest(".map-hover")) {
+    e.target.style.transform = "scale(1)";
+    e.target.style.boxShadow = "none";
+  }
+  if (e.target.closest(".flag-hover")) {
+    e.target.closest(".flag-hover").style.transform = "translateX(0)";
   }
 });
 
