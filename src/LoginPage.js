@@ -55,6 +55,14 @@ export default function LoginPage() {
     justify-content: center;
     align-items: center;
   }
+   
+  /* RIGHT ALIGN EMAIL & PASSWORD LABELS */
+.form-box form label {
+  text-align: left !important;
+  width: 100%;
+  display: block;
+  color: #0099cc;
+}
 
   .form-box {
     width: 70%;
