@@ -181,7 +181,7 @@ export default function LoginPage() {
 
               <p className="terms">
                 By logging in, you accept our{" "}
-                <a href="#">Terms & Conditions</a>.
+                <a href="#/">Terms & Conditions</a>.
               </p>
 
               {/* 🔥 LOGIN BUTTON CALLS handleLogin() */}
