@@ -8,8 +8,8 @@ const FooterSection = () => {
         {`
           /* ✅ Footer Layout */
           .footer-section {
-            background-color: #1e1e1e;
-            color: #ddd;
+            background: #0f172a;
+            color: #e5e7eb;
             padding: 50px 80px;
             display: flex;
             flex-direction: column;
@@ -46,12 +46,16 @@ const FooterSection = () => {
           .brand-name {
             font-size: 1.6rem;
             font-weight: 700;
-            color: #8A2BE2;
+            color: #0ea5e9;
+          }
+
+          .brand-name span {
+            color: #0284c7;
           }
 
           .brand-tagline {
             font-size: 0.9rem;
-            color: #ccc;
+            color: #9ca3af;
             margin-bottom: 8px;
             line-height: 1.4;
           }
@@ -64,13 +68,13 @@ const FooterSection = () => {
           }
 
           .social-icons a {
-            color: #8A2BE2;
+            color: #0ea5e9;
             font-size: 1.2rem;
-            transition: color 0.3s ease, transform 0.3s ease;
+            transition: color 0.25s ease, transform 0.25s ease;
           }
 
           .social-icons a:hover {
-            color: #fff;
+            color: #ffffff;
             transform: translateY(-2px);
           }
 
@@ -78,7 +82,7 @@ const FooterSection = () => {
           .footer-title {
             font-size: 1.15rem;
             font-weight: 700;
-            color: #8A2BE2;
+            color: #0ea5e9;
             margin-bottom: 12px;
           }
 
@@ -92,13 +96,14 @@ const FooterSection = () => {
           .footer-list li {
             margin-bottom: 8px;
             font-size: 0.9rem;
-            color: #ccc;
+            color: #d1d5db;
             cursor: pointer;
-            transition: color 0.3s ease;
+            transition: color 0.25s ease, transform 0.15s ease;
           }
 
           .footer-list li:hover {
-            color: #8A2BE2;
+            color: #0ea5e9;
+            transform: translateX(2px);
           }
 
           /* ✅ Contact Details */
@@ -106,13 +111,13 @@ const FooterSection = () => {
             display: flex;
             align-items: center;
             gap: 8px;
-            color: #ccc;
+            color: #e5e7eb;
             font-size: 0.9rem;
             margin-bottom: 8px;
           }
 
           .footer-contact svg {
-            color: #8A2BE2;
+            color: #0ea5e9;
             flex-shrink: 0;
           }
 
@@ -121,11 +126,12 @@ const FooterSection = () => {
             margin-top: 15px;
             display: flex;
             align-items: center;
-            background: #2a2a2a;
-            border-radius: 25px;
+            background: #111827;
+            border-radius: 999px;
             overflow: hidden;
             width: 100%;
             max-width: 280px;
+            border: 1px solid #1f2937;
           }
 
           .subscribe-box input {
@@ -134,41 +140,59 @@ const FooterSection = () => {
             border: none;
             outline: none;
             background: transparent;
-            color: #fff;
+            color: #f9fafb;
             font-size: 0.85rem;
           }
 
+          .subscribe-box input::placeholder {
+            color: #6b7280;
+          }
+
           .subscribe-box button {
-            background: #8A2BE2;
+            background: linear-gradient(135deg, #0ea5e9, #0284c7);
             color: #fff;
             border: none;
-            padding: 8px 15px;
+            padding: 8px 16px;
             cursor: pointer;
             font-weight: 600;
-            transition: background 0.3s ease;
+            font-size: 0.85rem;
+            transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+            box-shadow: 0 6px 16px rgba(2, 132, 199, 0.4);
+            white-space: nowrap;
           }
 
           .subscribe-box button:hover {
-            background: #000;
+            filter: brightness(1.05);
+            transform: translateY(-1px);
+            box-shadow: 0 10px 22px rgba(2, 132, 199, 0.55);
+          }
+
+          .subscribe-box button:active {
+            transform: translateY(0);
+            box-shadow: 0 5px 12px rgba(2, 132, 199, 0.35);
           }
 
           /* ✅ Footer Bottom Inside Layout */
           .footer-bottom {
             text-align: center;
-            color: #aaa;
-            border-top: 1px solid #333;
+            color: #9ca3af;
+            border-top: 1px solid #1f2937;
             padding-top: 20px;
             width: 100%;
             font-size: 0.85rem;
           }
 
           .footer-bottom span {
-            color: #8A2BE2;
+            color: #0ea5e9;
             font-weight: 600;
           }
 
           /* ✅ Responsive Design */
           @media (max-width: 992px) {
+            .footer-section {
+              padding: 40px 20px;
+            }
+
             .footer-top {
               flex-direction: column;
               align-items: center;
@@ -200,7 +224,9 @@ const FooterSection = () => {
         <div className="footer-top">
           {/* Brand + Social Media */}
           <div className="footer-column footer-brand">
-            <h2 className="brand-name">HealthCare+</h2>
+            <h2 className="brand-name">
+              HealthCare<span>+</span>
+            </h2>
             <p className="brand-tagline">
               Digital healthcare for everyone — connecting patients and doctors with ease.
             </p>
