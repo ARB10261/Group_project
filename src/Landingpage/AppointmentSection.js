@@ -58,7 +58,7 @@ const AppointmentSection = () => {
           .appointment-title {
             font-size: 2rem;
             font-weight: 700;
-            color: #00cfff;
+            color: #8A2BE2;
             text-align: center;
             margin-bottom: 30px;
           }
@@ -85,7 +85,7 @@ const AppointmentSection = () => {
           input:focus,
           select:focus,
           textarea:focus {
-            border-color: #00cfff;
+            border-color: #8A2BE2;
           }
 
           textarea {
@@ -96,7 +96,7 @@ const AppointmentSection = () => {
 
           /* ✅ Button Styling */
           .btn-book {
-            background-color: #00cfff;
+            background-color: #8A2BE2;
             color: #fff;
             border: none;
             border-radius: 30px;

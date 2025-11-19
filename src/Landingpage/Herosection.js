@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react"; 
 import doctorImg from "../assets/heroimage.jpg";
 
 const words = ["health", "sushi", "steak"];
@@ -67,11 +67,13 @@ const HeroSection = () => {
             }
           }
 
+          /* HERO SECTION FIXED */
           .hero-wrapper {
             display: flex;
             flex-direction: column;
+            justify-content: space-between;  /* Push top content up and bars to bottom */
             align-items: center;
-            padding: 80px 100px;
+            padding: 80px 100px 60px;        /* Extra bottom padding */
             min-height: 100vh;
             background: url(${doctorImg}) no-repeat center center/cover;
             color: #fff;
@@ -89,18 +91,16 @@ const HeroSection = () => {
           }
 
           .hero-left {
-  position: relative;
-  max-width: 650px;
-  width: 100%;
-  text-align: left;       /* Align all text to LEFT */
-  margin-right: auto;     /* Push the content to the LEFT side */
-  margin-bottom: 60px;
-  z-index: 2;
-}
-
+            position: relative;
+            max-width: 650px;
+            width: 100%;
+            text-align: left;
+            margin-right: auto;
+            z-index: 2;
+          }
 
           .tagline {
-            color: #4a6bff;
+            color: #8A2BE2;
             font-size: 0.9rem;
             letter-spacing: 2px;
             margin-bottom: 15px;
@@ -115,7 +115,7 @@ const HeroSection = () => {
           }
 
           .typing-word {
-            color: #00cfff;
+            color:#f0f0f0;
             font-weight: 800;
           }
 
@@ -141,7 +141,7 @@ const HeroSection = () => {
             background: linear-gradient(to right, #1a4bff, #3e7bff);
           }
 
-          /* ---------------- SEARCH BAR ---------------- */
+          /* SEARCH BAR */
           .search-container {
             width: 80%;
             max-width: 900px;
@@ -182,9 +182,9 @@ const HeroSection = () => {
             font-size: 1.2rem;
           }
 
-          /* ---------------- OPTIONS BAR ---------------- */
+          /* OPTIONS BAR */
           .options-container {
-            margin-top: 30px;
+            margin-top: 20px;
             width: 90%;
             max-width: 1050px;
             display: flex;
@@ -195,13 +195,13 @@ const HeroSection = () => {
 
           .option-box {
             flex: 1;
-            background: rgba(255, 255, 255, 0.75);
+            background:;
             padding: 14px 20px;
             border-radius: 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border: 2px solid rgba(0, 0, 0, 0.15);
+            border: 2px solid rgba(255, 255, 255, 0.15);
             cursor: pointer;
             font-weight: 500;
             font-size: 0.95rem;
@@ -213,15 +213,14 @@ const HeroSection = () => {
           }
 
           .option-box:hover {
-            background: #fff;
-            border-color: #000;
+            background: #8A2BE2;
+            border-color: #fff7f7ff;
           }
         `}
       </style>
 
       <section className="hero-wrapper">
 
-        {/* ORIGINAL LEFT CONTENT (unchanged) */}
         <div className="hero-left">
           <div className="tagline">COMMITTED TO SUCCESS</div>
 
@@ -238,7 +237,7 @@ const HeroSection = () => {
           <button className="appointment-btn">Appointment →</button>
         </div>
 
-        {/* ✅ ADDED SEARCH BAR */}
+        {/* SEARCH BAR */}
         <div className="search-container">
           <input
             type="text"
@@ -250,7 +249,7 @@ const HeroSection = () => {
           </button>
         </div>
 
-        {/* ✅ ADDED OPTIONS BAR */}
+        {/* OPTIONS */}
         <div className="options-container">
           <div className="option-box">
             <span>Book Appointment</span>

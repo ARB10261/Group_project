@@ -44,7 +44,7 @@ const BodySection = () => {
           .body-title {
             font-size: 2.2rem;
             font-weight: 700;
-            color:#00cfff;
+            color: #8A2BE2;
             margin-bottom: 20px;
           }
 
@@ -71,7 +71,7 @@ const BodySection = () => {
 
           .body-highlights li::before {
             content: "✔️";
-            color: #00cfff;
+            color: #8A2BE2;
             margin-right: 10px;
             font-size: 1.2rem;
           }
@@ -101,7 +101,7 @@ const BodySection = () => {
 
           .stat-icon {
             font-size: 2.8rem;
-            color: #00cfff;
+            color: #8A2BE2;
             margin-bottom: 15px;
           }
 

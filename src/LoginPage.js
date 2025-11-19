@@ -1,148 +1,142 @@
 import React, { useState, useContext } from "react";
 import { Form, Button } from "react-bootstrap";
-import { FcGoogle } from "react-icons/fc";
-import { FaFacebook, FaApple } from "react-icons/fa";
+import { AuthContext } from "./AuthContext";
+import { useNavigate } from "react-router-dom";
 import Nurse from "./assets/Nurse.jpg";
-import { AuthContext } from "./AuthContext";   // ✅ IMPORT LOGIN CONTEXT
-import { useNavigate } from "react-router-dom"; // ✅ REDIRECT
 
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
+  const [role, setRole] = useState(""); // Selected role
 
-  const { login } = useContext(AuthContext);  // ✅ USE login()
-  const navigate = useNavigate();             // ✅ REDIRECT HOME
+  const { login } = useContext(AuthContext);
+  const navigate = useNavigate();
 
-  const togglePassword = () => {
-    setShowPassword(!showPassword);
-  };
+  const togglePassword = () => setShowPassword(!showPassword);
 
   const handleLogin = (e) => {
     e.preventDefault();
-
-    // You can add real login validation later
-    login();           // 🔥 Mark user as logged in
-    navigate("/");     // 🔥 Redirect home after login
+    login();
+    navigate("/");
   };
 
   return (
     <>
       <style>{`
-        * {
-          margin: 0;
-          padding: 0;
-          box-sizing: border-box;
-          font-family: Arial, sans-serif;
-        }
-        body {
-          background: #f3f6fb;
-        }
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+  }
 
-        .full-container {
-          height: 100vh;
-          display: flex;
-        }
+  body {
+    background: #f3f6fb;
+  }
 
-        .image-section {
-          width: 40%;
-          background: #dfe8ff;
-        }
+  .full-container {
+    height: 100vh;
+    display: flex;
+  }
 
-        .image-section img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
+  .image-section {
+    width: 40%;
+    background: #dfe8ff;
+  }
 
-        .form-section {
-          width: 60%;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
+  .image-section img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 
-        .form-box {
-          width: 70%;
-          max-width: 420px;
-        }
+  .form-section {
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
-        .brand-wrapper {
-          text-align: center;
-          margin-bottom: 20px;
-        }
+  .form-box {
+    width: 70%;
+    max-width: 420px;
+    text-align: center;
+  }
 
-        .brand {
-          font-size: 40px;
-          color: #00cfff;
-          font-weight: bold;
-        }
+  /* TITLE SPACING */
+  .brand {
+    font-size: 40px;
+    color:  #0099cc;
+    font-weight: bold;
+    margin-bottom: 12px;   /* added */
+  }
 
-        .tagline {
-          margin-bottom: 25px;
-          color: #555;
-        }
+  /* TAGLINE SPACING */
+  .tagline {
+    color: #555;
+    margin-bottom: 25px;   /* increased */
+  }
 
-        .input-box {
-          margin-bottom: 20px;
-        }
+  /* ROLE BUTTONS GROUP SPACING */
+  .role-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 28px;   /* added */
+  }
 
-        .password-box {
-          position: relative;
-        }
+  .role-btn {
+    padding: 7px 16px;
+    border: 1px solid  #0099cc;
+    background: transparent;
+    border-radius: 20px;
+    color: #0099cc;
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+  }
 
-        .eye-icon {
-          position: absolute;
-          right: 12px;
-          top: 12px;
-          cursor: pointer;
-        }
+  .role-btn.active {
+    background: #0099cc;
+    color: white;
+  }
 
-        .terms {
-          font-size: 13px;
-          color: #666;
-          margin-bottom: 20px;
-          margin-top: 10px;
-          text-align: left;
-        }
+  /* FORM TITLE SPACING */
+  h3 {
+    margin-bottom: 22px !important;  /* added */
+  }
 
-        .login-btn {
-          width: 100%;
-          padding: 12px;
-          background: #00cfff;
-          border: none;
-          color: white;
-          border-radius: 8px;
-        }
+  /* EMAIL INPUT SPACING */
+  .input-box {
+    margin-bottom: 18px; /* added */
+  }
 
-        .or-divider {
-          text-align: center;
-          margin: 15px 0;
-          color: #666;
-        }
+  /* PASSWORD INPUT SPACING */
+  .password-box {
+    position: relative;
+    margin-bottom: 20px; /* added */
+  }
 
-        .social-login {
-          display: flex;
-          flex-direction: column;
-          gap: 12px;
-        }
+  .eye-icon {
+    position: absolute;
+    right: 12px;
+    top: 12px;
+    cursor: pointer;
+  }
 
-        .social-btn {
-          width: 100%;
-          padding: 12px;
-          border-radius: 50px;
-          border: 1px solid #ccc;
-          background: white;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          gap: 10px;
-          cursor: pointer;
-        }
+  /* LOGIN BUTTON SPACING */
+  .login-btn {
+    width: 100%;
+    padding: 12px;
+    background:  #0099cc;
+    border: none;
+    color: white;
+    border-radius: 8px;
+    margin-top: 10px;   /* added */
+    margin-bottom: 20px; /* added bottom */
+  }
+`}</style>
 
-        .signup-text {
-          text-align: center;
-          margin-top: 12px;
-        }
-      `}</style>
 
       <div className="full-container">
 
@@ -153,25 +147,43 @@ export default function LoginPage() {
         <div className="form-section">
           <div className="form-box">
 
-            <div className="brand-wrapper">
-              <h1 className="brand">Healthcare+</h1>
-              <p className="tagline">Your trusted digital health companion</p>
+            {/* BRAND */}
+            <h1 className="brand">Healthcare+</h1>
+            <p className="tagline">Your trusted digital health companion</p>
+
+            {/* SMALL BUTTONS */}
+            <div className="role-buttons">
+              {["Admin", "Doctors", "Reception", "Nurse"].map((r) => (
+                <button
+                  key={r}
+                  className={`role-btn ${role === r ? "active" : ""}`}
+                  onClick={() => setRole(r)}
+                >
+                  {r}
+                </button>
+              ))}
             </div>
+
+            {/* LOGIN FORM ALWAYS VISIBLE */}
+            <h3 style={{ marginBottom: "20px", color: "#333" }}>
+              {role ? `${role} Login` : "General Login"}
+            </h3>
 
             <Form onSubmit={handleLogin}>
               <Form.Label>Email</Form.Label>
               <Form.Control
                 type="email"
-                placeholder="Enter your email"
-                className="input-box"
+                placeholder={
+                  role ? `${role} email` : "Enter your email"
+                }
                 required
               />
 
-              <Form.Label>Password</Form.Label>
+              <Form.Label style={{ marginTop: "10px" }}>Password</Form.Label>
               <div className="password-box">
                 <Form.Control
                   type={showPassword ? "text" : "password"}
-                  placeholder="Enter your password"
+                  placeholder="Enter password"
                   required
                 />
                 <span className="eye-icon" onClick={togglePassword}>
@@ -179,57 +191,14 @@ export default function LoginPage() {
                 </span>
               </div>
 
-              <p className="terms">
-                By logging in, you accept our{" "}
-                <a href="#">Terms & Conditions</a>.
-              </p>
-
-              {/* 🔥 LOGIN BUTTON CALLS handleLogin() */}
               <Button type="submit" className="login-btn">
-                Login
+                {role ? `Login as ${role}` : "Login"}
               </Button>
-
-              <div className="or-divider">or</div>
-
-              <div className="social-login">
-
-                <div
-                  className="social-btn"
-                  onClick={() => window.location.href="https://accounts.google.com/o/oauth2/auth"}
-                >
-                  <FcGoogle size={22} />
-                  Continue with Google
-                </div>
-
-                <div
-                  className="social-btn"
-                  onClick={() =>
-                    window.location.href = "https://www.facebook.com/v9.0/dialog/oauth"
-                  }
-                >
-                  <FaFacebook size={22} color="#1877F2" />
-                  Continue with Facebook
-                </div>
-
-                <div
-                  className="social-btn"
-                  onClick={() =>
-                    window.location.href = "https://appleid.apple.com/auth/authorize"
-                  }
-                >
-                  <FaApple size={22} />
-                  Continue with Apple
-                </div>
-
-              </div>
-
-              <p className="signup-text">
-                Don’t have an account? <a href="/signup">Sign up</a>
-              </p>
             </Form>
 
           </div>
         </div>
+
       </div>
     </>
   );

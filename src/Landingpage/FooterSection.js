@@ -46,7 +46,7 @@ const FooterSection = () => {
           .brand-name {
             font-size: 1.6rem;
             font-weight: 700;
-            color: #00cfff;
+            color: #8A2BE2;
           }
 
           .brand-tagline {
@@ -64,7 +64,7 @@ const FooterSection = () => {
           }
 
           .social-icons a {
-            color: #00cfff;
+            color: #8A2BE2;
             font-size: 1.2rem;
             transition: color 0.3s ease, transform 0.3s ease;
           }
@@ -78,7 +78,7 @@ const FooterSection = () => {
           .footer-title {
             font-size: 1.15rem;
             font-weight: 700;
-            color: #00cfff;
+            color: #8A2BE2;
             margin-bottom: 12px;
           }
 
@@ -98,7 +98,7 @@ const FooterSection = () => {
           }
 
           .footer-list li:hover {
-            color: #00cfff;
+            color: #8A2BE2;
           }
 
           /* ✅ Contact Details */
@@ -112,7 +112,7 @@ const FooterSection = () => {
           }
 
           .footer-contact svg {
-            color: #00cfff;
+            color: #8A2BE2;
             flex-shrink: 0;
           }
 
@@ -139,7 +139,7 @@ const FooterSection = () => {
           }
 
           .subscribe-box button {
-            background: #00cfff;
+            background: #8A2BE2;
             color: #fff;
             border: none;
             padding: 8px 15px;
@@ -163,7 +163,7 @@ const FooterSection = () => {
           }
 
           .footer-bottom span {
-            color: #00cfff;
+            color: #8A2BE2;
             font-weight: 600;
           }
 

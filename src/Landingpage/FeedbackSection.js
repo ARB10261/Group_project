@@ -16,7 +16,7 @@ const FeedbackSection = () => {
           .feedback-title {
             font-size: 2.5rem;
             font-weight: 700;
-            color: #00cfff;
+            color: #8A2BE2;
             margin-bottom: 10px;
           }
 
@@ -60,12 +60,12 @@ const FeedbackSection = () => {
 
           .feedback-icon {
             font-size: 2rem;
-            color: #00cfff;
+            color: #8A2BE2;
             margin-bottom: 15px;
           }
 
           .feedback-quote {
-            color: #00cfff;
+            color: #8A2BE2;
             font-size: 1.5rem;
             margin-bottom: 10px;
           }
@@ -86,7 +86,7 @@ const FeedbackSection = () => {
 
           .feedback-user-icon {
             font-size: 2rem;
-            color: #00cfff;
+            color: #8A2BE2;
           }
 
           .feedback-user-name {

@@ -23,7 +23,7 @@ const ServicesSection = () => {
           .services-title {
             font-size: 2.5rem;
             font-weight: 700;
-            color: #00cfff;
+            color: #8A2BE2;
             margin-bottom: 20px;
           }
 
@@ -57,7 +57,7 @@ const ServicesSection = () => {
 
           .service-icon {
             font-size: 3.5rem;
-            color: #00cfff;
+            color: #8A2BE2;
             margin-bottom: 20px;
           }
 

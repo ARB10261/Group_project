@@ -21,7 +21,7 @@ const Navbar = () => {
   }
   .navbar-brand {
     font-weight: 700;
-    color: #00cfff !important;
+    color: #1a4bff !important;
     font-size: 1.5rem;
   }
   .navbar-nav {
@@ -37,9 +37,9 @@ const Navbar = () => {
 
   /* 🔥 ACTIVE NAV-LINK STYLE */
   .nav-link.active {
-    color: #00cfff !important;
+    color: #8A2BE2 !important;
     font-weight: 600;
-    border-bottom: 2px solid #00cfff;
+    border-bottom: 2px solid #8A2BE2;
     padding-bottom: 3px;
   }
 
@@ -58,7 +58,7 @@ const Navbar = () => {
         <div className="container">
 
           <NavLink className="navbar-brand" to="/">
-            HealthCare<span style={{ color: "#00cfff" }}>+</span>
+            HealthCare<span style={{ color: "#8A2BE2" }}>+</span>
           </NavLink>
 
           <button
