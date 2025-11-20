@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react"; 
 import doctorImg from "../assets/heroimage.jpg";
 
 const words = ["health", "sushi", "steak"];
@@ -54,174 +54,177 @@ const HeroSection = () => {
 
   return (
     <>
-      <style>
-        {`
-          @keyframes bubble {
-            0%, 100% {
-              transform: translateY(0) scale(1);
-              opacity: 1;
-            }
-            50% {
-              transform: translateY(-6px) scale(1.15);
-              opacity: 0.8;
-            }
-          }
+<style>
+{`
+  @keyframes bubble {
+    0%, 100% {
+      transform: translateY(0) scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: translateY(-6px) scale(1.15);
+      opacity: 0.8;
+    }
+  }
 
-          .hero-wrapper {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 80px 100px;
-            min-height: 100vh;
-            background: url(${doctorImg}) no-repeat center center/cover;
-            color: #fff;
-            position: relative;
-          }
+  /* HERO SECTION FIXED */
+  .hero-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 80px 100px 60px;
+    min-height: 100vh;
+    background: url(${doctorImg}) no-repeat center center/cover;
+    color: #fff;
+    position: relative;
+  }
 
-          .hero-wrapper::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.5);
-          }
+  .hero-wrapper::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+  }
 
-          .hero-left {
-  position: relative;
-  max-width: 650px;
-  width: 100%;
-  text-align: left;       /* Align all text to LEFT */
-  margin-right: auto;     /* Push the content to the LEFT side */
-  margin-bottom: 60px;
-  z-index: 2;
-}
+  .hero-left {
+    position: relative;
+    max-width: 650px;
+    width: 100%;
+    text-align: left;
+    margin-right: auto;
+    z-index: 2;
+  }
 
+  /* THEME TAGLINE COLOR */
+  .tagline {
+    color: #0ea5e9; /* MAIN COLOR */
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+    font-weight: 600;
+  }
 
-          .tagline {
-            color: #4a6bff;
-            font-size: 0.9rem;
-            letter-spacing: 2px;
-            margin-bottom: 15px;
-            font-weight: 600;
-          }
+  .hero-title {
+    font-size: 3rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 20px;
+  }
 
-          .hero-title {
-            font-size: 3rem;
-            font-weight: 800;
-            line-height: 1.2;
-            margin-bottom: 20px;
-          }
+  .typing-word {
+    color:#f0f0f0;
+    font-weight: 800;
+  }
 
-          .typing-word {
-            color: #00cfff;
-            font-weight: 800;
-          }
+  .hero-subtitle {
+    font-size: 1.1rem;
+    color: #f0f0f0;
+    margin-bottom: 35px;
+    line-height: 1.6;
+  }
 
-          .hero-subtitle {
-            font-size: 1.1rem;
-            color: #f0f0f0;
-            margin-bottom: 35px;
-            line-height: 1.6;
-          }
+  /* THEME BUTTON */
+  .appointment-btn {
+    background: linear-gradient(to right, #36bff7, #0ea5e9);
+    color: #fff;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s ease;
+  }
 
-          .appointment-btn {
-            background: linear-gradient(to right, #3e7bff, #1a4bff);
-            color: #fff;
-            padding: 12px 30px;
-            border: none;
-            border-radius: 8px;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: 0.3s ease;
-          }
+  .appointment-btn:hover {
+    background: linear-gradient(to right, #0ea5e9, #36bff7);
+  }
 
-          .appointment-btn:hover {
-            background: linear-gradient(to right, #1a4bff, #3e7bff);
-          }
+  /* SEARCH BAR */
+  .search-container {
+    width: 80%;
+    max-width: 900px;
+    display: flex;
+    align-items: center;
+    background: rgba(0, 67, 87, 0.4);
+    padding: 10px 20px;
+    border-radius: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(4px);
+    z-index: 2;
+  }
 
-          /* ---------------- SEARCH BAR ---------------- */
-          .search-container {
-            width: 80%;
-            max-width: 900px;
-            display: flex;
-            align-items: center;
-            background: rgba(0, 67, 87, 0.4);
-            padding: 10px 20px;
-            border-radius: 40px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(4px);
-            z-index: 2;
-          }
+  .search-input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    color: #fff;
+    font-size: 1rem;
+    outline: none;
+  }
 
-          .search-input {
-            flex: 1;
-            border: none;
-            background: transparent;
-            color: #fff;
-            font-size: 1rem;
-            outline: none;
-          }
+  .search-input::placeholder {
+    color: #d2d2d2;
+  }
 
-          .search-input::placeholder {
-            color: #d2d2d2;
-          }
+  .search-btn {
+    background: #0ea5e9;  /* MAIN COLOR */
+    border: none;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #fff;
+    font-size: 1.2rem;
+  }
 
-          .search-btn {
-            background: #ff8800;
-            border: none;
-            width: 42px;
-            height: 42px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            color: #fff;
-            font-size: 1.2rem;
-          }
+  /* OPTIONS BAR */
+  .options-container {
+    margin-top: 20px;
+    width: 90%;
+    max-width: 1050px;
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    z-index: 2;
+  }
 
-          /* ---------------- OPTIONS BAR ---------------- */
-          .options-container {
-            margin-top: 30px;
-            width: 90%;
-            max-width: 1050px;
-            display: flex;
-            justify-content: space-between;
-            gap: 8px;
-            z-index: 2;
-          }
+  .option-box {
+    flex: 1;
+    background: transparent;
+    padding: 14px 20px;
+    border-radius: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: 0.2s ease;
+  }
 
-          .option-box {
-            flex: 1;
-            background: rgba(255, 255, 255, 0.75);
-            padding: 14px 20px;
-            border-radius: 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border: 2px solid rgba(0, 0, 0, 0.15);
-            cursor: pointer;
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: 0.2s ease;
-          }
+  .option-box i {
+    font-size: 1.3rem;
+  }
 
-          .option-box i {
-            font-size: 1.3rem;
-          }
+  /* THEME OPTION HOVER */
+  .option-box:hover {
+    background: #0ea5e9; /* MAIN COLOR */
+    border-color: #fff;
+  }
+`}
+</style>
 
-          .option-box:hover {
-            background: #fff;
-            border-color: #000;
-          }
-        `}
-      </style>
 
       <section className="hero-wrapper">
 
-        {/* ORIGINAL LEFT CONTENT (unchanged) */}
         <div className="hero-left">
           <div className="tagline">COMMITTED TO SUCCESS</div>
 
@@ -238,7 +241,7 @@ const HeroSection = () => {
           <button className="appointment-btn">Appointment →</button>
         </div>
 
-        {/* ✅ ADDED SEARCH BAR */}
+        {/* SEARCH BAR */}
         <div className="search-container">
           <input
             type="text"
@@ -250,7 +253,7 @@ const HeroSection = () => {
           </button>
         </div>
 
-        {/* ✅ ADDED OPTIONS BAR */}
+        {/* OPTIONS */}
         <div className="options-container">
           <div className="option-box">
             <span>Book Appointment</span>
