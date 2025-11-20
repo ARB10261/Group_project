@@ -122,7 +122,7 @@ const About = () => {
           by technology and compassion.
         </p>
 
-        <button
+        {/* <button
           className="appointment-btn"
           style={{
             marginTop: "25px",
@@ -140,7 +140,7 @@ const About = () => {
           }}
         >
           Book an Appointment
-        </button>
+        </button> */}
 
 
       </header>
