@@ -6,7 +6,7 @@ import Nurse from "./assets/Nurse.jpg";
 
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
-  const [role, setRole] = useState(""); // Selected role
+  const [role, setRole] = useState(""); // 
 
   const { login } = useContext(AuthContext);
   const navigate = useNavigate();
