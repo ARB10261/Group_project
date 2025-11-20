@@ -56,7 +56,7 @@ const CompleteWebsite = () => {
             background: "#0057d9",
             border: "none",
             borderRadius: "8px",
-            color: "#fff",
+            color: " #0099cc",
             fontSize: "18px",
             cursor: "pointer",
           }}
@@ -254,7 +254,7 @@ const para = {
 
 const cardStyle = {
   width: "300px",
-  background: "#fff",
+  background: " #0099cc",
   borderRadius: "14px",
   overflow: "hidden",
   cursor: "pointer",
