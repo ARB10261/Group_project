@@ -25,53 +25,133 @@ const countryList = [
   { name: "Turkey", code: "TR" },
 ];
 
-const CompleteWebsite = () => {
+const About = () => {
   return (
-    <div style={{ fontFamily: "Arial, sans-serif", background: "#fff" }}>
+    <div
+      style={{
+        fontFamily:
+          '"Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+        background: "#ffffff",
+        color: "#111827",
+      }}
+    >
+      {/* INLINE STYLE FOR HOVERS USING CLASSES */}
+      <style>{`
+        .hover-card {
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .hover-card:hover {
+          transform: scale(1.05);
+          box-shadow: 0px 10px 25px rgba(15, 23, 42, 0.18);
+        }
+
+        .map-hover {
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .map-hover:hover {
+          transform: scale(1.03);
+          box-shadow: 0px 10px 30px rgba(15, 23, 42, 0.25);
+        }
+
+        .flag-hover {
+          transition: transform 0.25s ease, color 0.25s ease;
+        }
+        .flag-hover:hover {
+          transform: translateX(6px);
+          color: #0ea5e9;
+        }
+
+        /* 🔥 Appointment button hover */
+        .appointment-btn {
+          transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+        }
+        .appointment-btn:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 22px 45px rgba(2, 132, 199, 0.65);
+          filter: brightness(1.05);
+        }
+        .appointment-btn:active {
+          transform: translateY(0);
+          box-shadow: 0 14px 30px rgba(2, 132, 199, 0.45);
+        }
+
+        @media (max-width: 768px) {
+          .hero-title {
+            font-size: 32px !important;
+          }
+        }
+      `}</style>
 
       {/* --------------------------------------------------
-        HERO SECTION
+        HERO SECTION (height increased)
       -------------------------------------------------- */}
       <header
         style={{
-          padding: "80px 5%",
-          backgroundImage: `linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url(${Healthcareimage})`,
+          padding: "120px 5% 100px",
+          minHeight: "80vh",
+          backgroundImage: `linear-gradient(rgba(15,23,42,0.6), rgba(15,23,42,0.6)), url(${Healthcareimage})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
-          color: "#fff",
+          color: "#ffffff",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
         }}
       >
-        <h1 style={{ fontSize: "48px", fontWeight: "700", maxWidth: "600px" }}>
-          Where caring for your <br /> Health is all we do
+        <h1
+          className="hero-title"
+          style={{
+            fontSize: "48px",
+            fontWeight: "700",
+            maxWidth: "600px",
+            lineHeight: 1.2,
+          }}
+        >
+          Where caring for your <br /> health is all we do
         </h1>
 
-        <p style={{ maxWidth: "600px", marginTop: "20px", fontSize: "18px" }}>
-          Experience world-class healthcare with Healthcare+ Hospitals.
+        <p
+          style={{
+            maxWidth: "600px",
+            marginTop: "20px",
+            fontSize: "18px",
+            color: "#e5e7eb",
+          }}
+        >
+          Experience world-class healthcare with HealthCare+ Hospitals, powered
+          by technology and compassion.
         </p>
 
-        <button
+        {/* <button
+          className="appointment-btn"
           style={{
             marginTop: "25px",
             padding: "12px 30px",
-            background: "#0057d9",
+            background: "linear-gradient(135deg, #0ea5e9, #0284c7)",
             border: "none",
-            borderRadius: "8px",
-            color: " #0099cc",
-            fontSize: "18px",
+            borderRadius: "999px",
+            color: "#ffffff",
+            fontSize: "16px",
             cursor: "pointer",
+            fontWeight: 600,
+            boxShadow: "0 18px 40px rgba(2, 132, 199, 0.55)",
+            display: "inline-block",   // ✅ keep width tight to content
+            width: "auto",             // ✅ ignore any external width:100%
           }}
         >
           Book an Appointment
-        </button>
+        </button> */}
+
+
       </header>
 
       {/* --------------------------------------------------
-        ABOUT SECTION (improved spacing)
+        ABOUT SECTION
       -------------------------------------------------- */}
       <section
         style={{
           padding: "80px 10%",
-          background: "#fff",
+          background: "#ffffff",
           display: "flex",
           justifyContent: "center",
         }}
@@ -81,7 +161,7 @@ const CompleteWebsite = () => {
             style={{
               fontSize: "40px",
               fontWeight: "700",
-              color: "#0057d9",
+              color: "#0ea5e9",
               marginBottom: "25px",
             }}
           >
@@ -89,31 +169,33 @@ const CompleteWebsite = () => {
           </h2>
 
           <p style={para}>
-            HealthCare+ is a next–generation digital healthcare management system
-            designed to streamline patient experiences and improve clinical
-            efficiency. Our goal is to make healthcare more accessible, reliable,
-            and seamlessly connected for everyone.
+            HealthCare+ is a next–generation digital healthcare management
+            system designed to streamline patient experiences and improve
+            clinical efficiency. Our goal is to make healthcare more accessible,
+            reliable, and seamlessly connected for everyone.
           </p>
 
           <p style={para}>
             From appointment bookings to real-time medical data management,
             HealthCare+ empowers both patients and healthcare professionals to
-            engage with the latest technology in the medical field.
+            engage with advanced technology while keeping human care at the
+            center of every interaction.
           </p>
 
           <ul style={{ padding: 0, listStyle: "none", marginTop: "25px" }}>
             {[
               "✔ Easy patient registration",
-              "✔ Doctor availability system",
-              "✔ Smart appointment reminders",
-              "✔ Real-time performance reports",
+              "✔ Doctor availability & smart scheduling",
+              "✔ Automated appointment reminders",
+              "✔ Real-time performance and health reports",
             ].map((item, index) => (
               <li
                 key={index}
                 style={{
-                  marginBottom: "12px",
-                  fontSize: "18px",
+                  marginBottom: "10px",
+                  fontSize: "17px",
                   fontWeight: "500",
+                  color: "#111827",
                 }}
               >
                 {item}
@@ -123,16 +205,17 @@ const CompleteWebsite = () => {
 
           <p style={{ ...para, marginTop: "25px" }}>
             With a strong focus on personalized care and healthy living, our
-            platform helps individuals stay informed, stay connected, and stay
-            healthy—ensuring they always receive the best possible care.
+            platform helps individuals stay informed, connected, and proactive
+            about their health—ensuring they always receive the best possible
+            care.
           </p>
         </div>
       </section>
 
       {/* --------------------------------------------------
-        SPECIALTY CARDS (6 Hover Cards)
+        SPECIALTY CARDS
       -------------------------------------------------- */}
-      <section style={{ padding: "60px 5%", background: "#f7faff" }}>
+      <section style={{ padding: "60px 5%", background: "#f3f4f6" }}>
         <h2 style={headingCenter}>Our Specialty Centers</h2>
 
         <div
@@ -160,10 +243,16 @@ const CompleteWebsite = () => {
                   height: "200px",
                   objectFit: "cover",
                 }}
-                alt=""
+                alt={item.name}
               />
               <div style={{ padding: "16px" }}>
-                <h3 style={{ fontSize: "20px", fontWeight: "600" }}>
+                <h3
+                  style={{
+                    fontSize: "19px",
+                    fontWeight: "600",
+                    color: "#0f172a",
+                  }}
+                >
                   {item.name}
                 </h3>
               </div>
@@ -173,9 +262,9 @@ const CompleteWebsite = () => {
       </section>
 
       {/* --------------------------------------------------
-        WORLD MAP + 2 COLUMN COUNTRIES + Hover
+        WORLD MAP + COUNTRIES
       -------------------------------------------------- */}
-      <section style={{ padding: "60px 5%" }}>
+      <section style={{ padding: "60px 5%", background: "#ffffff" }}>
         <h2 style={headingCenter}>We serve across the globe</h2>
 
         <div
@@ -187,27 +276,26 @@ const CompleteWebsite = () => {
             marginTop: "40px",
           }}
         >
-          {/* MAP WITH HOVER */}
+          {/* MAP */}
           <img
             src="https://img.freepik.com/free-vector/professional-medical-infographic-with-photo_23-2148370869.jpg?w=740"
             className="map-hover"
             style={{
               width: "600px",
               maxWidth: "100%",
-              borderRadius: "12px",
-              border: "4px solid #0057d9",
-              transition: "0.3s",
+              borderRadius: "14px",
+              border: "3px solid #0ea5e9",
             }}
-            alt=""
+            alt="World medical network"
           />
 
-          {/* COUNTRY LIST (2 columns) */}
+          {/* COUNTRY LIST */}
           <div
             style={{
               display: "grid",
               gridTemplateColumns: "1fr 1fr",
               gap: "15px 40px",
-              fontSize: "18px",
+              fontSize: "17px",
             }}
           >
             {countryList.map((c) => (
@@ -218,12 +306,11 @@ const CompleteWebsite = () => {
                   display: "flex",
                   alignItems: "center",
                   gap: "10px",
-                  transition: "0.3s",
                 }}
               >
                 <img
                   src={`https://flagsapi.com/${c.code}/flat/32.png`}
-                  alt=""
+                  alt={c.name}
                   style={{ borderRadius: "4px" }}
                 />
                 {c.name}
@@ -243,57 +330,22 @@ const headingCenter = {
   fontSize: "36px",
   fontWeight: "700",
   textAlign: "center",
-  color: "#0057d9",
+  color: "#0ea5e9",
 };
 
 const para = {
   fontSize: "17px",
-  color: "#444",
+  color: "#374151",
   lineHeight: "1.8",
 };
 
 const cardStyle = {
   width: "300px",
-  background: " #0099cc",
+  background: "#ffffff",
   borderRadius: "14px",
   overflow: "hidden",
   cursor: "pointer",
-  boxShadow: "0px 4px 12px rgba(0,0,0,0.1)",
-  transition: "transform 0.3s ease, box-shadow 0.3s ease",
+  boxShadow: "0px 4px 12px rgba(15, 23, 42, 0.08)",
 };
 
-/* ---------------------------------------------
-    GLOBAL HOVER EVENTS
---------------------------------------------- */
-
-document.addEventListener("mouseover", (e) => {
-  if (e.target.closest(".hover-card")) {
-    const card = e.target.closest(".hover-card");
-    card.style.transform = "scale(1.05)";
-    card.style.boxShadow = "0px 6px 18px rgba(0,0,0,0.15)";
-  }
-  if (e.target.closest(".map-hover")) {
-    e.target.style.transform = "scale(1.03)";
-    e.target.style.boxShadow = "0px 6px 18px rgba(0,0,0,0.2)";
-  }
-  if (e.target.closest(".flag-hover")) {
-    e.target.closest(".flag-hover").style.transform = "translateX(6px)";
-  }
-});
-
-document.addEventListener("mouseout", (e) => {
-  if (e.target.closest(".hover-card")) {
-    const card = e.target.closest(".hover-card");
-    card.style.transform = "scale(1)";
-    card.style.boxShadow = "0px 4px 12px rgba(0,0,0,0.1)";
-  }
-  if (e.target.closest(".map-hover")) {
-    e.target.style.transform = "scale(1)";
-    e.target.style.boxShadow = "none";
-  }
-  if (e.target.closest(".flag-hover")) {
-    e.target.closest(".flag-hover").style.transform = "translateX(0)";
-  }
-});
-
-export default CompleteWebsite;
+export default About;
