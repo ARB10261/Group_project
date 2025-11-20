@@ -16,7 +16,7 @@ export default function LoginPage() {
   const handleLogin = (e) => {
     e.preventDefault();
     login();
-    navigate("/dashboard");   // ✔ Redirect to dashboard after login
+    navigate("/");
   };
 
   return (
@@ -62,28 +62,31 @@ export default function LoginPage() {
     text-align: center;
   }
 
+  /* TITLE SPACING */
   .brand {
     font-size: 40px;
-    color: #0099cc;
+    color:  #0099cc;
     font-weight: bold;
-    margin-bottom: 12px;
+    margin-bottom: 12px;   /* added */
   }
 
+  /* TAGLINE SPACING */
   .tagline {
     color: #555;
-    margin-bottom: 25px;
+    margin-bottom: 25px;   /* increased */
   }
 
+  /* ROLE BUTTONS GROUP SPACING */
   .role-buttons {
     display: flex;
     justify-content: center;
     gap: 10px;
-    margin-bottom: 28px;
+    margin-bottom: 28px;   /* added */
   }
 
   .role-btn {
     padding: 7px 16px;
-    border: 1px solid #0099cc;
+    border: 1px solid  #0099cc;
     background: transparent;
     border-radius: 20px;
     color: #0099cc;
@@ -98,26 +101,29 @@ export default function LoginPage() {
     color: white;
   }
 
-  /* right aligned labels */
-  .form-box form label {
-    text-align: left !important;
-    width: 100%;
-    display: block;
-    color: #0099cc;
-    margin-bottom: 5px;
-  }
+/* RIGHT ALIGN EMAIL & PASSWORD LABELS */
+.form-box form label {
+  text-align: left !important;
+  width: 100%;
+  display: block;
+  color: #0099cc;
+}
 
+  
+  /* FORM TITLE SPACING */
   h3 {
-    margin-bottom: 22px !important;
+    margin-bottom: 22px !important;  /* added */
   }
 
+  /* EMAIL INPUT SPACING */
   .input-box {
-    margin-bottom: 18px;
+    margin-bottom: 18px; /* added */
   }
 
+  /* PASSWORD INPUT SPACING */
   .password-box {
     position: relative;
-    margin-bottom: 25px; /* increased gap */
+    margin-bottom: 20px; /* added */
   }
 
   .eye-icon {
@@ -127,17 +133,19 @@ export default function LoginPage() {
     cursor: pointer;
   }
 
+  /* LOGIN BUTTON SPACING */
   .login-btn {
     width: 100%;
     padding: 12px;
-    background: #0099cc;
+    background:  #0099cc;
     border: none;
     color: white;
     border-radius: 8px;
-    margin-top: 10px;
-    margin-bottom: 20px;
+    margin-top: 10px;   /* added */
+    margin-bottom: 20px; /* added bottom */
   }
 `}</style>
+
 
       <div className="full-container">
 
@@ -148,9 +156,11 @@ export default function LoginPage() {
         <div className="form-section">
           <div className="form-box">
 
+            {/* BRAND */}
             <h1 className="brand">Healthcare+</h1>
             <p className="tagline">Your trusted digital health companion</p>
 
+            {/* SMALL BUTTONS */}
             <div className="role-buttons">
               {["Admin", "Doctors", "Reception", "Nurse"].map((r) => (
                 <button
@@ -163,6 +173,7 @@ export default function LoginPage() {
               ))}
             </div>
 
+            {/* LOGIN FORM ALWAYS VISIBLE */}
             <h3 style={{ marginBottom: "20px", color: "#333" }}>
               {role ? `${role} Login` : "General Login"}
             </h3>
@@ -171,11 +182,13 @@ export default function LoginPage() {
               <Form.Label>Email</Form.Label>
               <Form.Control
                 type="email"
-                placeholder={role ? `${role} email` : "Enter your email"}
+                placeholder={
+                  role ? `${role} email` : "Enter your email"
+                }
                 required
               />
 
-              <Form.Label>Password</Form.Label>
+              <Form.Label style={{ marginTop: "10px" }}>Password</Form.Label>
               <div className="password-box">
                 <Form.Control
                   type={showPassword ? "text" : "password"}
