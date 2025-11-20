@@ -34,35 +34,41 @@ const CompleteWebsite = () => {
       -------------------------------------------------- */}
       <header
         style={{
-          padding: "80px 5%",
+          minHeight: "500px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          padding: "60px 5%",
           backgroundImage: `linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url(${Healthcareimage})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           color: "#fff",
         }}
       >
-        <h1 style={{ fontSize: "48px", fontWeight: "700", maxWidth: "600px" }}>
-          Where caring for your <br /> Health is all we do
-        </h1>
+        <div style={{ textAlign: "center", maxWidth: "700px" }}>
+          <h1 style={{ fontSize: "52px", fontWeight: "700", lineHeight: "1.2", marginBottom: "20px" }}>
+            Where caring for your Health is all we do
+          </h1>
 
-        <p style={{ maxWidth: "600px", marginTop: "20px", fontSize: "18px" }}>
-          Experience world-class healthcare with Healthcare+ Hospitals.
-        </p>
+          <p style={{ fontSize: "20px", lineHeight: "1.6", marginBottom: "30px" }}>
+            Experience world-class healthcare with Healthcare+ Hospitals.
+          </p>
 
-        <button
-          style={{
-            marginTop: "25px",
-            padding: "12px 30px",
-            background: "#0057d9",
-            border: "none",
-            borderRadius: "8px",
-            color: "#fff",
-            fontSize: "18px",
-            cursor: "pointer",
-          }}
-        >
-          Book an Appointment
-        </button>
+          {/* <button
+            style={{
+              padding: "14px 35px",
+              background: "#0057d9",
+              border: "none",
+              borderRadius: "8px",
+              color: "#fff",
+              fontSize: "18px",
+              cursor: "pointer",
+              fontWeight: "600",
+            }}
+          >
+            Book an Appointment
+          </button> */}
+        </div>
       </header>
 
       {/* --------------------------------------------------
