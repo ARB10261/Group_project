@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react"; 
+import React, { useEffect, useState } from "react";
 import doctorImg from "../assets/heroimage.jpg";
 
-const words = ["health", "sushi", "steak"];
+const words = ["health", "safety", "happiness"];
 
 const HeroSection = () => {
   const [currentWord, setCurrentWord] = useState(0);
@@ -54,20 +54,12 @@ const HeroSection = () => {
 
   return (
     <>
-<style>
-{`
+      <style>{`
   @keyframes bubble {
-    0%, 100% {
-      transform: translateY(0) scale(1);
-      opacity: 1;
-    }
-    50% {
-      transform: translateY(-6px) scale(1.15);
-      opacity: 0.8;
-    }
+    0%, 100% { transform: translateY(0) scale(1); opacity: 1; }
+    50% { transform: translateY(-6px) scale(1.15); opacity: 0.8; }
   }
 
-  /* HERO SECTION FIXED */
   .hero-wrapper {
     display: flex;
     flex-direction: column;
@@ -83,11 +75,8 @@ const HeroSection = () => {
   .hero-wrapper::before {
     content: "";
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
+    inset: 0;
+    background: rgba(0,0,0,0.55);
   }
 
   .hero-left {
@@ -99,9 +88,8 @@ const HeroSection = () => {
     z-index: 2;
   }
 
-  /* THEME TAGLINE COLOR */
   .tagline {
-    color: #0ea5e9; /* MAIN COLOR */
+    color: #0ea5e9;
     font-size: 0.9rem;
     letter-spacing: 2px;
     margin-bottom: 15px;
@@ -113,37 +101,21 @@ const HeroSection = () => {
     font-weight: 800;
     line-height: 1.2;
     margin-bottom: 20px;
+    margin-top: 20px;
+
+
   }
 
-  .typing-word {
-    color:#f0f0f0;
-    font-weight: 800;
-  }
+  .typing-word { color: #f0f0f0; font-weight: 800; }
 
   .hero-subtitle {
     font-size: 1.1rem;
-    color: #f0f0f0;
+    color: #e8e8e8;
     margin-bottom: 35px;
+    margin-top: 20px;
     line-height: 1.6;
   }
 
-  /* THEME BUTTON */
-  .appointment-btn {
-    background: linear-gradient(to right, #36bff7, #0ea5e9);
-    color: #fff;
-    padding: 12px 30px;
-    border: none;
-    border-radius: 8px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: 0.3s ease;
-  }
-
-  .appointment-btn:hover {
-    background: linear-gradient(to right, #0ea5e9, #36bff7);
-  }
-
-  /* SEARCH BAR */
   .search-container {
     width: 80%;
     max-width: 900px;
@@ -152,7 +124,7 @@ const HeroSection = () => {
     background: rgba(0, 67, 87, 0.4);
     padding: 10px 20px;
     border-radius: 40px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255,255,255,0.2);
     backdrop-filter: blur(4px);
     z-index: 2;
   }
@@ -166,12 +138,10 @@ const HeroSection = () => {
     outline: none;
   }
 
-  .search-input::placeholder {
-    color: #d2d2d2;
-  }
+  .search-input::placeholder { color: #d2d2d2; }
 
   .search-btn {
-    background: #0ea5e9;  /* MAIN COLOR */
+    background: #0ea5e9;
     border: none;
     width: 42px;
     height: 42px;
@@ -184,14 +154,13 @@ const HeroSection = () => {
     font-size: 1.2rem;
   }
 
-  /* OPTIONS BAR */
   .options-container {
     margin-top: 20px;
     width: 90%;
     max-width: 1050px;
     display: flex;
     justify-content: space-between;
-    gap: 8px;
+    gap: 10px;
     z-index: 2;
   }
 
@@ -203,42 +172,33 @@ const HeroSection = () => {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border: 2px solid rgba(255, 255, 255, 0.15);
+    border: 2px solid rgba(255,255,255,0.15);
     cursor: pointer;
     font-weight: 500;
-    font-size: 0.95rem;
     transition: 0.2s ease;
+    font-size: 0.95rem;
   }
 
-  .option-box i {
-    font-size: 1.3rem;
-  }
-
-  /* THEME OPTION HOVER */
   .option-box:hover {
-    background: #0ea5e9; /* MAIN COLOR */
+    background: #0ea5e9;
     border-color: #fff;
   }
-`}
-</style>
-
+`}</style>
 
       <section className="hero-wrapper">
-
         <div className="hero-left">
-          <div className="tagline">COMMITTED TO SUCCESS</div>
+          {/* <div className="tagline">COMMITTED TO SUCCESS</div> */}
 
           <h1 className="hero-title">
             WE CARE ABOUT YOUR{" "}
             <span className="typing-word">{bubbleLetters(displayText)}</span>
           </h1>
 
+          {/* UPDATED TEXT — No appointment button */}
           <p className="hero-subtitle">
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
-            uquip ex ea commodo consequat is aute irure.
+            Your health is our priority. We connect you with expert doctors and
+            personalized medical care — anytime, anywhere.
           </p>
-
-          <button className="appointment-btn">Appointment →</button>
         </div>
 
         {/* SEARCH BAR */}
@@ -259,23 +219,19 @@ const HeroSection = () => {
             <span>Book Appointment</span>
             <i className="bi bi-arrow-right-circle"></i>
           </div>
-
           <div className="option-box">
             <span>Find Hospital</span>
             <i className="bi bi-arrow-right-circle"></i>
           </div>
-
           <div className="option-box">
             <span>Book Health Check</span>
             <i className="bi bi-arrow-right-circle"></i>
           </div>
-
           <div className="option-box">
             <span>Get Expert Opinion</span>
             <i className="bi bi-arrow-right-circle"></i>
           </div>
         </div>
-
       </section>
     </>
   );
