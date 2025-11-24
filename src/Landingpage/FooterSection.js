@@ -294,7 +294,7 @@ const FooterSection = () => {
         {/* ✅ Footer Bottom (Inside layout) */}
         <div className="footer-bottom">
           © {new Date().getFullYear()} <span>HealthCare+</span> | All Rights Reserved.  
-          Designed by <span>Ajay Kumar</span>.
+           <span></span>.
         </div>
       </footer>
     </>
