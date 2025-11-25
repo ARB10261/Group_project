@@ -1,4 +1,4 @@
-import "./App.css";
+import "./App.css"; 
 import Navbar from "./Landingpage/Navbar";
 import FooterSection from "./Landingpage/FooterSection";
 import LandingPage from "./Landingpage/LandingPage";
@@ -18,6 +18,8 @@ import Appointments from "./Dashboard/Appointments";
 import Records from "./Dashboard/Records";
 import Reports from "./Dashboard/Reports";
 
+import SearchResults from "./SearchResults";   // ✅ FIXED — use real component
+
 import { useContext } from "react";
 import { AuthContext } from "./AuthContext";
 import DashboardFooter from "./Dashboard/DashboardFooter";
@@ -28,24 +30,21 @@ function App() {
   return (
     <Router>
 
-      {/* 🔹 GLOBAL STYLE FOR BODY & LAYOUT */}
       <style>{`
         html, body, #root {
           height: 100%;
         }
-
         .main-content {
-          min-height: calc(100vh - 70px - 60px); /* Navbar + Footer */
+          min-height: calc(100vh - 70px - 60px);
         }
       `}</style>
 
-      {/* NAVBAR SWITCH */}
       {isLoggedIn ? <DashboardNavbar /> : <Navbar />}
 
-      {/* MAIN CONTENT WRAPPER */}
       <div className="main-content">
         <Routes>
-          {/* 🌍 Public Routes */}
+
+          {/* PUBLIC ROUTES */}
           <Route path="/" element={<LandingPage />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Cards />} />
@@ -54,19 +53,21 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
 
-          {/* 🔐 Dashboard Routes */}
+          {/* 🔍 SEARCH ROUTE USING REAL COMPONENT */}
+          <Route path="/search" element={<SearchResults />} />
+
+          {/* DASHBOARD ROUTES */}
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/patients" element={<Patients />} />
           <Route path="/doctors" element={<Doctors />} />
           <Route path="/appointments" element={<Appointments />} />
           <Route path="/records" element={<Records />} />
           <Route path="/reports" element={<Reports />} />
+
         </Routes>
       </div>
 
-      {/* FOOTER SWITCH */}
       {!isLoggedIn ? <FooterSection /> : <DashboardFooter />}
-
     </Router>
   );
 }

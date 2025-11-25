@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import doctorImg from "../assets/heroimage.jpg";
 
 const words = ["health", "safety", "happiness"];
@@ -8,6 +9,16 @@ const HeroSection = () => {
   const [displayText, setDisplayText] = useState("");
   const [typing, setTyping] = useState(true);
 
+  const navigate = useNavigate();
+  const [query, setQuery] = useState("");
+
+  // 🔍 Handle Search Navigation
+  const handleSearch = () => {
+    if (!query.trim()) return;
+    navigate(`/search?query=${query}`);
+  };
+
+  // Typing Animation
   useEffect(() => {
     let charIndex = 0;
     const typingSpeed = 120;
@@ -88,22 +99,12 @@ const HeroSection = () => {
     z-index: 2;
   }
 
-  .tagline {
-    color: #0ea5e9;
-    font-size: 0.9rem;
-    letter-spacing: 2px;
-    margin-bottom: 15px;
-    font-weight: 600;
-  }
-
   .hero-title {
     font-size: 3rem;
     font-weight: 800;
     line-height: 1.2;
     margin-bottom: 20px;
     margin-top: 20px;
-
-
   }
 
   .typing-word { color: #f0f0f0; font-weight: 800; }
@@ -127,6 +128,7 @@ const HeroSection = () => {
     border: 1px solid rgba(255,255,255,0.2);
     backdrop-filter: blur(4px);
     z-index: 2;
+    margin-top: 30px;
   }
 
   .search-input {
@@ -187,14 +189,11 @@ const HeroSection = () => {
 
       <section className="hero-wrapper">
         <div className="hero-left">
-          {/* <div className="tagline">COMMITTED TO SUCCESS</div> */}
-
           <h1 className="hero-title">
             WE CARE ABOUT YOUR{" "}
             <span className="typing-word">{bubbleLetters(displayText)}</span>
           </h1>
 
-          {/* UPDATED TEXT — No appointment button */}
           <p className="hero-subtitle">
             Your health is our priority. We connect you with expert doctors and
             personalized medical care — anytime, anywhere.
@@ -207,8 +206,10 @@ const HeroSection = () => {
             type="text"
             placeholder="Search For Doctors & Specialities..."
             className="search-input"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
           />
-          <button className="search-btn">
+          <button className="search-btn" onClick={handleSearch}>
             <i className="bi bi-search"></i>
           </button>
         </div>

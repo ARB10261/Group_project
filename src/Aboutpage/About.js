@@ -93,7 +93,7 @@ const About = () => {
             color: "#e5e7eb",
           }}
         >
-          Experience world-class healthcare with HealthCare+ Hospitals,
+          Experience world-class healthcare with HealthCare+,
           powered by technology and compassion.
         </p>
       </header>
