@@ -1,41 +1,81 @@
 import React from "react";
-import heartImage from "../assets/heart-image.png"; // Adjust the path as necessary
+import heartImage from "../assets/heart-image.png"; // Update the correct path
 
 const CardiologyPage = () => {
-  // Floating animation keyframes as a style string
   const floatingAnimation = {
     animation: "float 3s ease-in-out infinite",
   };
 
+  const cardiacServices = [
+    {
+      tag: "Cardio-Med",
+      title: "Angiography",
+      img: "/images/angiography.jpg",
+    },
+    {
+      tag: "Health Care",
+      title: "Heart Failure",
+      img: "/images/heart-failure.jpg",
+    },
+    {
+      tag: "Cardio-Med",
+      title: "Heart Bypass",
+      img: "/images/heart-bypass.jpg",
+    },
+    {
+      tag: "Doctor",
+      title: "Heart Transplant",
+      img: "/images/heart-transplant.jpg",
+    },
+    {
+      tag: "Monitoring",
+      title: "ICU Cardiac Care",
+      img: "/images/cardiac-icu.jpg",
+    },
+    {
+      tag: "Surgery",
+      title: "Valve Replacement",
+      img: "/images/valve-replace.jpg",
+    },
+  ];
+
   return (
     <div
       style={{
-        fontFamily: "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
-        padding: "60px 20px",
-        textAlign: "center",
+        fontFamily:
+          "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
         background: "#fff",
       }}
     >
-      {/* Header */}
-      <p style={{ color: "#1d3c88", marginBottom: "10px", fontSize: "16px" }}>Our Expert</p>
-      <h1 style={{ fontSize: "36px", color: "#1976d2", fontWeight: "700", marginBottom: "20px" }}>
-        Department of Heart <br /> & Vascular Surgery
-      </h1>
-      <p
-        style={{
-          maxWidth: "700px",
-          margin: "0 auto 50px",
-          color: "#6c757d",
-          fontSize: "16px",
-          lineHeight: "1.6",
-        }}
-      >
-        In most countries, a retail outlet for prescription drugs is subject to legislation; with requirements
-        for storage conditions, staff qualifications, equipment, record keeping especially of controlled drugs
-        and other matters.
-      </p>
+      {/* Header Section */}
+      <div style={{ padding: "60px 20px", textAlign: "center" }}>
+        <p style={{ color: "#1d3c88", fontSize: "16px" }}>Our Expert</p>
 
-      {/* Main Content */}
+        <h1
+          style={{
+            fontSize: "36px",
+            color: "#1976d2",
+            fontWeight: "700",
+            marginBottom: "20px",
+          }}
+        >
+          Department of Heart <br /> & Vascular Surgery
+        </h1>
+
+        <p
+          style={{
+            maxWidth: "700px",
+            margin: "0 auto",
+            color: "#6c757d",
+            lineHeight: "1.6",
+          }}
+        >
+          We provide world-class cardiac treatment with advanced technology,
+          skilled surgeons, and compassionate care for every patient.
+        </p>
+      </div>
+
+      {/* Main 3-Column Section */}
       <div
         style={{
           display: "flex",
@@ -43,118 +83,38 @@ const CardiologyPage = () => {
           alignItems: "center",
           flexWrap: "wrap",
           gap: "50px",
+          padding: "40px 20px",
         }}
       >
-        {/* Left Info */}
-        <div style={{ textAlign: "left", maxWidth: "250px" }}>
-          <div style={{ display: "flex", alignItems: "center", marginBottom: "15px" }}>
-            <div
-              style={{
-                backgroundColor: "#1d3c88",
-                color: "#fff",
-                borderRadius: "50%",
-                width: "30px",
-                height: "30px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                marginRight: "10px",
-              }}
-            >
-              1
-            </div>
-            <h3 style={{ color: "#1976d2", margin: 0 }}>Efficient Drugs</h3>
-          </div>
-          <p style={{ color: "#6c757d", fontSize: "14px" }}>
-            The best specialists of the city expect your health is your most important.
-          </p>
+        {/* Left Points */}
+        <div style={{ maxWidth: "260px", textAlign: "left" }}>
+          <CardPoint number="1" title="Efficient Drugs" text="The best cardiology specialists ensure high-quality treatments for your heart health." />
 
-          <div style={{ display: "flex", alignItems: "center", marginTop: "20px", marginBottom: "10px" }}>
-            <div
-              style={{
-                backgroundColor: "#1d3c88",
-                color: "#fff",
-                borderRadius: "50%",
-                width: "30px",
-                height: "30px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                marginRight: "10px",
-              }}
-            >
-              2
-            </div>
-            <h3 style={{ color: "#1976d2", margin: 0 }}>Our Mission</h3>
-          </div>
-          <p style={{ color: "#6c757d", fontSize: "14px" }}>
-            Experienced doctors are ready to help at Medical Center.
-          </p>
+          <CardPoint number="2" title="Our Mission" text="Delivering modern cardiac care with compassion and precision." />
         </div>
 
-        {/* Center Heart Image with floating animation */}
+        {/* Floating Heart Image */}
         <div>
           <img
             src={heartImage}
-            alt="Heart"
+            alt="Heart Model"
             style={{
               maxWidth: "300px",
               width: "100%",
-              borderRadius: "10px",
               ...floatingAnimation,
             }}
           />
         </div>
 
-        {/* Right Info */}
-        <div style={{ textAlign: "left", maxWidth: "250px" }}>
-          <div style={{ display: "flex", alignItems: "center", marginBottom: "15px" }}>
-            <div
-              style={{
-                backgroundColor: "#1d3c88",
-                color: "#fff",
-                borderRadius: "50%",
-                width: "30px",
-                height: "30px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                marginRight: "10px",
-              }}
-            >
-              3
-            </div>
-            <h3 style={{ color: "#1976d2", margin: 0 }}>Our Vision</h3>
-          </div>
-          <p style={{ color: "#6c757d", fontSize: "14px" }}>
-            We are always ready to help you at the time you need help.
-          </p>
+        {/* Right Points */}
+        <div style={{ maxWidth: "260px", textAlign: "left" }}>
+          <CardPoint number="3" title="Our Vision" text="Creating a healthier tomorrow with expert heart & vascular care." />
 
-          <div style={{ display: "flex", alignItems: "center", marginTop: "20px", marginBottom: "10px" }}>
-            <div
-              style={{
-                backgroundColor: "#1d3c88",
-                color: "#fff",
-                borderRadius: "50%",
-                width: "30px",
-                height: "30px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                marginRight: "10px",
-              }}
-            >
-              4
-            </div>
-            <h3 style={{ color: "#1976d2", margin: 0 }}>Medical Service</h3>
-          </div>
-          <p style={{ color: "#6c757d", fontSize: "14px" }}>
-            Anytime you need help, you may contact us and our receptionist.
-          </p>
+          <CardPoint number="4" title="Medical Service" text="24/7 cardiac emergency support with advanced diagnosis." />
         </div>
       </div>
 
-      {/* Floating keyframes animation */}
+      {/* Floating Animation Keyframe */}
       <style>
         {`
           @keyframes float {
@@ -165,122 +125,124 @@ const CardiologyPage = () => {
         `}
       </style>
 
-{/* === Cardiac Services Section === */}
-<div style={{ padding: "60px 20px", textAlign: "center", fontFamily: "Arial, sans-serif" }}>
-  {/* Section Header */}
-  <h2 style={{ color: "#1976d2", fontSize: "32px", marginBottom: "10px" }}>
-    Get A Cardiac Service
-  </h2>
-  <p style={{ color: "#6c757d", maxWidth: "700px", margin: "0 auto 40px", fontSize: "14px", lineHeight: "1.6" }}>
-    Likewise, many pharmacies are now rather grocery store-like in their design. In addition to medicines and prescriptions, many now sell a diverse arrangement.
-  </p>
+      {/* Cardiac Service Cards Section */}
+      <div style={{ padding: "60px 20px", textAlign: "center" }}>
+        <h2 style={{ color: "#1976d2", fontSize: "32px", marginBottom: "10px" }}>
+          Get A Cardiac Service
+        </h2>
 
-  {/* Services Grid */}
-  <div
-    style={{
-      display: "grid",
-      gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-      gap: "20px",
-      justifyItems: "center",
-    }}
-  >
-    {/* Card 1 */}
-    <div
-      style={{
-        width: "100%",
-        borderRadius: "10px",
-        overflow: "hidden",
-        cursor: "pointer",
-        transition: "transform 0.3s ease",
-      }}
-      onMouseOver={(e) => (e.currentTarget.style.transform = "scale(1.05)")}
-      onMouseOut={(e) => (e.currentTarget.style.transform = "scale(1)")}
-    >
-      <img
-        src="/images/angiography.jpg"
-        alt="Angiography"
-        style={{ width: "100%", height: "200px", objectFit: "cover" }}
-      />
-      <div style={{ padding: "10px", textAlign: "left" }}>
-        <p style={{ fontSize: "12px", margin: 0, color: "#1976d2" }}>Cardio-Med</p>
-        <h3 style={{ margin: 0, fontSize: "16px", color: "#1d3c88" }}>Angiography</h3>
+        <p
+          style={{
+            color: "#6c757d",
+            maxWidth: "700px",
+            margin: "0 auto 40px",
+            lineHeight: "1.6",
+          }}
+        >
+          Choose from our advanced treatments performed by experienced cardiologists.
+        </p>
+
+        {/* Cards Grid */}
+        <div
+          className="card-grid"
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(3, 1fr)",
+            gap: "25px",
+            padding: "0 20px",
+          }}
+        >
+          {cardiacServices.map((item, index) => (
+            <ServiceCard key={index} item={item} />
+          ))}
+        </div>
+
+        {/* RESPONSIVE GRID */}
+        <style>
+          {`
+            @media (max-width: 992px) {
+              .card-grid {
+                grid-template-columns: repeat(2, 1fr) !important;
+              }
+            }
+
+            @media (max-width: 768px) {
+              .card-grid {
+                grid-template-columns: 1fr !important;
+              }
+            }
+          `}
+        </style>
       </div>
-    </div>
-
-    {/* Card 2 */}
-    <div
-      style={{
-        width: "100%",
-        borderRadius: "10px",
-        overflow: "hidden",
-        cursor: "pointer",
-        transition: "transform 0.3s ease",
-      }}
-      onMouseOver={(e) => (e.currentTarget.style.transform = "scale(1.05)")}
-      onMouseOut={(e) => (e.currentTarget.style.transform = "scale(1)")}
-    >
-      <img
-        src="/images/heart-failure.jpg"
-        alt="Heart Failure"
-        style={{ width: "100%", height: "200px", objectFit: "cover" }}
-      />
-      <div style={{ padding: "10px", textAlign: "left" }}>
-        <p style={{ fontSize: "12px", margin: 0, color: "#1976d2" }}>Health Care</p>
-        <h3 style={{ margin: 0, fontSize: "16px", color: "#1d3c88" }}>Heart Failure</h3>
-      </div>
-    </div>
-
-    {/* Card 3 */}
-    <div
-      style={{
-        width: "100%",
-        borderRadius: "10px",
-        overflow: "hidden",
-        cursor: "pointer",
-        transition: "transform 0.3s ease",
-      }}
-      onMouseOver={(e) => (e.currentTarget.style.transform = "scale(1.05)")}
-      onMouseOut={(e) => (e.currentTarget.style.transform = "scale(1)")}
-    >
-      <img
-        src="/images/heart-bypass.jpg"
-        alt="Heart Bypass"
-        style={{ width: "100%", height: "200px", objectFit: "cover" }}
-      />
-      <div style={{ padding: "10px", textAlign: "left" }}>
-        <p style={{ fontSize: "12px", margin: 0, color: "#1976d2" }}>Cardio-Med</p>
-        <h3 style={{ margin: 0, fontSize: "16px", color: "#1d3c88" }}>Heart Bypass</h3>
-      </div>
-    </div>
-
-    {/* Card 4 */}
-    <div
-      style={{
-        width: "100%",
-        borderRadius: "10px",
-        overflow: "hidden",
-        cursor: "pointer",
-        transition: "transform 0.3s ease",
-      }}
-      onMouseOver={(e) => (e.currentTarget.style.transform = "scale(1.05)")}
-      onMouseOut={(e) => (e.currentTarget.style.transform = "scale(1)")}
-    >
-      <img
-        src="/images/heart-transplant.jpg"
-        alt="Heart Transplant"
-        style={{ width: "100%", height: "200px", objectFit: "cover" }}
-      />
-      <div style={{ padding: "10px", textAlign: "left" }}>
-        <p style={{ fontSize: "12px", margin: 0, color: "#1976d2" }}>Doctor</p>
-        <h3 style={{ margin: 0, fontSize: "16px", color: "#1d3c88" }}>Heart Transplant</h3>
-      </div>
-    </div>
-  </div>
-</div>
-
-
     </div>
   );
 };
+
+/* ---------------------------------------
+   SUB COMPONENTS
+----------------------------------------*/
+
+const CardPoint = ({ number, title, text }) => (
+  <div style={{ marginBottom: "30px" }}>
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        marginBottom: "10px",
+      }}
+    >
+      <div
+        style={{
+          backgroundColor: "#1d3c88",
+          color: "#fff",
+          width: "32px",
+          height: "32px",
+          borderRadius: "50%",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          marginRight: "12px",
+        }}
+      >
+        {number}
+      </div>
+
+      <h3 style={{ color: "#1976d2", margin: 0, fontSize: "18px" }}>{title}</h3>
+    </div>
+
+    <p style={{ color: "#6c757d", fontSize: "14px", marginLeft: "44px" }}>
+      {text}
+    </p>
+  </div>
+);
+
+const ServiceCard = ({ item }) => (
+  <div
+    style={{
+      width: "100%",
+      background: "#fff",
+      borderRadius: "10px",
+      overflow: "hidden",
+      cursor: "pointer",
+      boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+      transition: "0.3s",
+    }}
+    onMouseOver={(e) => (e.currentTarget.style.transform = "scale(1.05)")}
+    onMouseOut={(e) => (e.currentTarget.style.transform = "scale(1)")}
+  >
+    <img
+      src={item.img}
+      alt={item.title}
+      style={{ width: "100%", height: "220px", objectFit: "cover" }}
+    />
+
+    <div style={{ padding: "10px", textAlign: "left" }}>
+      <p style={{ fontSize: "12px", color: "#1976d2", margin: 0 }}>{item.tag}</p>
+      <h3 style={{ fontSize: "18px", margin: "5px 0", color: "#1d3c88" }}>
+        {item.title}
+      </h3>
+    </div>
+  </div>
+);
 
 export default CardiologyPage;
