@@ -6,219 +6,171 @@ const FooterSection = () => {
     <>
       <style>
         {`
-          /* ✅ Footer Layout */
           .footer-section {
-            background-color: #1e1e1e;
-            color: #ddd;
-            padding: 50px 80px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            gap: 40px;
+            background: #0f172a;
+            color: #e5e7eb;
+            padding: 55px 80px;
           }
 
+          /* ⭐️ 4 columns side by side */
           .footer-top {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 45px;
             width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            flex-wrap: wrap;
-            gap: 40px;
+            margin-bottom: 35px;
           }
 
           .footer-column {
-            flex: 1;
-            min-width: 250px;
             display: flex;
             flex-direction: column;
-            justify-content: flex-start;
+            gap: 8px;
           }
 
-          /* ✅ Brand */
-          .footer-brand {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 6px;
-          }
-
+          /* ⭐️ Brand */
           .brand-name {
-            font-size: 1.6rem;
+            font-size: 1.7rem;
             font-weight: 700;
-            color: #00cfff;
+            color: #0ea5e9;
+            margin-bottom: 6px;
           }
+          .brand-name span { color: #0284c7; }
 
           .brand-tagline {
             font-size: 0.9rem;
-            color: #ccc;
-            margin-bottom: 8px;
+            color: #9ca3af;
             line-height: 1.4;
           }
 
-          /* ✅ Social Icons */
+          /* ⭐️ Social Icons */
           .social-icons {
             display: flex;
             gap: 12px;
-            margin-top: 5px;
+            margin-top: 8px;
           }
-
           .social-icons a {
-            color: #00cfff;
-            font-size: 1.2rem;
-            transition: color 0.3s ease, transform 0.3s ease;
+            color: #0ea5e9;
+            font-size: 1.25rem;
+            transition: 0.25s;
           }
-
           .social-icons a:hover {
-            color: #fff;
+            color: #ffffff;
             transform: translateY(-2px);
           }
 
-          /* ✅ Section Titles */
+          /* ⭐️ Section Title */
           .footer-title {
             font-size: 1.15rem;
             font-weight: 700;
-            color: #00cfff;
-            margin-bottom: 12px;
+            color: #0ea5e9;
+            margin-bottom: 10px;
           }
 
-          /* ✅ Footer Lists */
           .footer-list {
             list-style: none;
             padding: 0;
             margin: 0;
           }
-
           .footer-list li {
+            font-size: 0.92rem;
             margin-bottom: 8px;
-            font-size: 0.9rem;
-            color: #ccc;
             cursor: pointer;
-            transition: color 0.3s ease;
+            transition: 0.25s;
+            color: #d1d5db;
           }
-
           .footer-list li:hover {
-            color: #00cfff;
+            color: #0ea5e9;
+            transform: translateX(2px);
           }
 
-          /* ✅ Contact Details */
+          /* ⭐️ Contact Section */
           .footer-contact li {
             display: flex;
             align-items: center;
             gap: 8px;
-            color: #ccc;
-            font-size: 0.9rem;
             margin-bottom: 8px;
           }
-
           .footer-contact svg {
-            color: #00cfff;
-            flex-shrink: 0;
+            color: #0ea5e9;
           }
 
-          /* ✅ Subscribe Box */
+          /* ⭐️ Subscribe Input */
           .subscribe-box {
-            margin-top: 15px;
             display: flex;
-            align-items: center;
-            background: #2a2a2a;
-            border-radius: 25px;
+            background: #111827;
+            border-radius: 50px;
+            margin-top: 10px;
             overflow: hidden;
-            width: 100%;
-            max-width: 280px;
+            border: 1px solid #1f2937;
           }
-
           .subscribe-box input {
             flex: 1;
-            padding: 8px 12px;
+            background: transparent;
             border: none;
             outline: none;
-            background: transparent;
-            color: #fff;
-            font-size: 0.85rem;
+            color: #f9fafb;
+            padding: 8px 12px;
           }
-
           .subscribe-box button {
-            background: #00cfff;
-            color: #fff;
+            background: linear-gradient(135deg, #0ea5e9, #0284c7);
             border: none;
-            padding: 8px 15px;
+            color: white;
+            padding: 8px 16px;
             cursor: pointer;
             font-weight: 600;
-            transition: background 0.3s ease;
           }
 
-          .subscribe-box button:hover {
-            background: #000;
-          }
-
-          /* ✅ Footer Bottom Inside Layout */
+          /* ⭐️ Footer Bottom */
           .footer-bottom {
             text-align: center;
-            color: #aaa;
-            border-top: 1px solid #333;
-            padding-top: 20px;
-            width: 100%;
-            font-size: 0.85rem;
+            color: #9ca3af;
+            font-size: 0.9rem;
+            padding-top: 16px;
+            border-top: 1px solid #1f2937;
           }
-
           .footer-bottom span {
-            color: #00cfff;
-            font-weight: 600;
+            color: #0ea5e9;
+            font-weight: 700;
           }
 
-          /* ✅ Responsive Design */
+          /* 📱 Responsive */
           @media (max-width: 992px) {
             .footer-top {
-              flex-direction: column;
-              align-items: center;
-              text-align: center;
-              gap: 25px;
+              grid-template-columns: repeat(2, 1fr);
+              gap: 35px;
             }
-
+          }
+          @media (max-width: 600px) {
+            .footer-top {
+              grid-template-columns: 1fr;
+              text-align: center;
+            }
             .footer-column {
               align-items: center;
             }
-
-            .social-icons {
-              justify-content: center;
-            }
-
-            .footer-contact li {
-              justify-content: center;
-            }
-
-            .subscribe-box {
-              margin: 15px auto 0;
-            }
+            .footer-contact li { justify-content: center; }
+            .social-icons { justify-content: center; }
           }
         `}
       </style>
 
-      {/* ✅ Footer Section */}
       <footer className="footer-section" id="footer">
         <div className="footer-top">
-          {/* Brand + Social Media */}
-          <div className="footer-column footer-brand">
-            <h2 className="brand-name">HealthCare+</h2>
+          {/* Column 1 — Brand */}
+          <div className="footer-column">
+            <h2 className="brand-name">HealthCare<span>+</span></h2>
             <p className="brand-tagline">
               Digital healthcare for everyone — connecting patients and doctors with ease.
             </p>
 
             <div className="social-icons">
-              <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer">
-                <FaTwitter />
-              </a>
-              <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer">
-                <FaInstagram />
-              </a>
-              <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer">
-                <FaLinkedin />
-              </a>
+              <a href="#"><FaTwitter /></a>
+              <a href="#"><FaInstagram /></a>
+              <a href="#"><FaLinkedin /></a>
             </div>
           </div>
 
-          {/* Departments */}
+          {/* Column 2 — Departments */}
           <div className="footer-column">
             <h3 className="footer-title">Departments</h3>
             <ul className="footer-list">
@@ -231,7 +183,7 @@ const FooterSection = () => {
             </ul>
           </div>
 
-          {/* Support */}
+          {/* Column 3 — Support */}
           <div className="footer-column">
             <h3 className="footer-title">Support & Policies</h3>
             <ul className="footer-list">
@@ -248,27 +200,19 @@ const FooterSection = () => {
             </div>
           </div>
 
-          {/* Contact */}
+          {/* Column 4 — Contact */}
           <div className="footer-column">
             <h3 className="footer-title">Get in Touch</h3>
             <ul className="footer-list footer-contact">
-              <li>
-                <FaClock /> Mon - Fri : 09:00 AM - 06:00 PM
-              </li>
-              <li>
-                <FaEnvelope /> support@healthcareplus.com
-              </li>
-              <li>
-                <FaLocationDot /> Visakhapatnam, Andhra Pradesh
-              </li>
+              <li><FaClock /> Mon – Fri : 09:00 AM – 06:00 PM</li>
+              <li><FaEnvelope /> support@healthcareplus.com</li>
+              <li><FaLocationDot /> Visakhapatnam, Andhra Pradesh</li>
             </ul>
           </div>
         </div>
 
-        {/* ✅ Footer Bottom (Inside layout) */}
         <div className="footer-bottom">
-          © {new Date().getFullYear()} <span>HealthCare+</span> | All Rights Reserved.  
-          Designed by <span>Front-End Team</span>.
+          © {new Date().getFullYear()} <span>HealthCare+</span> — All Rights Reserved.
         </div>
       </footer>
     </>
