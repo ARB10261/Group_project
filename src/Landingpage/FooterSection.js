@@ -1,5 +1,12 @@
 import React from "react";
-import { FaEnvelope, FaClock, FaLocationDot, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa6";
+import {
+  FaEnvelope,
+  FaClock,
+  FaTwitter,
+  FaInstagram,
+  FaLinkedin
+} from "react-icons/fa";
+import { FaLocationDot } from "react-icons/fa6";
 
 const FooterSection = () => {
   return (
@@ -12,7 +19,7 @@ const FooterSection = () => {
             padding: 55px 80px;
           }
 
-          /* ⭐️ 4 columns side by side */
+          /* ⭐ 4 Columns */
           .footer-top {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -27,14 +34,16 @@ const FooterSection = () => {
             gap: 8px;
           }
 
-          /* ⭐️ Brand */
+          /* ⭐ Brand */
           .brand-name {
             font-size: 1.7rem;
             font-weight: 700;
             color: #0ea5e9;
             margin-bottom: 6px;
           }
-          .brand-name span { color: #0284c7; }
+          .brand-name span {
+            color: #0284c7;
+          }
 
           .brand-tagline {
             font-size: 0.9rem;
@@ -42,7 +51,7 @@ const FooterSection = () => {
             line-height: 1.4;
           }
 
-          /* ⭐️ Social Icons */
+          /* ⭐ Social Icons */
           .social-icons {
             display: flex;
             gap: 12px;
@@ -58,7 +67,7 @@ const FooterSection = () => {
             transform: translateY(-2px);
           }
 
-          /* ⭐️ Section Title */
+          /* ⭐ Titles */
           .footer-title {
             font-size: 1.15rem;
             font-weight: 700;
@@ -66,35 +75,39 @@ const FooterSection = () => {
             margin-bottom: 10px;
           }
 
+          /* ⭐ Lists */
           .footer-list {
             list-style: none;
             padding: 0;
             margin: 0;
           }
+
           .footer-list li {
             font-size: 0.92rem;
             margin-bottom: 8px;
             cursor: pointer;
-            transition: 0.25s;
+            transition: color 0.25s, transform 0.25s;
             color: #d1d5db;
           }
+
           .footer-list li:hover {
             color: #0ea5e9;
-            transform: translateX(2px);
+            transform: translateX(3px);
           }
 
-          /* ⭐️ Contact Section */
+          /* ⭐ Contact Section */
           .footer-contact li {
             display: flex;
             align-items: center;
             gap: 8px;
             margin-bottom: 8px;
           }
+
           .footer-contact svg {
             color: #0ea5e9;
           }
 
-          /* ⭐️ Subscribe Input */
+          /* ⭐ Subscribe Box */
           .subscribe-box {
             display: flex;
             background: #111827;
@@ -103,6 +116,7 @@ const FooterSection = () => {
             overflow: hidden;
             border: 1px solid #1f2937;
           }
+
           .subscribe-box input {
             flex: 1;
             background: transparent;
@@ -111,6 +125,7 @@ const FooterSection = () => {
             color: #f9fafb;
             padding: 8px 12px;
           }
+
           .subscribe-box button {
             background: linear-gradient(135deg, #0ea5e9, #0284c7);
             border: none;
@@ -120,7 +135,7 @@ const FooterSection = () => {
             font-weight: 600;
           }
 
-          /* ⭐️ Footer Bottom */
+          /* ⭐ Bottom */
           .footer-bottom {
             text-align: center;
             color: #9ca3af;
@@ -128,6 +143,7 @@ const FooterSection = () => {
             padding-top: 16px;
             border-top: 1px solid #1f2937;
           }
+
           .footer-bottom span {
             color: #0ea5e9;
             font-weight: 700;
@@ -135,30 +151,52 @@ const FooterSection = () => {
 
           /* 📱 Responsive */
           @media (max-width: 992px) {
+            .footer-section {
+              padding: 50px 40px;
+            }
             .footer-top {
               grid-template-columns: repeat(2, 1fr);
               gap: 35px;
             }
           }
+
           @media (max-width: 600px) {
+            .footer-section {
+              padding: 40px 25px;
+            }
+
             .footer-top {
               grid-template-columns: 1fr;
               text-align: center;
             }
+
             .footer-column {
               align-items: center;
             }
-            .footer-contact li { justify-content: center; }
-            .social-icons { justify-content: center; }
+
+            .footer-contact li {
+              justify-content: center;
+            }
+
+            .social-icons {
+              justify-content: center;
+            }
+
+            .subscribe-box {
+              width: 90%;
+              margin: 10px auto 0;
+            }
           }
-        `}
+      `}
       </style>
 
       <footer className="footer-section" id="footer">
         <div className="footer-top">
-          {/* Column 1 — Brand */}
+          {/* Brand Column */}
           <div className="footer-column">
-            <h2 className="brand-name">HealthCare<span>+</span></h2>
+            <h2 className="brand-name">
+              HealthCare<span>+</span>
+            </h2>
             <p className="brand-tagline">
               Digital healthcare for everyone — connecting patients and doctors with ease.
             </p>
@@ -170,7 +208,7 @@ const FooterSection = () => {
             </div>
           </div>
 
-          {/* Column 2 — Departments */}
+          {/* Departments Column */}
           <div className="footer-column">
             <h3 className="footer-title">Departments</h3>
             <ul className="footer-list">
@@ -183,7 +221,7 @@ const FooterSection = () => {
             </ul>
           </div>
 
-          {/* Column 3 — Support */}
+          {/* Support Column */}
           <div className="footer-column">
             <h3 className="footer-title">Support & Policies</h3>
             <ul className="footer-list">
@@ -200,7 +238,7 @@ const FooterSection = () => {
             </div>
           </div>
 
-          {/* Column 4 — Contact */}
+          {/* Contact Column */}
           <div className="footer-column">
             <h3 className="footer-title">Get in Touch</h3>
             <ul className="footer-list footer-contact">

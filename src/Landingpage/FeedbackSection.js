@@ -4,11 +4,10 @@ import { FaUserCircle, FaQuoteLeft } from "react-icons/fa";
 const FeedbackSection = () => {
   return (
     <>
- <style>
-{`
+      <style>{`
   /* Section Layout */
   .feedback-section {
-    background-color: #e6f7ff; /* light blue theme */
+    background-color: #e6f7ff;
     padding: 100px 80px;
     text-align: center;
   }
@@ -16,56 +15,47 @@ const FeedbackSection = () => {
   .feedback-title {
     font-size: 2.5rem;
     font-weight: 700;
-    color: #0ea5e9; /* MAIN COLOR */
+    color: #0ea5e9;
     margin-bottom: 10px;
   }
 
-  /* Subtitle */
   .feedback-subtitle {
     font-size: 1.1rem;
     color: #555;
     margin-bottom: 60px;
-    max-width: 600px;
+    max-width: 650px;
     margin-left: auto;
     margin-right: auto;
     line-height: 1.6;
   }
 
-  /* Feedback Grid Layout */
+  /* Grid Layout */
   .feedback-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 40px;
-    justify-content: center;
-    align-items: start;
-    position: relative;
     max-width: 1000px;
     margin: 0 auto;
   }
 
-  /* Single Feedback Card */
+  /* Card */
   .feedback-card {
     background: #fff;
     border-radius: 20px;
     padding: 30px 25px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.05);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    position: relative;
+    opacity: 0;
+    animation: fadeUp 0.9s forwards;
   }
 
   .feedback-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
-  }
-
-  .feedback-icon {
-    font-size: 2rem;
-    color: #0ea5e9; /* MAIN COLOR */
-    margin-bottom: 15px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.1);
   }
 
   .feedback-quote {
-    color: #0ea5e9; /* MAIN COLOR */
+    color: #0ea5e9;
     font-size: 1.5rem;
     margin-bottom: 10px;
   }
@@ -86,7 +76,7 @@ const FeedbackSection = () => {
 
   .feedback-user-icon {
     font-size: 2rem;
-    color: #0ea5e9; /* MAIN COLOR */
+    color: #0ea5e9;
   }
 
   .feedback-user-name {
@@ -95,26 +85,35 @@ const FeedbackSection = () => {
     font-size: 1.1rem;
   }
 
-  /* Bottom Centered Card */
+  /* Bottom card */
   .feedback-bottom {
     grid-column: span 2;
     display: flex;
     justify-content: center;
-    margin-top: 20px;
   }
 
   .feedback-bottom .feedback-card {
-    width: 60%;
+    width: 65%;
   }
 
-  /* Responsive Design */
+  /* Animation */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Responsive */
   @media (max-width: 992px) {
+    .feedback-section {
+      padding: 70px 30px;
+    }
+
     .feedback-grid {
       grid-template-columns: 1fr;
     }
 
     .feedback-bottom {
-      grid-column: span 1;
+      grid-column: 1;
     }
 
     .feedback-bottom .feedback-card {
@@ -124,21 +123,23 @@ const FeedbackSection = () => {
     .feedback-title {
       font-size: 2rem;
     }
+
+    .feedback-card {
+      padding: 25px 20px;
+    }
   }
-`}
-</style>
+      `}</style>
 
-
-      {/* ✅ Feedback Section */}
+      {/* Feedback Section */}
       <section className="feedback-section" id="feedback">
-        <h2 className="feedback-title">We served over 5000+ Patients</h2>
+        <h2 className="feedback-title">We Served Over 5000+ Patients</h2>
         <p className="feedback-subtitle">
           Trusted by patients and doctors for fast, reliable, and digital healthcare solutions.
           Your health, our priority — powered by HealthCare+ innovation.
         </p>
 
         <div className="feedback-grid">
-          {/* Top Row - Two Cards */}
+          {/* Top Left */}
           <div className="feedback-card">
             <FaQuoteLeft className="feedback-quote" />
             <p className="feedback-text">
@@ -150,10 +151,11 @@ const FeedbackSection = () => {
             </div>
           </div>
 
+          {/* Top Right */}
           <div className="feedback-card">
             <FaQuoteLeft className="feedback-quote" />
             <p className="feedback-text">
-              “Amazing system! The reminders and online records saved me a lot of time. I always recommend HealthCare+ to my friends.”
+              “Amazing system! The reminders and online records saved me so much time. I always recommend HealthCare+ to my friends.”
             </p>
             <div className="feedback-user">
               <FaUserCircle className="feedback-user-icon" />
@@ -161,7 +163,7 @@ const FeedbackSection = () => {
             </div>
           </div>
 
-          {/* Bottom Center Card */}
+          {/* Bottom Center */}
           <div className="feedback-bottom">
             <div className="feedback-card">
               <FaQuoteLeft className="feedback-quote" />
@@ -174,6 +176,7 @@ const FeedbackSection = () => {
               </div>
             </div>
           </div>
+
         </div>
       </section>
     </>

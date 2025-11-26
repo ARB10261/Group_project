@@ -7,11 +7,7 @@ const Patients = () => {
     { id: 2, name: "Priya Nair", age: 27, mobile: "9123456789" },
   ]);
 
-  const [newPatient, setNewPatient] = useState({
-    name: "",
-    age: "",
-    mobile: "",
-  });
+  const [newPatient, setNewPatient] = useState({ name: "", age: "", mobile: "" });
 
   const [editingId, setEditingId] = useState(null);
   const [editPatient, setEditPatient] = useState({
@@ -33,28 +29,26 @@ const Patients = () => {
 
   const handleEdit = (patient) => {
     setEditingId(patient.id);
-    setEditPatient({ name: patient.name, age: patient.age, mobile: patient.mobile });
+    setEditPatient(patient);
   };
 
   const handleSave = (id) => {
-    setPatients(
-      patients.map((p) =>
-        p.id === id ? { ...p, ...editPatient } : p
-      )
-    );
+    setPatients(patients.map((p) => (p.id === id ? { ...p, ...editPatient } : p)));
     setEditingId(null);
   };
 
   return (
     <>
       <style>{`
-        .page-container { padding: 30px; color: #0f172a; }
+        .page-container { padding: 30px; }
 
         .header-row {
           display: flex;
           justify-content: space-between;
           align-items: center;
           margin-bottom: 22px;
+          flex-wrap: wrap;
+          gap: 15px;
         }
 
         .title {
@@ -73,48 +67,57 @@ const Patients = () => {
           font-weight: 600;
         }
 
-        .btn-add:hover { background: #0284c7; }
-
         .table-container {
           background: white;
           border-radius: 12px;
           padding: 20px;
           box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+          overflow-x: auto;
         }
 
-        table { width: 100%; border-collapse: collapse; }
+        table { width: 100%; min-width: 650px; border-collapse: collapse; }
         th, td { padding: 14px 10px; border-bottom: 1px solid #e2e8f0; }
-        th { font-weight: 600; }
+
+        td:last-child {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 10px;
+        }
 
         .action-btn {
-  padding: 6px 12px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  margin-right: 10px;   /* 🔥 adds gap between buttons */
-}
+          padding: 6px 12px;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+          font-size: 14px;
+          color: #fff;
+        }
 
+        .edit-btn { background: #eab308; }
+        .delete-btn { background: #ef4444; }
+        .save-btn { background: #0ea5e9; }
 
-        .edit-btn { background: #eab308; color: white; }
-        .delete-btn { background: #ef4444; color: white; }
-        .save-btn { background: #0ea5e9; color: white; }
-
+        /* Popup */
         .popup-overlay {
-          position: fixed; inset: 0;
+          position: fixed;
+          inset: 0;
           background: rgba(0,0,0,0.45);
-          display: flex; justify-content: center; align-items: center;
+          display: flex;
+          justify-content: center;
+          align-items: center;
         }
 
         .popup-box {
-          width: 420px;
+          width: 90%;
+          max-width: 420px;
           background: #fff;
           padding: 25px;
           border-radius: 10px;
-          animation: zoom 0.3s ease;
+          animation: zoom .3s ease;
         }
 
         @keyframes zoom {
-          from { transform: scale(0.7); opacity: 0; }
+          from { transform: scale(.7); opacity: 0; }
           to { transform: scale(1); opacity: 1; }
         }
 
@@ -137,9 +140,24 @@ const Patients = () => {
           color: white;
           padding: 8px 16px;
           border-radius: 6px;
-          border: none;
         }
 
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 600px) {
+
+          .title { font-size: 1.5rem; }
+          .btn-add { width: 100%; text-align: center; }
+
+          td:last-child {
+            flex-direction: column;
+            align-items: flex-start;
+          }
+
+          .action-btn {
+            width: 100%;
+            text-align: center;
+          }
+        }
       `}</style>
 
       <div className="page-container">
@@ -165,16 +183,14 @@ const Patients = () => {
             <tbody>
               {patients.map((p) => (
                 <tr key={p.id}>
-                  {/* Editable inputs when editing */}
+
                   <td>
                     {editingId === p.id ? (
                       <input
                         value={editPatient.name}
                         onChange={(e) => setEditPatient({ ...editPatient, name: e.target.value })}
                       />
-                    ) : (
-                      p.name
-                    )}
+                    ) : p.name}
                   </td>
 
                   <td>
@@ -184,9 +200,7 @@ const Patients = () => {
                         value={editPatient.age}
                         onChange={(e) => setEditPatient({ ...editPatient, age: e.target.value })}
                       />
-                    ) : (
-                      p.age
-                    )}
+                    ) : p.age}
                   </td>
 
                   <td>
@@ -195,9 +209,7 @@ const Patients = () => {
                         value={editPatient.mobile}
                         onChange={(e) => setEditPatient({ ...editPatient, mobile: e.target.value })}
                       />
-                    ) : (
-                      p.mobile
-                    )}
+                    ) : p.mobile}
                   </td>
 
                   <td>
@@ -210,10 +222,12 @@ const Patients = () => {
                         Edit
                       </button>
                     )}
+
                     <button className="action-btn delete-btn" onClick={() => handleDelete(p.id)}>
                       Delete
                     </button>
                   </td>
+
                 </tr>
               ))}
             </tbody>
@@ -233,12 +247,14 @@ const Patients = () => {
                 value={newPatient.name}
                 onChange={(e) => setNewPatient({ ...newPatient, name: e.target.value })}
               />
+
               <input
                 type="number"
                 placeholder="Age"
                 value={newPatient.age}
                 onChange={(e) => setNewPatient({ ...newPatient, age: e.target.value })}
               />
+
               <input
                 type="text"
                 placeholder="Mobile Number"
@@ -250,6 +266,7 @@ const Patients = () => {
                 <button className="cancel-btn" onClick={() => setShowForm(false)}>Cancel</button>
                 <button className="save-btn" onClick={handleAddPatient}>Save</button>
               </div>
+
             </div>
           </div>
         )}
