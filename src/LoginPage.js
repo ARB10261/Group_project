@@ -6,7 +6,7 @@ import Nurse from "./assets/Nurse.jpg";
 
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
-  const [role, setRole] = useState(""); // Selected role
+  const [role, setRole] = useState("");
 
   const { login } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -21,10 +21,7 @@ export default function LoginPage() {
       return;
     }
 
-    // 🔹 send role into AuthContext
     login(role);
-
-    // 🔹 go to /dashboard (not "/")
     navigate("/dashboard");
   };
 
@@ -35,20 +32,26 @@ export default function LoginPage() {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
   }
 
   body {
     background: #f3f6fb;
   }
 
-  .full-container {
-    height: 100vh;
+  /* MAIN WRAPPER → FIXES FOOTER POSITION */
+  .login-wrapper {
+    min-height: 100vh;
     display: flex;
+    flex-direction: column;
+  }
+
+  .full-container {
+    display: flex;
+    flex: 1;
   }
 
   .image-section {
-    width: 40%;
+    width: 45%;
     background: #dfe8ff;
   }
 
@@ -59,49 +62,43 @@ export default function LoginPage() {
   }
 
   .form-section {
-    width: 60%;
+    width: 55%;
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 40px 20px;
   }
-   
-  /* RIGHT ALIGN EMAIL & PASSWORD LABELS */
-.form-box form label {
-  text-align: left !important;
-  width: 100%;
-  display: block;
-  color: #0099cc;
-}
 
   .form-box {
-    width: 70%;
+    width: 80%;
     max-width: 420px;
-    text-align: center;
   }
 
   .brand {
     font-size: 40px;
-    color:  #0099cc;
+    color: #0099cc;
     font-weight: bold;
-    margin-bottom: 12px;
+    text-align: center;
+    margin-bottom: 10px;
   }
 
   .tagline {
+    text-align: center;
     color: #555;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
   }
 
   .role-buttons {
     display: flex;
     justify-content: center;
     gap: 10px;
-    margin-bottom: 28px;
     flex-wrap: wrap;
+    margin-bottom: 20px;
   }
 
   .role-btn {
     padding: 7px 16px;
-    border: 1px solid  #0099cc;
+    border: 1.5px solid #0099cc;
     background: transparent;
     border-radius: 20px;
     color: #0099cc;
@@ -117,20 +114,15 @@ export default function LoginPage() {
   }
 
   .form-box form label {
-    text-align: left !important;
-    width: 100%;
-    display: block;
     color: #0099cc;
     font-weight: bold;
-  }
-
-  h3 {
-    margin-bottom: 22px !important;
+    margin-bottom: 5px;
+    text-align: left;
   }
 
   .password-box {
     position: relative;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
   }
 
   .eye-icon {
@@ -143,70 +135,138 @@ export default function LoginPage() {
   .login-btn {
     width: 100%;
     padding: 12px;
-    background:  #0099cc;
-    border: none;
-    color: white;
+    background: #0099cc;
     border-radius: 8px;
+    color: white;
+    border: none;
     margin-top: 10px;
-    margin-bottom: 20px;
+  }
+
+  /* FOOTER */
+  .login-footer {
+    text-align: center;
+    background: #0f172a;
+    color: #94a3b8;
+    padding: 12px;
+    font-size: 0.9rem;
+    margin-top: auto;
+  }
+
+  .login-footer span {
+    color: #0ea5e9;
+  }
+
+  /* TABLET */
+  @media (max-width: 992px) {
+    .full-container {
+      flex-direction: column;
+    }
+
+    .image-section {
+      width: 100%;
+      height: 260px;
+    }
+
+    .form-section {
+      width: 100%;
+      padding: 30px 20px;
+    }
+
+    .form-box {
+      width: 90%;
+    }
+  }
+
+  /* MOBILE */
+  @media (max-width: 600px) {
+    .image-section {
+      height: 180px;
+    }
+
+    .brand {
+      font-size: 32px;
+    }
+
+    .role-btn {
+      padding: 6px 14px;
+      font-size: 12px;
+    }
+  }
+
+  /* VERY SMALL */
+  @media (max-width: 450px) {
+    .image-section {
+      display: none;
+    }
+
+    .form-box {
+      width: 100%;
+      padding: 0 15px;
+    }
   }
 `}</style>
 
-      <div className="full-container">
-        <div className="image-section">
-          <img src={Nurse} alt="Hospital" />
-        </div>
+      {/* WRAPPER THAT KEEPS FOOTER IN PROPER POSITION */}
+      <div className="login-wrapper">
 
-        <div className="form-section">
-          <div className="form-box">
+        {/* MAIN PAGE CONTENT */}
+        <div className="full-container">
 
-            <h1 className="brand">Healthcare+</h1>
-            <p className="tagline">Your trusted digital health companion</p>
+          <div className="image-section">
+            <img src={Nurse} alt="Hospital" />
+          </div>
 
-            {/* ROLE BUTTONS */}
-            <div className="role-buttons">
-              {["Admin", "Doctors", "Reception", "Nurse"].map((r) => (
-                <button
-                  key={r}
-                  className={`role-btn ${role === r ? "active" : ""}`}
-                  onClick={() => setRole(r)}
-                >
-                  {r}
-                </button>
-              ))}
-            </div>
+          <div className="form-section">
+            <div className="form-box">
 
-            <h3 style={{ marginBottom: "20px", color: "#333" }}>
-              {role ? `${role} Login` : "General Login"}
-            </h3>
+              <h1 className="brand">Healthcare+</h1>
+              <p className="tagline">Your trusted digital health companion</p>
 
-            <Form onSubmit={handleLogin}>
-              <Form.Label>Email</Form.Label>
-              <Form.Control
-                type="email"
-                placeholder={role ? `${role} email` : "Enter your email"}
-                required
-              />
-
-              <Form.Label style={{ marginTop: "10px" }}>Password</Form.Label>
-              <div className="password-box">
-                <Form.Control
-                  type={showPassword ? "text" : "password"}
-                  placeholder="Enter password"
-                  required
-                />
-                <span className="eye-icon" onClick={togglePassword}>
-                  <i className="fa-regular fa-eye"></i>
-                </span>
+              <div className="role-buttons">
+                {["Admin", "Doctors", "Reception", "Nurse"].map((r) => (
+                  <button
+                    key={r}
+                    className={`role-btn ${role === r ? "active" : ""}`}
+                    onClick={() => setRole(r)}
+                  >
+                    {r}
+                  </button>
+                ))}
               </div>
 
-              <Button type="submit" className="login-btn">
-                {role ? `Login as ${role}` : "Login"}
-              </Button>
-            </Form>
+              <Form onSubmit={handleLogin}>
+                <Form.Label>Email</Form.Label>
+                <Form.Control type="email" placeholder="Enter email" required />
 
+                <Form.Label style={{ marginTop: "10px" }}>
+                  Password
+                </Form.Label>
+
+                <div className="password-box">
+                  <Form.Control
+                    type={showPassword ? "text" : "password"}
+                    placeholder="Enter password"
+                    required
+                  />
+                  <span className="eye-icon" onClick={togglePassword}>
+                    <i className="fa-regular fa-eye"></i>
+                  </span>
+                </div>
+
+                <Button type="submit" className="login-btn">
+                  {role ? `Login as ${role}` : "Login"}
+                </Button>
+              </Form>
+
+            </div>
           </div>
         </div>
+
+        {/* FOOTER ALWAYS AT BOTTOM */}
+        <footer className="login-footer">
+          © {new Date().getFullYear()} <span>Healthcare+</span> — All Rights Reserved.
+        </footer>
+
       </div>
     </>
   );

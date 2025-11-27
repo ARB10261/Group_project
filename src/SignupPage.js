@@ -3,30 +3,20 @@ import { Form, Button } from "react-bootstrap";
 import { FcGoogle } from "react-icons/fc";
 import { FaApple } from "react-icons/fa";
 import Signup from "./assets/Signup.jpg";
-import { AuthContext } from "./AuthContext";   // ✅ Import AuthContext
-import { useNavigate } from "react-router-dom"; // ✅ Redirect
+import { AuthContext } from "./AuthContext";
+import { useNavigate } from "react-router-dom";
 
 export default function SignupPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [otpClicked, setOtpClicked] = useState(false);
 
-  const { login } = useContext(AuthContext);  // 🔥 Use login() from context
-  const navigate = useNavigate();             // 🔥 To redirect
+  const { login } = useContext(AuthContext);
+  const navigate = useNavigate();
 
-  const togglePassword = () => {
-    setShowPassword(!showPassword);
-  };
-
-  const handleOtpClick = () => {
-    setOtpClicked(true);
-  };
-
-  // 🔥 When user clicks Register
   const handleRegister = (e) => {
     e.preventDefault();
-
-    login();        // 🔥 Mark user as logged in
-    navigate("/");  // 🔥 Redirect to home
+    login();
+    navigate("/");
   };
 
   return (
@@ -44,12 +34,13 @@ export default function SignupPage() {
   }
 
   .full-container {
-    height: 100vh;
     display: flex;
+    min-height: 100vh;
   }
 
+  /* LEFT IMAGE SECTION */
   .image-section {
-    width: 40%;
+    width: 45%;
     background: #dfe8ff;
   }
 
@@ -59,16 +50,18 @@ export default function SignupPage() {
     object-fit: cover;
   }
 
+  /* RIGHT FORM SECTION */
   .form-section {
-    width: 60%;
+    width: 55%;
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 40px 20px;
   }
 
   .form-box {
-    width: 75%;
-    max-width: 480px;
+    width: 80%;
+    max-width: 450px;
   }
 
   .brand-wrapper {
@@ -77,23 +70,20 @@ export default function SignupPage() {
   }
 
   .brand {
-    font-size: 40px;
-    color: #0ea5e9;      /* MAIN COLOR */
+    font-size: 38px;
     font-weight: bold;
+    color: #0ea5e9;
   }
 
   .tagline {
     color: #555;
+    font-size: 16px;
   }
 
   .row-inputs {
     display: flex;
     gap: 15px;
     margin-bottom: 15px;
-  }
-
-  .row-inputs .form-control {
-    flex: 1;
   }
 
   .password-box {
@@ -114,39 +104,35 @@ export default function SignupPage() {
     margin-bottom: 20px;
   }
 
-  .otp-input {
-    flex: 1;
-  }
-
   .otp-btn {
     padding: 10px 14px;
     border-radius: 8px;
-    border: 1.8px solid #0ea5e9;   /* MAIN COLOR */
+    border: 1.8px solid #0ea5e9;
     background: transparent;
-    color: #0ea5e9;                /* MAIN COLOR */
+    color: #0ea5e9;
     cursor: pointer;
     transition: 0.3s ease;
   }
 
   .active-otp {
-    background: #0ea5e9 !important; /* MAIN COLOR */
+    background: #0ea5e9 !important;
     color: white !important;
-    border-color: #0ea5e9 !important;
   }
 
   .register-btn {
     width: 100%;
     padding: 12px;
-    background: #0ea5e9;      /* MAIN COLOR */
-    border: none;
+    margin-top: 10px;
+    background: #0ea5e9;
     color: white;
+    border: none;
     border-radius: 8px;
-    margin-top: 5px;
+    font-size: 16px;
   }
 
   .or-divider {
     text-align: center;
-    margin: 15px 0;
+    margin: 18px 0;
     color: #555;
   }
 
@@ -161,15 +147,16 @@ export default function SignupPage() {
     flex: 1;
     padding: 10px;
     border-radius: 40px;
-    border: 1.8px solid #0ea5e9; /* MAIN COLOR */
+    border: 1.8px solid #0ea5e9;
     background: transparent;
     display: flex;
     justify-content: center;
-    align-items: center;
     gap: 8px;
+    align-items: center;
     cursor: pointer;
-    color: #0ea5e9;             /* MAIN COLOR */
+    color: #0ea5e9;
     font-size: 14px;
+    transition: 0.2s ease;
   }
 
   .social-small-btn:hover {
@@ -178,16 +165,68 @@ export default function SignupPage() {
 
   .login-text {
     text-align: center;
+    margin-top: 8px;
+    color: #000000b6;
+  }
+
+  /* 📱 MOBILE RESPONSIVE */
+  @media (max-width: 900px) {
+    .full-container {
+      flex-direction: column;
+    }
+
+    .image-section {
+      width: 100%;
+      height: 220px;
+    }
+
+    .form-section {
+      width: 100%;
+      padding: 30px 20px;
+    }
+
+    .form-box {
+      width: 100%;
+    }
+
+    .row-inputs {
+      flex-direction: column;
+    }
+
+    .otp-box {
+      flex-direction: column;
+    }
+
+    .otp-btn {
+      width: 100%;
+      text-align: center;
+    }
+  }
+
+  /* 📱 VERY SMALL SCREENS */
+  @media (max-width: 480px) {
+    .brand {
+      font-size: 30px;
+    }
+
+    .image-section {
+      display: none;  /* Hide large image on very small devices */
+    }
+
+    .form-section {
+      padding-top: 40px;
+    }
   }
 `}</style>
 
-
       <div className="full-container">
 
+        {/* LEFT IMAGE */}
         <div className="image-section">
-          <img src={Signup} alt="Healthcare" />
+          <img src={Signup} alt="Signup illustration" />
         </div>
 
+        {/* RIGHT FORM */}
         <div className="form-section">
           <div className="form-box">
 
@@ -197,7 +236,6 @@ export default function SignupPage() {
             </div>
 
             <Form onSubmit={handleRegister}>
-
               <div className="row-inputs">
                 <Form.Control type="text" placeholder="First Name" required />
                 <Form.Control type="text" placeholder="Last Name" required />
@@ -214,61 +252,39 @@ export default function SignupPage() {
                   placeholder="Password"
                   required
                 />
-                <span className="eye-icon" onClick={togglePassword}>
+                <span className="eye-icon" onClick={() => setShowPassword(!showPassword)}>
                   <i className="fa-regular fa-eye"></i>
                 </span>
               </div>
 
               <div className="otp-box">
-                <Form.Control
-                  type="text"
-                  placeholder="Enter OTP"
-                  className="otp-input"
-                />
+                <Form.Control type="text" placeholder="Enter OTP" />
                 <button
                   type="button"
                   className={`otp-btn ${otpClicked ? "active-otp" : ""}`}
-                  onClick={handleOtpClick}
+                  onClick={() => setOtpClicked(true)}
                 >
                   Get OTP
                 </button>
               </div>
 
-              <Button type="submit" className="register-btn">
-                Register
-              </Button>
+              <Button type="submit" className="register-btn">Register</Button>
 
               <div className="or-divider">or</div>
 
               <div className="social-row">
-
-                <div
-                  className="social-small-btn"
-                  onClick={() =>
-                  (window.location.href =
-                    "https://accounts.google.com/o/oauth2/auth")
-                  }
-                >
-                  <FcGoogle size={18} />
-                  Google
+                <div className="social-small-btn">
+                  <FcGoogle size={20} /> Google
                 </div>
 
-                <div
-                  className="social-small-btn"
-                  onClick={() =>
-                  (window.location.href =
-                    "https://appleid.apple.com/auth/authorize")
-                  }
-                >
-                  <FaApple size={18} />
-                  Apple
+                <div className="social-small-btn">
+                  <FaApple size={20} /> Apple
                 </div>
               </div>
 
               <p className="login-text">
                 Already have an account? <a href="/login">Login</a>
               </p>
-
             </Form>
 
           </div>

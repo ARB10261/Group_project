@@ -1,4 +1,4 @@
-import React from "react"; 
+import React from "react";
 import Seva from "../assets/Seva.jpg";
 
 const services = [
@@ -16,11 +16,11 @@ const services = [
   },
   {
     name: "Ambulance & Transport",
-    img: "https://testcv.tatamotors.com/assets/cv/files/2023-10/Features-of-the-TWA-for-Patient-Transport.jpg?VersionId=Qe8fK4EyEuW_5plSwFyCkzdMRDrUe93_"
+    img: "https://testcv.tatamotors.com/assets/cv/files/2023-10/Features-of-the-TWA-for-Patient-Transport.jpg"
   },
   {
     name: "Wellness & Preventive Care",
-    img: "https://www.denverhealthmedicalplan.org/sites/default/files/styles/full_width/public/2020-09/preventive_care.jpg?itok=4kGgxRZJ"
+    img: "https://www.denverhealthmedicalplan.org/sites/default/files/styles/full_width/public/2020-09/preventive_care.jpg"
   },
   {
     name: "Pharmacy Services",
@@ -30,131 +30,217 @@ const services = [
 
 const ServicePage = () => {
   return (
-    <div style={{ fontFamily: "Arial, sans-serif", background: "#fff" }}>
-      
-      {/* HERO SECTION */}
-      <header
-        style={{
-          height: "650px",  // 🔥 FIXED + Increased Height
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "flex-start",
-          padding: "60px 5%",
-          backgroundImage: `linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url(${Seva})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          color: "#fff",
-        }}
-      >
-        <div style={{ textAlign: "left", maxWidth: "700px" }}>
-          <h1 style={{ fontSize: "50px", fontWeight: "700", marginBottom: "15px" }}>
-            Our HealthCare+ Services
-          </h1>
-          <p style={{ fontSize: "20px", lineHeight: "1.6" }}>
-            Delivering world-class care with compassion, innovation and technology.
-          </p>
-        </div>
-      </header>
+    <>
+      <style>{`
+        .service-wrapper {
+          font-family: Arial, sans-serif;
+          background: #fff;
+        }
 
-      {/* SERVICE GRID */}
-      <section style={{ padding: "60px 7%" }}>
-        <h2
-          style={{
-            fontSize: "36px",
-            fontWeight: "700",
-            textAlign: "center",
-            color: "#0ea5e9",
-            marginBottom: "40px",
-          }}
-        >
-          What We Offer
-        </h2>
+        /* HERO SECTION */
+        .service-hero {
+          height: 650px;
+          display: flex;
+          align-items: center;
+          padding: 60px 7%;
+          justify-content: flex-start;
+          color: #fff;
+          background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url(${Seva});
+          background-size: cover;
+          background-position: center;
+        }
 
-        <div
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            gap: "30px",
-            justifyContent: "center",
-          }}
-        >
-          {services.map((item) => (
-            <div
-              key={item.name}
-              className="service-card"
-              style={cardStyle}
-            >
-              <img
-                src={item.img}
-                alt={item.name}
-                style={{ width: "100%", height: "210px", objectFit: "cover" }}
-              />
-              <div style={{ padding: "15px" }}>
-                <h3
-                  style={{
-                    fontSize: "22px",
-                    fontWeight: "600",
-                    color: "#0ea5e9",
-                    textAlign: "center",
-                    marginBottom: "10px",
-                  }}
-                >
-                  {item.name}
-                </h3>
-                <p style={{ fontSize: "16px", lineHeight: "1.6", color: "#555", textAlign:"center" }}>
+        .service-hero h1 {
+          font-size: 50px;
+          font-weight: 700;
+          margin-bottom: 10px;
+        }
+
+        .service-hero p {
+          font-size: 20px;
+          max-width: 600px;
+          line-height: 1.6;
+        }
+
+        /* SERVICE GRID */
+        .service-section {
+          padding: 60px 7%;
+        }
+
+        .service-title {
+          text-align: center;
+          font-size: 36px;
+          font-weight: 700;
+          color: #0ea5e9;
+          margin-bottom: 40px;
+        }
+
+        .service-grid {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 30px;
+          justify-content: center;
+        }
+
+        .service-card {
+          width: 320px;
+          background: #fff;
+          border-radius: 14px;
+          overflow: hidden;
+          box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
+          transition: 0.3s ease;
+          cursor: pointer;
+        }
+
+        .service-card:hover {
+          transform: translateY(-5px);
+          box-shadow: 0px 6px 16px rgba(0,0,0,0.15);
+        }
+
+        .service-card img {
+          width: 100%;
+          height: 210px;
+          object-fit: cover;
+        }
+
+        .service-card h3 {
+          font-size: 22px;
+          color: #0ea5e9;
+          margin-bottom: 10px;
+          text-align: center;
+        }
+
+        .service-card p {
+          font-size: 16px;
+          color: #555;
+          line-height: 1.6;
+          padding: 0 12px 20px;
+          text-align: center;
+        }
+
+        /* CTA SECTION */
+        .cta-section {
+          background: #0ea5e9;
+          padding: 60px 7%;
+          color: #fff;
+          text-align: center;
+        }
+
+        .cta-section h2 {
+          font-size: 36px;
+          font-weight: 700;
+          margin-bottom: 15px;
+        }
+
+        .cta-section p {
+          font-size: 18px;
+          margin-bottom: 25px;
+        }
+
+        .cta-btn {
+          padding: 14px 35px;
+          background: white;
+          color: #0ea5e9;
+          border-radius: 8px;
+          font-size: 18px;
+          font-weight: 600;
+          border: none;
+          cursor: pointer;
+        }
+
+        /* ------------------------ RESPONSIVE DESIGN ------------------------ */
+
+        /* Tablets */
+        @media (max-width: 992px) {
+          .service-hero {
+            height: 500px;
+            padding: 40px 6%;
+          }
+
+          .service-hero h1 {
+            font-size: 38px;
+          }
+
+          .service-hero p {
+            font-size: 18px;
+          }
+        }
+
+        /* Mobiles */
+        @media (max-width: 600px) {
+          .service-hero {
+            height: 430px;
+            padding: 30px 5%;
+            text-align: left;
+          }
+
+          .service-hero h1 {
+            font-size: 30px;
+          }
+
+          .service-hero p {
+            font-size: 16px;
+            width: 100%;
+          }
+
+          .service-card {
+            width: 100%;
+          }
+
+          .service-title {
+            font-size: 28px;
+          }
+
+          .cta-section h2 {
+            font-size: 28px;
+          }
+
+          .cta-btn {
+            width: 100%;
+          }
+        }
+
+      `}</style>
+
+      {/* PAGE CONTENT */}
+      <div className="service-wrapper">
+
+        {/* HERO */}
+        <header className="service-hero">
+          <div>
+            <h1>Our HealthCare+ Services</h1>
+            <p>Delivering world-class care with compassion, innovation and technology.</p>
+          </div>
+        </header>
+
+        {/* SERVICE GRID */}
+        <section className="service-section">
+          <h2 className="service-title">What We Offer</h2>
+
+          <div className="service-grid">
+            {services.map((item) => (
+              <div key={item.name} className="service-card">
+                <img src={item.img} alt={item.name} />
+                <h3>{item.name}</h3>
+                <p>
                   Providing trusted and advanced healthcare solutions with modern
                   technology and expert doctors.
                 </p>
               </div>
-            </div>
-          ))}
-        </div>
-      </section>
+            ))}
+          </div>
+        </section>
 
-      {/* CTA SECTION */}
-      <section
-        style={{
-          background: "#0ea5e9",
-          padding: "60px 7%",
-          color: "white",
-          textAlign: "center",
-        }}
-      >
-        <h2 style={{ fontSize: "36px", fontWeight: "700", marginBottom: "15px" }}>
-          Need Medical Assistance?
-        </h2>
-        <p style={{ fontSize: "18px", marginBottom: "25px" }}>
-          Our dedicated team is here to support you at every step.
-        </p>
+        {/* CTA */}
+        <section className="cta-section">
+          <h2>Need Medical Assistance?</h2>
+          <p>Our dedicated team is here to support you at every step.</p>
 
-        <button
-          style={{
-            padding: "14px 35px",
-            fontSize: "18px",
-            fontWeight: "600",
-            background: "white",
-            color: "#0ea5e9",
-            border: "none",
-            borderRadius: "8px",
-            cursor: "pointer",
-          }}
-        >
-          Book an Appointment
-        </button>
-      </section>
-    </div>
+          <button className="cta-btn">Book an Appointment</button>
+        </section>
+      </div>
+    </>
   );
-};
-
-/* CARD STYLE */
-const cardStyle = {
-  width: "320px",
-  background: "#fff",
-  borderRadius: "14px",
-  overflow: "hidden",
-  boxShadow: "0px 4px 12px rgba(0,0,0,0.1)",
-  transition: "transform 0.3s ease, box-shadow 0.3s ease",
-  cursor: "pointer",
 };
 
 export default ServicePage;

@@ -17,7 +17,7 @@ const HeroSection = () => {
     navigate(`/search?query=${query}`);
   };
 
-  // Typing Animation Logic
+  // Typing animation
   useEffect(() => {
     let charIndex = 0;
     const typingSpeed = 120;
@@ -53,7 +53,6 @@ const HeroSection = () => {
         style={{
           display: "inline-block",
           animation: "bubble 2s ease-in-out infinite",
-          marginRight: "2px",
         }}
       >
         {char}
@@ -63,172 +62,153 @@ const HeroSection = () => {
   return (
     <>
       <style>{`
-  @keyframes bubble {
-    0%, 100% { transform: translateY(0) scale(1); opacity: 1; }
-    50% { transform: translateY(-6px) scale(1.12); opacity: 0.85; }
-  }
+        @keyframes bubble {
+          0%, 100% { transform: translateY(0) scale(1); opacity: 1; }
+          50% { transform: translateY(-6px) scale(1.12); opacity: 0.85; }
+        }
 
-  .hero-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 120px 100px 90px;
-    min-height: 100vh;
-    background: url(${doctorImg}) no-repeat center/cover;
-    color: #fff;
-    position: relative;
-    text-align: center;
-  }
+        .hero-wrapper {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          text-align: left;
+          padding: 120px 100px 90px;
+          min-height: 100vh;
+          background: url(${doctorImg}) no-repeat center/cover;
+          color: #fff;
+          position: relative;
+        }
 
-  .hero-wrapper::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(0,0,0,0.55);
-  }
+        .hero-wrapper::before {
+          content: "";
+          position: absolute;
+          inset: 0;
+          background: rgba(0,0,0,0.55);
+        }
 
-  .hero-left {
-    position: relative;
-    max-width: 800px;
-    width: 100%;
-    z-index: 2;
-    margin-bottom: 40px;
-  }
+        .hero-left {
+          position: relative;
+          max-width: 750px;
+          width: 100%;
+          z-index: 2;
+          margin-bottom: 40px;
+          text-align: left;
+        }
 
-  .hero-title {
-    font-size: 3.3rem;
-    font-weight: 900;
-    line-height: 1.2;
-    margin-bottom: 22px;
-  }
+        .hero-title {
+          font-size: 3.3rem;
+          font-weight: 900;
+          line-height: 1.2;
+          margin-bottom: 20px;
+        }
 
-  .typing-word {
-    color: #ffffff;
-    font-weight: 900;
-  }
+        .typing-word {
+          color: #ffffff;
+          font-weight: 900;
+        }
 
-  .hero-subtitle {
-    font-size: 1.15rem;
-    color: #e8e8e8;
-    line-height: 1.7;
-    margin-bottom: 45px;
-  }
+        .hero-subtitle {
+          font-size: 1.2rem;
+          color: #e8e8e8;
+          line-height: 1.7;
+          margin-bottom: 45px;
+        }
 
-  /* Search Bar */
-  .search-container {
-    width: 95%;
-    max-width: 900px;
-    display: flex;
-    align-items: center;
-    background: rgba(0, 67, 87, 0.45);
-    padding: 12px 20px;
-    border-radius: 40px;
-    backdrop-filter: blur(5px);
-    border: 1px solid rgba(255,255,255,0.25);
-    z-index: 2;
-  }
+        /* SEARCH BAR (Moved Down) */
+        .search-container {
+          width: 95%;
+          max-width: 900px;
+          display: flex;
+          align-items: center;
+          background: rgba(0, 67, 87, 0.45);
+          padding: 12px 20px;
+          border-radius: 40px;
+          backdrop-filter: blur(5px);
+          border: 1px solid rgba(255,255,255,0.25);
+          z-index: 2;
+          margin: 40px auto 0 auto;   /* ⭐ SEARCH MOVED DOWN */
+        }
 
-  .search-input {
-    flex: 1;
-    border: none;
-    background: transparent;
-    color: #fff;
-    font-size: 1.05rem;
-    outline: none;
-  }
+        .search-input {
+          flex: 1;
+          border: none;
+          background: transparent;
+          color: #fff;
+          font-size: 1.05rem;
+          outline: none;
+        }
 
-  .search-btn {
-    background: #0ea5e9;
-    border: none;
-    width: 46px;
-    height: 46px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    font-size: 1.3rem;
-    color: #fff;
-  }
+        .search-btn {
+          background: #0ea5e9;
+          border: none;
+          width: 46px;
+          height: 46px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          font-size: 1.3rem;
+          color: #fff;
+        }
 
-  /* Options */
-  .options-container {
-    margin-top: 35px;
-    width: 90%;
-    max-width: 1100px;
-    display: flex;
-    justify-content: space-between;
-    gap: 14px;
-    z-index: 2;
-  }
+        /* OPTIONS SECTION (Commented out previously) */
+        .options-container {
+          margin-top: 35px;
+          width: 90%;
+          max-width: 1100px;
+          display: flex;
+          justify-content: space-between;
+          gap: 14px;
+          z-index: 2;
+          margin-left: auto;
+          margin-right: auto;
+        }
 
-  .option-box {
-    flex: 1;
-    background: transparent;
-    padding: 16px 22px;
-    border-radius: 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border: 2px solid rgba(255,255,255,0.15);
-    cursor: pointer;
-    font-weight: 500;
-    transition: 0.25s ease;
-    font-size: 0.95rem;
-  }
+        .option-box {
+          flex: 1;
+          background: transparent;
+          padding: 16px 22px;
+          border-radius: 40px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          border: 2px solid rgba(255,255,255,0.15);
+          cursor: pointer;
+          font-weight: 500;
+          transition: 0.25s;
+        }
 
-  .option-box:hover {
-    background: #0ea5e9;
-    border-color: #fff;
-    transform: translateY(-3px);
-  }
+        .option-box:hover {
+          background: #0ea5e9;
+          border-color: #fff;
+          transform: translateY(-3px);
+        }
 
-  /* Tablet Responsive */
-  @media (max-width: 992px) {
-    .hero-title {
-      font-size: 2.7rem;
-    }
+        @media (max-width: 992px) {
+          .hero-title { font-size: 2.8rem; }
+          .hero-wrapper { padding: 100px 40px 70px; }
+        }
 
-    .hero-wrapper {
-      padding: 100px 30px 70px;
-    }
+        @media (max-width: 650px) {
+          .hero-title { font-size: 2.2rem; }
+          .hero-subtitle { font-size: 1rem; }
 
-    .options-container {
-      gap: 12px;
-    }
-  }
+          .options-container {
+            flex-direction: column;
+            gap: 16px;
+          }
 
-  /* Mobile Responsive */
-  @media (max-width: 650px) {
-    .hero-title {
-      font-size: 2.2rem;
-    }
-
-    .hero-subtitle {
-      font-size: 1rem;
-    }
-
-    .options-container {
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    .option-box {
-      width: 100%;
-      justify-content: space-between;
-    }
-
-    .search-container {
-      width: 100%;
-      padding: 10px 15px;
-    }
-  }
-`}</style>
+          .search-container {
+            width: 100%;
+          }
+        }
+      `}</style>
 
       <section className="hero-wrapper">
         <div className="hero-left">
           <h1 className="hero-title">
-            WE CARE ABOUT YOUR{" "}
+            WE CARE ABOUT YOUR <br />
             <span className="typing-word">{bubbleLetters(displayText)}</span>
           </h1>
 
@@ -238,7 +218,6 @@ const HeroSection = () => {
           </p>
         </div>
 
-        {/* Search Bar */}
         <div className="search-container">
           <input
             type="text"
@@ -252,8 +231,8 @@ const HeroSection = () => {
           </button>
         </div>
 
-        {/* Options */}
-        <div className="options-container">
+        {/* Uncomment if needed */}
+        {/* <div className="options-container">
           <div className="option-box">
             <span>Book Appointment</span>
             <i className="bi bi-arrow-right-circle"></i>
@@ -270,7 +249,7 @@ const HeroSection = () => {
             <span>Get Expert Opinion</span>
             <i className="bi bi-arrow-right-circle"></i>
           </div>
-        </div>
+        </div> */}
       </section>
     </>
   );
