@@ -39,6 +39,7 @@ const specialtyCards = [
 const About = () => {
   return (
     <div style={{ fontFamily: '"Poppins", sans-serif' }}>
+
       {/* HERO SECTION */}
       <section
         style={{
@@ -63,30 +64,41 @@ const About = () => {
         </Container>
       </section>
 
-      {/* ABOUT SECTION */}
-      <Container style={{ padding: "70px 0" }}>
-        <h2 className="text-center" style={{ color: "#0ea5e9", fontWeight: "700" }}>
-          Personal care & healthy living
-        </h2>
+      {/* PERSONAL CARE - WHITE BG */}
+      <section style={{ background: "#ffffff", padding: "70px 0" }}>
+        <Container>
+          <h2 className="text-center" style={{ color: "#0ea5e9", fontWeight: "700" }}>
+            Personal care & healthy living
+          </h2>
 
-        <p style={para} className="mt-4 text-center">
-          HealthCare+ is a digital healthcare management system that connects
-          patients and doctors with seamless technology.
-        </p>
+          <p style={para} className="mt-4 text-center">
+            HealthCare+ is a digital healthcare management system that connects
+            patients and doctors with seamless technology.
+          </p>
 
-        <ul className="mt-4" style={{ listStyle: "none", padding: 0, maxWidth: "700px", margin: "auto" }}>
-          {[
-            "✔ Easy patient registration",
-            "✔ Doctor availability & smart scheduling",
-            "✔ Automated appointment reminders",
-            "✔ Real-time performance and health reports"
-          ].map((item, idx) => (
-            <li key={idx} style={{ fontSize: "18px", marginBottom: "10px" }}>
-              {item}
-            </li>
-          ))}
-        </ul>
-      </Container>
+          <ul
+            className="mt-4"
+            style={{
+              listStyle: "none",
+              padding: 0,
+              maxWidth: "700px",
+              margin: "auto",
+              color: "#111"
+            }}
+          >
+            {[
+              "✔ Easy patient registration",
+              "✔ Doctor availability & smart scheduling",
+              "✔ Automated appointment reminders",
+              "✔ Real-time performance and health reports"
+            ].map((item, idx) => (
+              <li key={idx} style={{ fontSize: "18px", marginBottom: "10px" }}>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </Container>
+      </section>
 
       {/* SPECIALTY CARDS */}
       <section style={{ background: "#f3f4f6", padding: "70px 0" }}>
@@ -112,39 +124,42 @@ const About = () => {
         </Container>
       </section>
 
-      {/* WORLD MAP + COUNTRY LIST */}
-      <Container style={{ padding: "70px 0" }}>
-        <h2 className="text-center mb-5" style={{ color: "#0ea5e9", fontWeight: "700" }}>
-          We serve across the globe
-        </h2>
+      {/* WORLD MAP + COUNTRY LIST - WHITE BG */}
+      <section style={{ background: "#ffffff", padding: "70px 0" }}>
+        <Container>
+          <h2 className="text-center mb-5" style={{ color: "#0ea5e9", fontWeight: "700" }}>
+            We serve across the globe
+          </h2>
 
-        <Row className="align-items-center g-4">
-          <Col xs={12} lg={6}>
-            <img
-              src="https://img.freepik.com/free-vector/professional-medical-infographic-with-photo_23-2148370869.jpg?w=740"
-              className="img-fluid rounded shadow"
-              alt="World Map"
-            />
-          </Col>
+          <Row className="align-items-center g-4">
+            <Col xs={12} lg={6}>
+              <img
+                src="https://img.freepik.com/free-vector/professional-medical-infographic-with-photo_23-2148370869.jpg?w=740"
+                className="img-fluid rounded shadow"
+                alt="World Map"
+              />
+            </Col>
 
-          <Col xs={12} lg={6}>
-            <Row>
-              {countryList.map((c) => (
-                <Col xs={6} key={c.name} className="mb-3">
-                  <div className="d-flex align-items-center gap-2">
-                    <img
-                      src={`https://flagsapi.com/${c.code}/flat/32.png`}
-                      alt={c.name}
-                      style={{ borderRadius: "4px" }}
-                    />
-                    <span>{c.name}</span>
-                  </div>
-                </Col>
-              ))}
-            </Row>
-          </Col>
-        </Row>
-      </Container>
+            <Col xs={12} lg={6}>
+              <Row>
+                {countryList.map((c) => (
+                  <Col xs={6} key={c.name} className="mb-3">
+                    <div className="d-flex align-items-center gap-2">
+                      <img
+                        src={`https://flagsapi.com/${c.code}/flat/32.png`}
+                        alt={c.name}
+                        style={{ borderRadius: "4px" }}
+                      />
+                      <span style={{ color: "#111", fontWeight: 500 }}>{c.name}</span>
+                    </div>
+                  </Col>
+                ))}
+              </Row>
+            </Col>
+          </Row>
+        </Container>
+      </section>
+
     </div>
   );
 };

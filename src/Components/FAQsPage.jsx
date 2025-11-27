@@ -33,7 +33,7 @@ const FAQsPage = () => {
           font-family: "Poppins", sans-serif;
         }
 
-        /* SIDEBAR */
+        /* SIDEBAR (same as Terms page style) */
         .faq-sidebar {
           width: 260px;
           background: #fff;
@@ -41,22 +41,30 @@ const FAQsPage = () => {
           border-right: 1px solid #e5e7eb;
           position: sticky;
           top: 10px;
-          height: fit-content;
+          height: calc(100vh - 20px);    /* full height */
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+        }
+
+        .faq-sidebar table {
+          width: 100%;
+          height: 100%; /* fill the sidebar */
         }
 
         .faq-sidebar td {
-          padding: 12px 5px;
+          padding: 18px 10px;
           cursor: pointer;
           color: #0284c7;
           font-size: 15px;
           border-bottom: 1px solid #e5e7eb;
-          transition: 0.25s;
+          transition: 0.25s ease;
         }
 
         .faq-sidebar td:hover {
           background: #e0f4ff;
           border-radius: 6px;
-          padding-left: 10px;
+          padding-left: 14px;
           color: #005f88;
         }
 
@@ -73,14 +81,13 @@ const FAQsPage = () => {
           margin-bottom: 20px;
         }
 
-        /* ACCORDION */
+        /* ACCORDION (FAQs) */
         .faq-box {
           background: white;
           border-radius: 10px;
           margin-bottom: 12px;
           border: 1px solid #e0e6ed;
           overflow: hidden;
-          transition: 0.3s;
         }
 
         .faq-question {
@@ -109,18 +116,20 @@ const FAQsPage = () => {
           transform: rotate(90deg);
         }
 
-        /* OUTER RESPONSIVE */
+        /* RESPONSIVE */
         @media (max-width: 900px) {
-          .faq-wrapper {
-            flex-direction: column;
-          }
+          .faq-wrapper { flex-direction: column; }
 
           .faq-sidebar {
             width: 100%;
+            height: auto;
             position: relative;
             border-right: none;
             border-bottom: 1px solid #ddd;
-            margin-bottom: 20px;
+          }
+
+          .faq-sidebar table {
+            height: auto;
           }
 
           .faq-content {
@@ -130,9 +139,10 @@ const FAQsPage = () => {
       `}</style>
 
       <div className="faq-wrapper">
-        {/* LEFT SIDEBAR */}
+
+        {/* LEFT SIDEBAR (same as T&C) */}
         <div className="faq-sidebar">
-          <table style={{ width: "100%" }}>
+          <table>
             <tbody>
               {faqSections.map((sec) => (
                 <tr key={sec.id}>
@@ -145,8 +155,8 @@ const FAQsPage = () => {
 
         {/* RIGHT CONTENT */}
         <div className="faq-content">
-
-          {/* === SECTION 1 === */}
+          
+          {/* SECTION 1 */}
           <div id="general">
             <h2 className="section-title">General Questions</h2>
 
@@ -157,24 +167,25 @@ const FAQsPage = () => {
               </div>
               {open === 1 && (
                 <div className="faq-answer">
-                  HealthCare+ is a digital healthcare system for booking appointments,
-                  accessing reports, and managing medical services.
+                  HealthCare+ helps you book appointments, access records, and manage your healthcare online.
                 </div>
               )}
             </div>
 
             <div className="faq-box">
               <div className="faq-question" onClick={() => toggleFAQ(2)}>
-                Is HealthCare+ free to use?
+                Is it free to use?
                 <span className={`arrow ${open === 2 ? "open" : ""}`}>▶</span>
               </div>
               {open === 2 && (
-                <div className="faq-answer">Basic features are free. Some services may require payment.</div>
+                <div className="faq-answer">
+                  Yes, basic features are free. Some services may require payment.
+                </div>
               )}
             </div>
           </div>
 
-          {/* === SECTION 2 === */}
+          {/* SECTION 2 */}
           <div id="appointments" style={{ marginTop: "60px" }}>
             <h2 className="section-title">Appointments</h2>
 
@@ -184,101 +195,64 @@ const FAQsPage = () => {
                 <span className={`arrow ${open === 3 ? "open" : ""}`}>▶</span>
               </div>
               {open === 3 && (
-                <div className="faq-answer">
-                  Use the search option to find specialists and book appointments instantly.
-                </div>
-              )}
-            </div>
-
-            <div className="faq-box">
-              <div className="faq-question" onClick={() => toggleFAQ(4)}>
-                Can I cancel or reschedule?
-                <span className={`arrow ${open === 4 ? "open" : ""}`}>▶</span>
-              </div>
-              {open === 4 && (
-                <div className="faq-answer">
-                  Yes, appointments can be rescheduled depending on doctor availability.
-                </div>
+                <div className="faq-answer">Search for a doctor and choose any available time slot.</div>
               )}
             </div>
           </div>
 
-          {/* === SECTION 3 === */}
+          {/* SECTION 3 */}
           <div id="payments" style={{ marginTop: "60px" }}>
             <h2 className="section-title">Payments & Billing</h2>
 
             <div className="faq-box">
-              <div className="faq-question" onClick={() => toggleFAQ(5)}>
+              <div className="faq-question" onClick={() => toggleFAQ(4)}>
                 What payment methods are accepted?
+                <span className={`arrow ${open === 4 ? "open" : ""}`}>▶</span>
+              </div>
+              {open === 4 && (
+                <div className="faq-answer">UPI, Debit/Credit Cards, Net Banking, Wallets.</div>
+              )}
+            </div>
+          </div>
+
+          {/* SECTION 4 */}
+          <div id="medical" style={{ marginTop: "60px" }}>
+            <h2 className="section-title">Medical Records</h2>
+            <div className="faq-box">
+              <div className="faq-question" onClick={() => toggleFAQ(5)}>
+                Are my records safe?
                 <span className={`arrow ${open === 5 ? "open" : ""}`}>▶</span>
               </div>
               {open === 5 && (
-                <div className="faq-answer">
-                  We accept UPI, credit/debit cards, and online wallets.
-                </div>
+                <div className="faq-answer">Yes, all records are encrypted and securely stored.</div>
               )}
             </div>
+          </div>
 
+          {/* SECTION 5 */}
+          <div id="security" style={{ marginTop: "60px" }}>
+            <h2 className="section-title">Security & Privacy</h2>
             <div className="faq-box">
               <div className="faq-question" onClick={() => toggleFAQ(6)}>
-                Are payments refundable?
+                Do you share my data?
                 <span className={`arrow ${open === 6 ? "open" : ""}`}>▶</span>
               </div>
               {open === 6 && (
-                <div className="faq-answer">
-                  Refunds depend on service type. Emergency cancellations are not refundable.
-                </div>
+                <div className="faq-answer">Never without your permission.</div>
               )}
             </div>
           </div>
 
-          {/* === SECTION 4 === */}
-          <div id="medical" style={{ marginTop: "60px" }}>
-            <h2 className="section-title">Medical Records</h2>
-
+          {/* SECTION 6 */}
+          <div id="technical" style={{ marginTop: "60px" }}>
+            <h2 className="section-title">Technical Support</h2>
             <div className="faq-box">
               <div className="faq-question" onClick={() => toggleFAQ(7)}>
-                Are my reports safe on HealthCare+?
+                App not working?
                 <span className={`arrow ${open === 7 ? "open" : ""}`}>▶</span>
               </div>
               {open === 7 && (
-                <div className="faq-answer">
-                  Yes. All medical reports are encrypted and securely stored.
-                </div>
-              )}
-            </div>
-          </div>
-
-          {/* === SECTION 5 === */}
-          <div id="security" style={{ marginTop: "60px" }}>
-            <h2 className="section-title">Security & Privacy</h2>
-
-            <div className="faq-box">
-              <div className="faq-question" onClick={() => toggleFAQ(8)}>
-                Is my data shared with anyone?
-                <span className={`arrow ${open === 8 ? "open" : ""}`}>▶</span>
-              </div>
-              {open === 8 && (
-                <div className="faq-answer">
-                  No. Your data is not shared without your consent.
-                </div>
-              )}
-            </div>
-          </div>
-
-          {/* === SECTION 6 === */}
-          <div id="technical" style={{ marginTop: "60px" }}>
-            <h2 className="section-title">Technical Support</h2>
-
-            <div className="faq-box">
-              <div className="faq-question" onClick={() => toggleFAQ(9)}>
-                What if the app is not working?
-                <span className={`arrow ${open === 9 ? "open" : ""}`}>▶</span>
-              </div>
-              {open === 9 && (
-                <div className="faq-answer">
-                  Try refreshing or updating the app. You can also contact support anytime.
-                </div>
+                <div className="faq-answer">Try restarting or updating the app.</div>
               )}
             </div>
           </div>
