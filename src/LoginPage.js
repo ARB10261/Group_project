@@ -6,7 +6,7 @@ import Nurse from "./assets/Nurse.jpg";
 
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
-  const [role, setRole] = useState(""); // 
+  const [role, setRole] = useState(""); // Selected role
 
   const { login } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -15,8 +15,17 @@ export default function LoginPage() {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    login();
-    navigate("/");
+
+    if (!role) {
+      alert("Please select a role (Admin / Doctors / Reception / Nurse)");
+      return;
+    }
+
+    // 🔹 send role into AuthContext
+    login(role);
+
+    // 🔹 go to /dashboard (not "/")
+    navigate("/dashboard");
   };
 
   return (
@@ -55,6 +64,14 @@ export default function LoginPage() {
     justify-content: center;
     align-items: center;
   }
+   
+  /* RIGHT ALIGN EMAIL & PASSWORD LABELS */
+.form-box form label {
+  text-align: left !important;
+  width: 100%;
+  display: block;
+  color: #0099cc;
+}
 
   .form-box {
     width: 70%;
@@ -62,26 +79,24 @@ export default function LoginPage() {
     text-align: center;
   }
 
-  /* TITLE SPACING */
   .brand {
     font-size: 40px;
     color:  #0099cc;
     font-weight: bold;
-    margin-bottom: 12px;   /* added */
+    margin-bottom: 12px;
   }
 
-  /* TAGLINE SPACING */
   .tagline {
     color: #555;
-    margin-bottom: 25px;   /* increased */
+    margin-bottom: 25px;
   }
 
-  /* ROLE BUTTONS GROUP SPACING */
   .role-buttons {
     display: flex;
     justify-content: center;
     gap: 10px;
-    margin-bottom: 28px;   /* added */
+    margin-bottom: 28px;
+    flex-wrap: wrap;
   }
 
   .role-btn {
@@ -101,29 +116,21 @@ export default function LoginPage() {
     color: white;
   }
 
-/* RIGHT ALIGN EMAIL & PASSWORD LABELS */
-.form-box form label {
-  text-align: left !important;
-  width: 100%;
-  display: block;
-  color: #0099cc;
-}
+  .form-box form label {
+    text-align: left !important;
+    width: 100%;
+    display: block;
+    color: #0099cc;
+    font-weight: bold;
+  }
 
-  
-  /* FORM TITLE SPACING */
   h3 {
-    margin-bottom: 22px !important;  /* added */
+    margin-bottom: 22px !important;
   }
 
-  /* EMAIL INPUT SPACING */
-  .input-box {
-    margin-bottom: 18px; /* added */
-  }
-
-  /* PASSWORD INPUT SPACING */
   .password-box {
     position: relative;
-    margin-bottom: 20px; /* added */
+    margin-bottom: 25px;
   }
 
   .eye-icon {
@@ -133,7 +140,6 @@ export default function LoginPage() {
     cursor: pointer;
   }
 
-  /* LOGIN BUTTON SPACING */
   .login-btn {
     width: 100%;
     padding: 12px;
@@ -141,14 +147,12 @@ export default function LoginPage() {
     border: none;
     color: white;
     border-radius: 8px;
-    margin-top: 10px;   /* added */
-    margin-bottom: 20px; /* added bottom */
+    margin-top: 10px;
+    margin-bottom: 20px;
   }
 `}</style>
 
-
       <div className="full-container">
-
         <div className="image-section">
           <img src={Nurse} alt="Hospital" />
         </div>
@@ -156,11 +160,10 @@ export default function LoginPage() {
         <div className="form-section">
           <div className="form-box">
 
-            {/* BRAND */}
             <h1 className="brand">Healthcare+</h1>
             <p className="tagline">Your trusted digital health companion</p>
 
-            {/* SMALL BUTTONS */}
+            {/* ROLE BUTTONS */}
             <div className="role-buttons">
               {["Admin", "Doctors", "Reception", "Nurse"].map((r) => (
                 <button
@@ -173,7 +176,6 @@ export default function LoginPage() {
               ))}
             </div>
 
-            {/* LOGIN FORM ALWAYS VISIBLE */}
             <h3 style={{ marginBottom: "20px", color: "#333" }}>
               {role ? `${role} Login` : "General Login"}
             </h3>
@@ -182,9 +184,7 @@ export default function LoginPage() {
               <Form.Label>Email</Form.Label>
               <Form.Control
                 type="email"
-                placeholder={
-                  role ? `${role} email` : "Enter your email"
-                }
+                placeholder={role ? `${role} email` : "Enter your email"}
                 required
               />
 
@@ -207,7 +207,6 @@ export default function LoginPage() {
 
           </div>
         </div>
-
       </div>
     </>
   );

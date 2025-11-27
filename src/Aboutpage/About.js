@@ -2,8 +2,8 @@ import React from "react";
 import babyImage from "../Images/baby image.jpg";
 import cancerimage from "../Images/cancer image.jpg";
 import cardioimage from "../Images/Cardio image.jpg";
-import Healthcareimage from "../Images/Healthcareimage.jpg";
 import Womencareimage from "../Images/Womencare image.jpg";
+import AboutImage from "../assets/AboutImage.jpg";
 import Healthcareimage1 from "../Images/Healthcare image1.jpg";
 import Healthserviceimage from "../Images/Healthservice image.jpg";
 
@@ -31,11 +31,10 @@ const About = () => {
       style={{
         fontFamily:
           '"Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
-        background: "#ffffff",
+        background: "#0ea5e9",
         color: "#111827",
       }}
     >
-      {/* INLINE STYLE FOR HOVERS USING CLASSES */}
       <style>{`
         .hover-card {
           transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -44,7 +43,6 @@ const About = () => {
           transform: scale(1.05);
           box-shadow: 0px 10px 25px rgba(15, 23, 42, 0.18);
         }
-
         .map-hover {
           transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
@@ -52,7 +50,6 @@ const About = () => {
           transform: scale(1.03);
           box-shadow: 0px 10px 30px rgba(15, 23, 42, 0.25);
         }
-
         .flag-hover {
           transition: transform 0.25s ease, color 0.25s ease;
         }
@@ -60,36 +57,14 @@ const About = () => {
           transform: translateX(6px);
           color: #0ea5e9;
         }
-
-        /* 🔥 Appointment button hover */
-        .appointment-btn {
-          transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
-        }
-        .appointment-btn:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 22px 45px rgba(2, 132, 199, 0.65);
-          filter: brightness(1.05);
-        }
-        .appointment-btn:active {
-          transform: translateY(0);
-          box-shadow: 0 14px 30px rgba(2, 132, 199, 0.45);
-        }
-
-        @media (max-width: 768px) {
-          .hero-title {
-            font-size: 32px !important;
-          }
-        }
       `}</style>
 
-      {/* --------------------------------------------------
-        HERO SECTION (height increased)
-      -------------------------------------------------- */}
+      {/* HERO SECTION */}
       <header
         style={{
           padding: "120px 5% 100px",
           minHeight: "80vh",
-          backgroundImage: `linear-gradient(rgba(15,23,42,0.6), rgba(15,23,42,0.6)), url(${Healthcareimage})`,
+          backgroundImage: `linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url(${AboutImage})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           color: "#ffffff",
@@ -118,36 +93,12 @@ const About = () => {
             color: "#e5e7eb",
           }}
         >
-          Experience world-class healthcare with HealthCare+ Hospitals, powered
-          by technology and compassion.
+          Experience world-class healthcare with HealthCare+,
+          powered by technology and compassion.
         </p>
-
-        {/* <button
-          className="appointment-btn"
-          style={{
-            marginTop: "25px",
-            padding: "12px 30px",
-            background: "linear-gradient(135deg, #0ea5e9, #0284c7)",
-            border: "none",
-            borderRadius: "999px",
-            color: "#ffffff",
-            fontSize: "16px",
-            cursor: "pointer",
-            fontWeight: 600,
-            boxShadow: "0 18px 40px rgba(2, 132, 199, 0.55)",
-            display: "inline-block",   // ✅ keep width tight to content
-            width: "auto",             // ✅ ignore any external width:100%
-          }}
-        >
-          Book an Appointment
-        </button> */}
-
-
       </header>
 
-      {/* --------------------------------------------------
-        ABOUT SECTION
-      -------------------------------------------------- */}
+      {/* ABOUT SECTION */}
       <section
         style={{
           padding: "80px 10%",
@@ -169,17 +120,8 @@ const About = () => {
           </h2>
 
           <p style={para}>
-            HealthCare+ is a next–generation digital healthcare management
-            system designed to streamline patient experiences and improve
-            clinical efficiency. Our goal is to make healthcare more accessible,
-            reliable, and seamlessly connected for everyone.
-          </p>
-
-          <p style={para}>
-            From appointment bookings to real-time medical data management,
-            HealthCare+ empowers both patients and healthcare professionals to
-            engage with advanced technology while keeping human care at the
-            center of every interaction.
+            HealthCare+ is a digital healthcare management system that connects
+            patients and doctors with seamless medical technology.
           </p>
 
           <ul style={{ padding: 0, listStyle: "none", marginTop: "25px" }}>
@@ -202,19 +144,10 @@ const About = () => {
               </li>
             ))}
           </ul>
-
-          <p style={{ ...para, marginTop: "25px" }}>
-            With a strong focus on personalized care and healthy living, our
-            platform helps individuals stay informed, connected, and proactive
-            about their health—ensuring they always receive the best possible
-            care.
-          </p>
         </div>
       </section>
 
-      {/* --------------------------------------------------
-        SPECIALTY CARDS
-      -------------------------------------------------- */}
+      {/* SPECIALTY CARDS */}
       <section style={{ padding: "60px 5%", background: "#f3f4f6" }}>
         <h2 style={headingCenter}>Our Specialty Centers</h2>
 
@@ -245,12 +178,20 @@ const About = () => {
                 }}
                 alt={item.name}
               />
-              <div style={{ padding: "16px" }}>
+              <div
+                style={{
+                  padding: "16px",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  textAlign: "center",
+                }}
+              >
                 <h3
                   style={{
                     fontSize: "19px",
                     fontWeight: "600",
-                    color: "#0f172a",
+                    color: "#ffffff",
                   }}
                 >
                   {item.name}
@@ -261,9 +202,7 @@ const About = () => {
         </div>
       </section>
 
-      {/* --------------------------------------------------
-        WORLD MAP + COUNTRIES
-      -------------------------------------------------- */}
+      {/* WORLD MAP SECTION */}
       <section style={{ padding: "60px 5%", background: "#ffffff" }}>
         <h2 style={headingCenter}>We serve across the globe</h2>
 
@@ -276,7 +215,6 @@ const About = () => {
             marginTop: "40px",
           }}
         >
-          {/* MAP */}
           <img
             src="https://img.freepik.com/free-vector/professional-medical-infographic-with-photo_23-2148370869.jpg?w=740"
             className="map-hover"
@@ -289,7 +227,6 @@ const About = () => {
             alt="World medical network"
           />
 
-          {/* COUNTRY LIST */}
           <div
             style={{
               display: "grid",
@@ -323,9 +260,7 @@ const About = () => {
   );
 };
 
-/* ---------------------------------------------
-    STYLE VARIABLES
---------------------------------------------- */
+/* STYLE VARIABLES */
 const headingCenter = {
   fontSize: "36px",
   fontWeight: "700",
@@ -341,10 +276,11 @@ const para = {
 
 const cardStyle = {
   width: "300px",
-  background: "#ffffff",
+  background: "#0ea4e9de",
   borderRadius: "14px",
   overflow: "hidden",
   cursor: "pointer",
+  textAlign: "center",
   boxShadow: "0px 4px 12px rgba(15, 23, 42, 0.08)",
 };
 
