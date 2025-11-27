@@ -164,6 +164,121 @@ const CardiologyPage = () => {
           }
         `}
       </style>
+
+{/* === Cardiac Services Section === */}
+<div style={{ padding: "60px 20px", textAlign: "center", fontFamily: "Arial, sans-serif" }}>
+  {/* Section Header */}
+  <h2 style={{ color: "#1976d2", fontSize: "32px", marginBottom: "10px" }}>
+    Get A Cardiac Service
+  </h2>
+  <p style={{ color: "#6c757d", maxWidth: "700px", margin: "0 auto 40px", fontSize: "14px", lineHeight: "1.6" }}>
+    Likewise, many pharmacies are now rather grocery store-like in their design. In addition to medicines and prescriptions, many now sell a diverse arrangement.
+  </p>
+
+  {/* Services Grid */}
+  <div
+    style={{
+      display: "grid",
+      gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+      gap: "20px",
+      justifyItems: "center",
+    }}
+  >
+    {/* Card 1 */}
+    <div
+      style={{
+        width: "100%",
+        borderRadius: "10px",
+        overflow: "hidden",
+        cursor: "pointer",
+        transition: "transform 0.3s ease",
+      }}
+      onMouseOver={(e) => (e.currentTarget.style.transform = "scale(1.05)")}
+      onMouseOut={(e) => (e.currentTarget.style.transform = "scale(1)")}
+    >
+      <img
+        src="/images/angiography.jpg"
+        alt="Angiography"
+        style={{ width: "100%", height: "200px", objectFit: "cover" }}
+      />
+      <div style={{ padding: "10px", textAlign: "left" }}>
+        <p style={{ fontSize: "12px", margin: 0, color: "#1976d2" }}>Cardio-Med</p>
+        <h3 style={{ margin: 0, fontSize: "16px", color: "#1d3c88" }}>Angiography</h3>
+      </div>
+    </div>
+
+    {/* Card 2 */}
+    <div
+      style={{
+        width: "100%",
+        borderRadius: "10px",
+        overflow: "hidden",
+        cursor: "pointer",
+        transition: "transform 0.3s ease",
+      }}
+      onMouseOver={(e) => (e.currentTarget.style.transform = "scale(1.05)")}
+      onMouseOut={(e) => (e.currentTarget.style.transform = "scale(1)")}
+    >
+      <img
+        src="/images/heart-failure.jpg"
+        alt="Heart Failure"
+        style={{ width: "100%", height: "200px", objectFit: "cover" }}
+      />
+      <div style={{ padding: "10px", textAlign: "left" }}>
+        <p style={{ fontSize: "12px", margin: 0, color: "#1976d2" }}>Health Care</p>
+        <h3 style={{ margin: 0, fontSize: "16px", color: "#1d3c88" }}>Heart Failure</h3>
+      </div>
+    </div>
+
+    {/* Card 3 */}
+    <div
+      style={{
+        width: "100%",
+        borderRadius: "10px",
+        overflow: "hidden",
+        cursor: "pointer",
+        transition: "transform 0.3s ease",
+      }}
+      onMouseOver={(e) => (e.currentTarget.style.transform = "scale(1.05)")}
+      onMouseOut={(e) => (e.currentTarget.style.transform = "scale(1)")}
+    >
+      <img
+        src="/images/heart-bypass.jpg"
+        alt="Heart Bypass"
+        style={{ width: "100%", height: "200px", objectFit: "cover" }}
+      />
+      <div style={{ padding: "10px", textAlign: "left" }}>
+        <p style={{ fontSize: "12px", margin: 0, color: "#1976d2" }}>Cardio-Med</p>
+        <h3 style={{ margin: 0, fontSize: "16px", color: "#1d3c88" }}>Heart Bypass</h3>
+      </div>
+    </div>
+
+    {/* Card 4 */}
+    <div
+      style={{
+        width: "100%",
+        borderRadius: "10px",
+        overflow: "hidden",
+        cursor: "pointer",
+        transition: "transform 0.3s ease",
+      }}
+      onMouseOver={(e) => (e.currentTarget.style.transform = "scale(1.05)")}
+      onMouseOut={(e) => (e.currentTarget.style.transform = "scale(1)")}
+    >
+      <img
+        src="/images/heart-transplant.jpg"
+        alt="Heart Transplant"
+        style={{ width: "100%", height: "200px", objectFit: "cover" }}
+      />
+      <div style={{ padding: "10px", textAlign: "left" }}>
+        <p style={{ fontSize: "12px", margin: 0, color: "#1976d2" }}>Doctor</p>
+        <h3 style={{ margin: 0, fontSize: "16px", color: "#1d3c88" }}>Heart Transplant</h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+
     </div>
   );
 };
