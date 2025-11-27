@@ -25,93 +25,104 @@ const PrivacyPolicyPage = () => {
 
   return (
     <>
-      <style>
-        {`
-      .policy-container {
-        display: flex;
-        padding: 40px 5%;
-        background: #f8fbff;
-        font-family: 'Poppins', sans-serif;
-        gap: 40px;
-      }
-
-      /* LEFT SIDEBAR */
-      .sidebar {
-        width: 260px;
-        background: #ffffff;
-        border-radius: 10px;
-        padding: 20px;
-        height: fit-content;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-        position: sticky;
-        top: 20px;
-      }
-
-      .sidebar table {
-        width: 100%;
-        border-collapse: collapse;
-      }
-
-      .sidebar td {
-        padding: 10px 8px;
-        cursor: pointer;
-        color: #0284c7;
-        border-bottom: 1px solid #e5e7eb;
-        font-size: 14px;
-      }
-
-      .sidebar td:hover {
-        background: #e0f4ff;
-        color: #0369a1;
-        border-radius: 6px;
-      }
-
-      /* RIGHT CONTENT */
-      .policy-content {
-        flex: 1;
-      }
-
-      .section-block {
-        margin-bottom: 60px;
-        padding-bottom: 20px;
-        border-bottom: 1px solid #e5e7eb;
-      }
-
-      .section-block h2 {
-        font-size: 26px;
-        font-weight: 700;
-        color: #0ea5e9;
-        margin-bottom: 10px;
-      }
-
-      .section-block p,
-      .section-block li {
-        font-size: 16px;
-        color: #555;
-        margin-bottom: 10px;
-        line-height: 1.8;
-      }
-
-      ul {
-        padding-left: 20px;
-      }
-
-      /* RESPONSIVE */
-      @media (max-width: 900px) {
-        .policy-container {
-          flex-direction: column;
+      <style>{`
+        .policy-wrapper {
+          display: flex;
+          background: #f8fbff;
+          min-height: 100vh;
+          font-family: "Poppins", sans-serif;
         }
+
+        /* SIDEBAR (same design as Terms page) */
         .sidebar {
-          width: 100%;
-          position: relative;
+          width: 260px;
+          background: #ffffff;
+          padding: 20px;
+          border-right: 1px solid #e5e7eb;
+          position: sticky;
+          top: 10px;
+          height: calc(100vh - 20px);
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
         }
-      }
-      `}
-      </style>
 
-      <div className="policy-container">
+        .sidebar table {
+          width: 100%;
+          height: 100%;
+        }
 
-        {/* LEFT SIDE NAVIGATION */}
+        .sidebar td {
+          padding: 18px 10px;
+          cursor: pointer;
+          color: #0284c7;
+          font-size: 15px;
+          border-bottom: 1px solid #e5e7eb;
+          transition: 0.25s ease;
+        }
+
+        .sidebar td:hover {
+          background: #e0f4ff;
+          border-radius: 6px;
+          padding-left: 14px;
+          color: #005f88;
+        }
+
+        /* RIGHT CONTENT */
+        .policy-content {
+          flex: 1;
+          padding: 50px 60px;
+        }
+
+        .section-block {
+          margin-bottom: 60px;
+        }
+
+        .section-block h2 {
+          font-size: 28px;
+          font-weight: 700;
+          color: #0ea5e9;
+          margin-bottom: 12px;
+        }
+
+        .section-block p,
+        .section-block li {
+          color: #555;
+          font-size: 16px;
+          line-height: 1.7;
+        }
+
+        ul {
+          padding-left: 20px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+          .policy-wrapper {
+            flex-direction: column;
+          }
+
+          .sidebar {
+            width: 100%;
+            height: auto;
+            border-right: none;
+            border-bottom: 1px solid #ddd;
+            position: relative;
+          }
+
+          .sidebar table {
+            height: auto;
+          }
+
+          .policy-content {
+            padding: 30px 20px;
+          }
+        }
+      `}</style>
+
+      <div className="policy-wrapper">
+
+        {/* LEFT SIDEBAR */}
         <div className="sidebar">
           <table>
             <tbody>
@@ -126,108 +137,105 @@ const PrivacyPolicyPage = () => {
           </table>
         </div>
 
-        {/* RIGHT SIDE POLICY CONTENT */}
+        {/* RIGHT CONTENT */}
         <div className="policy-content">
 
-          {/* Introduction */}
+          {/* INTRODUCTION */}
           <div id="intro" className="section-block">
             <h2>Introduction</h2>
             <p>
-              At HealthCare+, we prioritize the protection and confidentiality of your personal and
-              medical information. This Privacy Policy explains how we collect, use, and safeguard
-              your data.
+              At HealthCare+, we prioritize the privacy and confidentiality of your
+              personal and medical data. This policy explains what we collect, how we use it,
+              and how we keep it safe.
             </p>
           </div>
 
-          {/* Info We Collect */}
+          {/* COLLECTION */}
           <div id="collection" className="section-block">
             <h2>Information We Collect</h2>
             <ul>
               <li>Personal details (name, age, gender, contact info)</li>
-              <li>Medical history, diagnosis, prescriptions</li>
-              <li>Appointment details & interaction records</li>
-              <li>IP address, device info, location (with consent)</li>
-              <li>Payment and billing details (if applicable)</li>
+              <li>Medical history, diagnosis & prescriptions</li>
+              <li>Appointment details & medical interactions</li>
+              <li>IP address, device details, browser type</li>
+              <li>Payment details (encrypted)</li>
             </ul>
           </div>
 
-          {/* How We Use Data */}
+          {/* USAGE */}
           <div id="usage" className="section-block">
-            <h2>How We Use Your Information</h2>
+            <h2>How We Use Data</h2>
             <ul>
-              <li>To book and manage appointments</li>
-              <li>To provide personalized healthcare</li>
-              <li>For patient–doctor communication</li>
-              <li>To improve platform performance</li>
-              <li>To send reminders and notifications</li>
+              <li>To manage appointments & consultations</li>
+              <li>To provide personalized healthcare services</li>
+              <li>To improve platform experience</li>
+              <li>For reminders & notifications</li>
             </ul>
           </div>
 
-          {/* Medical Protection */}
+          {/* MEDICAL DATA */}
           <div id="medical" className="section-block">
             <h2>Medical Data Protection</h2>
-            <p>Your health data is encrypted and securely stored on HIPAA-grade servers.</p>
+            <p>Your medical data is encrypted and stored on secure, HIPAA-level servers.</p>
           </div>
 
-          {/* Sharing */}
+          {/* SHARING */}
           <div id="sharing" className="section-block">
             <h2>Information Sharing</h2>
-            <p>We only share your information with:</p>
+            <p>We only share data with trusted sources such as:</p>
             <ul>
-              <li>Doctors & hospitals involved in your treatment</li>
-              <li>Government bodies (only when legally required)</li>
-              <li>Third-party labs or payment processors</li>
+              <li>Doctors & hospitals for your treatment</li>
+              <li>Govt authorities (only when legally required)</li>
+              <li>Secure third-party labs or payment processors</li>
             </ul>
           </div>
 
-          {/* Cookies */}
+          {/* COOKIES */}
           <div id="cookies" className="section-block">
             <h2>Cookies & Tracking</h2>
-            <p>Cookies help us improve performance & personalize your experience.</p>
+            <p>We use cookies to improve performance, analytics, and personalization.</p>
           </div>
 
-          {/* Rights */}
+          {/* RIGHTS */}
           <div id="rights" className="section-block">
             <h2>Your Rights</h2>
             <ul>
-              <li>Right to access your medical records</li>
-              <li>Right to request corrections</li>
+              <li>Right to access your data</li>
+              <li>Right to correct inaccurate information</li>
               <li>Right to delete account/data</li>
               <li>Right to withdraw consent</li>
             </ul>
           </div>
 
-          {/* Retention */}
+          {/* RETENTION */}
           <div id="retention" className="section-block">
             <h2>Data Retention</h2>
-            <p>Your data is retained only for medical, legal or operational reasons.</p>
+            <p>Data is retained as long as necessary for medical, legal, and operational reasons.</p>
           </div>
 
-          {/* Security */}
+          {/* SECURITY */}
           <div id="security" className="section-block">
             <h2>Security Measures</h2>
             <ul>
               <li>End-to-end encryption</li>
-              <li>Regular security audits</li>
-              <li>Secure access control</li>
+              <li>Regular audits</li>
+              <li>Strict access controls</li>
             </ul>
           </div>
 
-          {/* Children */}
+          {/* CHILDREN */}
           <div id="children" className="section-block">
             <h2>Children’s Privacy</h2>
-            <p>
-              We do not collect data from children under 16 unless provided by parents/guardians.
-            </p>
+            <p>We do not collect data from children under 16 without guardian consent.</p>
           </div>
 
-          {/* Updates */}
+          {/* UPDATES */}
           <div id="updates" className="section-block">
             <h2>Policy Updates</h2>
-            <p>You will be notified about major Privacy Policy updates.</p>
+            <p>You will be notified whenever this policy is updated.</p>
           </div>
 
-          {/* Contact */}
+          {/* CONTACT */}
           <div id="contact" className="section-block">
             <h2>Contact Us</h2>
             <p>

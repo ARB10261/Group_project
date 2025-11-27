@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import mainDentalImg from "../assets/d1.jpg"; // hero / content image
-import aboutDentalImg from "../assets/d1.jpg"; // about section image
+import Dental from "../assets/Dental.jpg"; // hero / content image
+import Dental2 from "../assets/Dental2.jpg"; // about section image
 
 const DentalCarePage = () => {
   const floatingAnimation = {
@@ -108,7 +108,7 @@ const DentalCarePage = () => {
         {/* Right Hero Image */}
         <div>
           <img
-            src={mainDentalImg}
+            src={Dental}
             alt="Dental Care"
             style={{
               maxWidth: "420px",
@@ -361,7 +361,7 @@ const DentalCarePage = () => {
           {/* About Image */}
           <div>
             <img
-              src={aboutDentalImg}
+              src={Dental2}
               alt="Dental Team"
               style={{
                 width: "100%",
