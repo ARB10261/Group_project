@@ -186,7 +186,7 @@ const FooterSection = () => {
               <li><Link to="/cardiology">Cardiology</Link></li>
               <li><Link to="/neurology">Neurology</Link></li>
               <li><Link to="/dental-care">Dental Care</Link></li>
-              <li><Link to="/gynecology">Gynecology</Link></li>
+              {/* <li><Link to="/gynecology">Gynecology</Link></li> */}
               <li><Link to="/laboratory">Laboratory</Link></li>
             </ul>
           </div>

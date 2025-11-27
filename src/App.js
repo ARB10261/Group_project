@@ -29,7 +29,7 @@ import GeneralMedicinePage from "./Components/GeneralMedicinePage";
 import CardiologyPage from "./Components/CardiologyPage";
 import NeurologyPage from "./Components/NeurologyPage";
 import DentalCarePage from "./Components/DentalCarePage";
-import GynecologyPage from "./Components/GynecologyPage";
+// import GynecologyPage from "./Components/GynecologyPage";
 import LaboratoryPage from "./Components/LaboratoryPage";
 
 import TermsAndConditionsPage from "./Components/TermsAndConditionsPage";
@@ -86,7 +86,7 @@ function App() {
 <Route path="/cardiology" element={<CardiologyPage />} />
 <Route path="/neurology" element={<NeurologyPage />} />
 <Route path="/dental-care" element={<DentalCarePage />} />
-<Route path="/gynecology" element={<GynecologyPage />} />
+{/* <Route path="/gynecology" element={<GynecologyPage />} /> */}
 <Route path="/laboratory" element={<LaboratoryPage />} />
 
 {/* Support & Policies pages */}
