@@ -21,14 +21,8 @@ const Doctors = () => {
     if (!newDoctor.name || !newDoctor.dept || !newDoctor.exp || !newDoctor.phone) return;
 
     if (isEdit) {
-      // ⭐ Update doctor
-      setDoctors(
-        doctors.map((d) =>
-          d.id === editId ? { ...d, ...newDoctor } : d
-        )
-      );
+      setDoctors(doctors.map((d) => (d.id === editId ? { ...d, ...newDoctor } : d)));
     } else {
-      // ⭐ Add new doctor
       setDoctors([...doctors, { id: Date.now(), ...newDoctor }]);
     }
 
@@ -41,12 +35,7 @@ const Doctors = () => {
     setShowForm(true);
     setIsEdit(true);
     setEditId(doctor.id);
-    setNewDoctor({
-      name: doctor.name,
-      dept: doctor.dept,
-      exp: doctor.exp,
-      phone: doctor.phone,
-    });
+    setNewDoctor(doctor);
   };
 
   const handleDelete = (id) => {
@@ -56,24 +45,130 @@ const Doctors = () => {
   return (
     <>
       <style>{`
-        .page-container { padding: 30px; color: #0f172a; }
-        .header-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
-        .title { font-size: 2rem; font-weight: 700; color: #0ea5e9; }
-        .btn-add { background: #0ea5e9; color: white; padding: 10px 18px; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; }
-        .table-container { background: white; border-radius: 12px; padding: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
-        table { width: 100%; border-collapse: collapse; }
-        th, td { padding: 14px 10px; border-bottom: 1px solid #e2e8f0; }
-        td:last-child { display: flex; gap: 12px; }
-        .action-btn { padding: 6px 12px; border: none; border-radius: 4px; cursor: pointer; }
-        .edit-btn { background: #eab308; color: #fff; }
-        .delete-btn { background: #ef4444; color: #fff; }
-        .popup-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.45); display: flex; justify-content: center; align-items: center; }
-        .popup-box { width: 420px; background: #fff; padding: 25px; border-radius: 10px; animation: zoom .3s ease; }
-        @keyframes zoom { from { transform: scale(.7); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-        .popup-box input, .popup-box select { width: 100%; margin-bottom: 12px; padding: 12px; border-radius: 6px; border: 1px solid #cbd5e1; }
-        .popup-actions { display: flex; justify-content: flex-end; gap: 10px; }
-        .cancel-btn { background: #475569; color: white; padding: 8px 16px; border-radius: 6px; border: none; }
-        .save-btn { background: #0ea5e9; color: white; padding: 8px 16px; border-radius: 6px; border: none; }
+        .page-container { padding: 30px; }
+
+        .header-row {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 20px;
+          flex-wrap: wrap;
+          gap: 15px;
+        }
+
+        .title {
+          font-size: 2rem;
+          font-weight: 700;
+          color: #0ea5e9;
+        }
+
+        .btn-add {
+          background: #0ea5e9;
+          color: white;
+          padding: 10px 18px;
+          border: none;
+          border-radius: 6px;
+          cursor: pointer;
+          font-weight: 600;
+        }
+
+        .table-container {
+          background: white;
+          border-radius: 12px;
+          padding: 20px;
+          box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+          overflow-x: auto;
+        }
+
+        table { width: 100%; min-width: 650px; border-collapse: collapse; }
+        th, td { padding: 14px 10px; border-bottom: 1px solid #e2e8f0; text-align: left; }
+
+        /* Action buttons */
+        td:last-child {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 10px;
+        }
+
+        .action-btn {
+          padding: 6px 12px;
+          border-radius: 4px;
+          border: none;
+          cursor: pointer;
+          color: #fff;
+          font-size: 14px;
+        }
+
+        .edit-btn { background: #eab308; }
+        .delete-btn { background: #ef4444; }
+
+        /* Popup */
+        .popup-overlay {
+          position: fixed;
+          inset: 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background: rgba(0,0,0,0.45);
+        }
+
+        .popup-box {
+          width: 90%;
+          max-width: 420px;
+          background: #fff;
+          padding: 25px;
+          border-radius: 10px;
+          animation: zoom .3s ease;
+        }
+
+        @keyframes zoom { 
+          from { transform: scale(.7); opacity: 0; } 
+          to { transform: scale(1); opacity: 1; } 
+        }
+
+        .popup-box input, .popup-box select {
+          width: 100%;
+          margin-bottom: 12px;
+          padding: 12px;
+          border-radius: 6px;
+          border: 1px solid #cbd5e1;
+        }
+
+        .popup-actions {
+          display: flex;
+          justify-content: flex-end;
+          gap: 10px;
+        }
+
+        .cancel-btn {
+          background: #475569;
+          color: white;
+          padding: 8px 16px;
+          border-radius: 6px;
+        }
+
+        .save-btn {
+          background: #0ea5e9;
+          color: white;
+          padding: 8px 16px;
+          border-radius: 6px;
+        }
+
+        /* --- RESPONSIVE FIXES --- */
+
+        @media (max-width: 600px) {
+          .title { font-size: 1.5rem; }
+          .btn-add { width: 100%; text-align: center; }
+          
+          td:last-child {
+            flex-direction: column;
+            align-items: flex-start;
+          }
+
+          .action-btn {
+            width: 100%; /* full width buttons */
+          }
+        }
       `}</style>
 
       <div className="page-container">
@@ -102,6 +197,7 @@ const Doctors = () => {
                 <th>Actions</th>
               </tr>
             </thead>
+
             <tbody>
               {doctors.map((d) => (
                 <tr key={d.id}>
@@ -116,6 +212,7 @@ const Doctors = () => {
                 </tr>
               ))}
             </tbody>
+
           </table>
         </div>
 
@@ -133,6 +230,7 @@ const Doctors = () => {
                 value={newDoctor.name}
                 onChange={(e) => setNewDoctor({ ...newDoctor, name: e.target.value })}
               />
+
               <select
                 value={newDoctor.dept}
                 onChange={(e) => setNewDoctor({ ...newDoctor, dept: e.target.value })}
@@ -144,12 +242,14 @@ const Doctors = () => {
                 <option>Orthopedic</option>
                 <option>Gynecology</option>
               </select>
+
               <input
                 type="text"
                 placeholder="Experience"
                 value={newDoctor.exp}
                 onChange={(e) => setNewDoctor({ ...newDoctor, exp: e.target.value })}
               />
+
               <input
                 type="text"
                 placeholder="Phone Number"
@@ -158,12 +258,8 @@ const Doctors = () => {
               />
 
               <div className="popup-actions">
-                <button className="cancel-btn" onClick={() => setShowForm(false)}>
-                  Cancel
-                </button>
-                <button className="save-btn" onClick={handleSave}>
-                  Save
-                </button>
+                <button className="cancel-btn" onClick={() => setShowForm(false)}>Cancel</button>
+                <button className="save-btn" onClick={handleSave}>Save</button>
               </div>
             </div>
           </div>

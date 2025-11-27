@@ -12,13 +12,12 @@ const HeroSection = () => {
   const navigate = useNavigate();
   const [query, setQuery] = useState("");
 
-  // 🔍 Handle Search Navigation
   const handleSearch = () => {
     if (!query.trim()) return;
     navigate(`/search?query=${query}`);
   };
 
-  // Typing Animation
+  // Typing Animation Logic
   useEffect(() => {
     let charIndex = 0;
     const typingSpeed = 120;
@@ -53,10 +52,8 @@ const HeroSection = () => {
         key={i}
         style={{
           display: "inline-block",
-          animationName: "bubble",
-          animationDuration: "2s",
-          animationIterationCount: "infinite",
-          animationTimingFunction: "ease-in-out",
+          animation: "bubble 2s ease-in-out infinite",
+          marginRight: "2px",
         }}
       >
         {char}
@@ -68,19 +65,19 @@ const HeroSection = () => {
       <style>{`
   @keyframes bubble {
     0%, 100% { transform: translateY(0) scale(1); opacity: 1; }
-    50% { transform: translateY(-6px) scale(1.15); opacity: 0.8; }
+    50% { transform: translateY(-6px) scale(1.12); opacity: 0.85; }
   }
 
   .hero-wrapper {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     align-items: center;
-    padding: 80px 100px 60px;
+    padding: 120px 100px 90px;
     min-height: 100vh;
-    background: url(${doctorImg}) no-repeat center center/cover;
+    background: url(${doctorImg}) no-repeat center/cover;
     color: #fff;
     position: relative;
+    text-align: center;
   }
 
   .hero-wrapper::before {
@@ -92,43 +89,43 @@ const HeroSection = () => {
 
   .hero-left {
     position: relative;
-    max-width: 650px;
+    max-width: 800px;
     width: 100%;
-    text-align: left;
-    margin-right: auto;
     z-index: 2;
+    margin-bottom: 40px;
   }
 
   .hero-title {
-    font-size: 3rem;
-    font-weight: 800;
+    font-size: 3.3rem;
+    font-weight: 900;
     line-height: 1.2;
-    margin-bottom: 20px;
-    margin-top: 20px;
+    margin-bottom: 22px;
   }
 
-  .typing-word { color: #f0f0f0; font-weight: 800; }
+  .typing-word {
+    color: #ffffff;
+    font-weight: 900;
+  }
 
   .hero-subtitle {
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     color: #e8e8e8;
-    margin-bottom: 35px;
-    margin-top: 20px;
-    line-height: 1.6;
+    line-height: 1.7;
+    margin-bottom: 45px;
   }
 
+  /* Search Bar */
   .search-container {
-    width: 80%;
+    width: 95%;
     max-width: 900px;
     display: flex;
     align-items: center;
-    background: rgba(0, 67, 87, 0.4);
-    padding: 10px 20px;
+    background: rgba(0, 67, 87, 0.45);
+    padding: 12px 20px;
     border-radius: 40px;
-    border: 1px solid rgba(255,255,255,0.2);
-    backdrop-filter: blur(4px);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255,255,255,0.25);
     z-index: 2;
-    margin-top: 30px;
   }
 
   .search-input {
@@ -136,40 +133,39 @@ const HeroSection = () => {
     border: none;
     background: transparent;
     color: #fff;
-    font-size: 1rem;
+    font-size: 1.05rem;
     outline: none;
   }
-
-  .search-input::placeholder { color: #d2d2d2; }
 
   .search-btn {
     background: #0ea5e9;
     border: none;
-    width: 42px;
-    height: 42px;
+    width: 46px;
+    height: 46px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    font-size: 1.3rem;
     color: #fff;
-    font-size: 1.2rem;
   }
 
+  /* Options */
   .options-container {
-    margin-top: 20px;
+    margin-top: 35px;
     width: 90%;
-    max-width: 1050px;
+    max-width: 1100px;
     display: flex;
     justify-content: space-between;
-    gap: 10px;
+    gap: 14px;
     z-index: 2;
   }
 
   .option-box {
     flex: 1;
     background: transparent;
-    padding: 14px 20px;
+    padding: 16px 22px;
     border-radius: 40px;
     display: flex;
     justify-content: space-between;
@@ -177,13 +173,55 @@ const HeroSection = () => {
     border: 2px solid rgba(255,255,255,0.15);
     cursor: pointer;
     font-weight: 500;
-    transition: 0.2s ease;
+    transition: 0.25s ease;
     font-size: 0.95rem;
   }
 
   .option-box:hover {
     background: #0ea5e9;
     border-color: #fff;
+    transform: translateY(-3px);
+  }
+
+  /* Tablet Responsive */
+  @media (max-width: 992px) {
+    .hero-title {
+      font-size: 2.7rem;
+    }
+
+    .hero-wrapper {
+      padding: 100px 30px 70px;
+    }
+
+    .options-container {
+      gap: 12px;
+    }
+  }
+
+  /* Mobile Responsive */
+  @media (max-width: 650px) {
+    .hero-title {
+      font-size: 2.2rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1rem;
+    }
+
+    .options-container {
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .option-box {
+      width: 100%;
+      justify-content: space-between;
+    }
+
+    .search-container {
+      width: 100%;
+      padding: 10px 15px;
+    }
   }
 `}</style>
 
@@ -200,7 +238,7 @@ const HeroSection = () => {
           </p>
         </div>
 
-        {/* SEARCH BAR */}
+        {/* Search Bar */}
         <div className="search-container">
           <input
             type="text"
@@ -214,7 +252,7 @@ const HeroSection = () => {
           </button>
         </div>
 
-        {/* OPTIONS */}
+        {/* Options */}
         <div className="options-container">
           <div className="option-box">
             <span>Book Appointment</span>

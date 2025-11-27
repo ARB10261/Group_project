@@ -11,11 +11,10 @@ import {
 const ServicesSection = () => {
   return (
     <>
-<style>
-{`
-  /* Services Section */
+      <style>
+        {`
   .services-section {
-    background-color: #e6f7ff; /* light blue tint */
+    background-color: #e6f7ff;
     padding: 80px 100px;
     text-align: center;
   }
@@ -23,139 +22,155 @@ const ServicesSection = () => {
   .services-title {
     font-size: 2.5rem;
     font-weight: 700;
-    color: #0ea5e9;  /* MAIN COLOR */
-    margin-bottom: 20px;
+    color: #0ea5e9;
+    margin-bottom: 15px;
   }
 
   .services-subtitle {
     font-size: 1.1rem;
     color: #555;
-    margin-bottom: 60px;
+    margin-bottom: 50px;
+    max-width: 650px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
   }
 
-  /* Grid Layout */
+  /* GRID */
   .services-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
   }
 
-  /* Service Card */
+  /* CARD */
   .service-card {
     background: #fff;
     border-radius: 20px;
-    padding: 50px 25px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding: 45px 25px;
     height: 100%;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    transition: transform .3s ease, box-shadow .3s ease;
   }
 
   .service-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 28px rgba(0,0,0,0.12);
   }
 
   .service-icon {
     font-size: 3.5rem;
-    color: #0ea5e9; /* MAIN COLOR */
+    color: #0ea5e9;
     margin-bottom: 20px;
   }
 
   .service-title {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     font-weight: 600;
     color: #000;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
   }
 
   .service-desc {
     font-size: 1rem;
-    color: #555;
     line-height: 1.6;
+    color: #555;
   }
 
-  /* Responsive Design */
+  /* TABLET */
   @media (max-width: 992px) {
+    .services-section {
+      padding: 70px 35px;
+    }
     .services-grid {
       grid-template-columns: repeat(2, 1fr);
+      gap: 25px;
     }
-  }
-
-  @media (max-width: 600px) {
-    .services-grid {
-      grid-template-columns: 1fr;
+    .service-card {
+      padding: 40px 20px;
     }
-
-    .services-section {
-      padding: 60px 30px;
-    }
-
     .services-title {
       font-size: 2rem;
     }
   }
-`}
-</style>
 
+  /* MOBILE */
+  @media (max-width: 600px) {
+    .services-section {
+      padding: 60px 25px;
+    }
+    .services-grid {
+      grid-template-columns: 1fr;
+      gap: 22px;
+    }
+    .service-card {
+      padding: 35px 18px;
+    }
+    .service-icon {
+      font-size: 3rem;
+    }
+    .services-title {
+      font-size: 1.8rem;
+    }
+    .services-subtitle {
+      font-size: 1rem;
+    }
+  }
+        `}
+      </style>
 
       <section className="services-section" id="departments">
-        <h2 className="services-title">Award winning patient care</h2>
+        <h2 className="services-title">Award Winning Patient Care</h2>
         <p className="services-subtitle">
           Specialized healthcare services designed to meet every patient’s needs.
         </p>
 
         <div className="services-grid">
-          {/* ✅ 1. Laboratory Services */}
           <div className="service-card">
             <FaVial className="service-icon" />
             <h3 className="service-title">Laboratory Services</h3>
             <p className="service-desc">
-              Advanced lab diagnostics and testing for accurate medical analysis and treatment.
+              Advanced lab diagnostics and testing for accurate medical analysis.
             </p>
           </div>
 
-          {/* ✅ 2. Heart Disease */}
           <div className="service-card">
             <FaHeartbeat className="service-icon" />
             <h3 className="service-title">Heart Disease</h3>
             <p className="service-desc">
-              Expert cardiology care for diagnosis, treatment, and prevention of heart conditions.
+              Expert cardiology care for detection and treatment of heart issues.
             </p>
           </div>
 
-          {/* ✅ 3. Dental Care */}
           <div className="service-card">
             <FaTooth className="service-icon" />
             <h3 className="service-title">Dental Care</h3>
             <p className="service-desc">
-              Comprehensive dental checkups, cosmetic care, and oral surgery by expert dentists.
+              Comprehensive dental checkups, cosmetic treatments, and oral surgery.
             </p>
           </div>
 
-          {/* ✅ 4. Body Surgery */}
           <div className="service-card">
             <FaUserInjured className="service-icon" />
             <h3 className="service-title">Body Surgery</h3>
             <p className="service-desc">
-              Advanced surgical procedures with modern technology and post-surgery care.
+              Advanced surgical procedures with modern tools and expert precision.
             </p>
           </div>
 
-          {/* ✅ 5. Neurology Surgery */}
           <div className="service-card">
             <FaBrain className="service-icon" />
             <h3 className="service-title">Neurology Surgery</h3>
             <p className="service-desc">
-              Specialized neurological and spinal surgeries handled by experienced professionals.
+              Specialized brain & spine surgeries handled by professionals.
             </p>
           </div>
 
-          {/* ✅ 6. Gynecology */}
           <div className="service-card">
             <FaFemale className="service-icon" />
             <h3 className="service-title">Gynecology</h3>
             <p className="service-desc">
-              Complete women’s healthcare including maternity, fertility, and reproductive wellness.
+              Complete women’s healthcare from maternity to wellness.
             </p>
           </div>
         </div>

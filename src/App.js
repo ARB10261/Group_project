@@ -1,4 +1,5 @@
 import "./App.css"; 
+import "bootstrap/dist/css/bootstrap.min.css";
 import Navbar from "./Landingpage/Navbar";
 import FooterSection from "./Landingpage/FooterSection";
 import LandingPage from "./Landingpage/LandingPage";
@@ -43,15 +44,17 @@ function App() {
 
   return (
     <Router>
+<style>{`
+  html, body, #root {
+    height: 100%;
+  }
+  .main-content {
+    min-height: calc(100vh - 70px - 60px);
+    display: flex;
+    flex-direction: column;
+  }
+`}</style>
 
-      <style>{`
-        html, body, #root {
-          height: 100%;
-        }
-        .main-content {
-          min-height: calc(100vh - 70px - 60px);
-        }
-      `}</style>
 
       {isLoggedIn ? <DashboardNavbar /> : <Navbar />}
 

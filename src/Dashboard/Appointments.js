@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Button, Table } from "react-bootstrap";
 
 const Appointments = () => {
   const [showForm, setShowForm] = useState(false);
@@ -37,7 +38,10 @@ const Appointments = () => {
         )
       );
     } else {
-      setAppointments([...appointments, { id: Date.now(), ...newAppointment }]);
+      setAppointments([
+        ...appointments,
+        { id: Date.now(), ...newAppointment },
+      ]);
     }
 
     setShowForm(false);
@@ -70,17 +74,13 @@ const Appointments = () => {
         .header-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
         .title { font-size: 2rem; font-weight: 700; color: #0ea5e9; }
         .btn-add { background: #0ea5e9; color: white; padding: 10px 18px; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; }
-        .table-container { background: white; border-radius: 12px; padding: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
-        table { width: 100%; border-collapse: collapse; }
-        th, td { padding: 14px 10px; border-bottom: 1px solid #e2e8f0; }
-        td:last-child { display: flex; gap: 10px; }
-        .action-btn { padding: 6px 12px; border-radius: 4px; border: none; cursor: pointer; color: #fff; }
-        .edit-btn { background: #3b82f6; }
-        .delete-btn { background: #ef4444; }
+        
         .status-badge { padding: 6px 12px; border-radius: 14px; font-size: 0.85rem; }
         .pending { background: #facc15; }
         .confirmed { background: #4ade80; }
         .cancelled { background: #f87171; }
+
+        /* POPUP */
         .popup-overlay { position: fixed; inset: 0; display: flex; justify-content: center; align-items: center; background: rgba(0,0,0,0.45); }
         .popup-box { width: 420px; background: #fff; padding: 25px; border-radius: 10px; animation: zoom 0.3s ease; }
         @keyframes zoom { from { transform: scale(0.6); opacity: 0; } to { transform: scale(1); opacity: 1; } }
@@ -88,10 +88,21 @@ const Appointments = () => {
         .popup-actions { display: flex; justify-content: flex-end; gap: 10px; }
         .cancel-btn { background: #475569; padding: 8px 16px; border-radius: 6px; border: none; color: #fff; }
         .save-btn { background: #0ea5e9; padding: 8px 16px; border-radius: 6px; border: none; color: #fff; }
+
+        /* RESPONSIVE BUTTON FIX */
+        @media (max-width: 768px) {
+          .action-buttons {
+            flex-direction: column !important;
+            gap: 6px !important;
+          }
+          .action-buttons button {
+            width: 100%;
+          }
+        }
       `}</style>
 
       <div className="page-container">
-        
+
         <div className="header-row">
           <h2 className="title">Appointment System</h2>
           <button
@@ -113,8 +124,9 @@ const Appointments = () => {
           </button>
         </div>
 
-        <div className="table-container">
-          <table>
+        {/* Responsive Table */}
+        <div className="table-responsive">
+          <Table striped bordered hover>
             <thead>
               <tr>
                 <th>Patient</th>
@@ -123,7 +135,7 @@ const Appointments = () => {
                 <th>Date</th>
                 <th>Time</th>
                 <th>Status</th>
-                <th>Actions</th>
+                <th style={{ minWidth: "160px" }}>Actions</th>
               </tr>
             </thead>
 
@@ -141,18 +153,28 @@ const Appointments = () => {
                     </span>
                   </td>
                   <td>
-                    <button className="action-btn edit-btn" onClick={() => handleEdit(a)}>
-                      Edit
-                    </button>
-                    <button className="action-btn delete-btn" onClick={() => handleDelete(a.id)}>
-                      Delete
-                    </button>
+                    <div className="d-flex gap-2 action-buttons">
+                      <Button
+                        size="sm"
+                        variant="primary"
+                        onClick={() => handleEdit(a)}
+                      >
+                        Edit
+                      </Button>
+                      <Button
+                        size="sm"
+                        variant="danger"
+                        onClick={() => handleDelete(a.id)}
+                      >
+                        Delete
+                      </Button>
+                    </div>
                   </td>
                 </tr>
               ))}
             </tbody>
 
-          </table>
+          </Table>
         </div>
 
         {/* Popup Form */}
@@ -167,12 +189,16 @@ const Appointments = () => {
                 type="text"
                 placeholder="Patient Name"
                 value={newAppointment.patient}
-                onChange={(e) => setNewAppointment({ ...newAppointment, patient: e.target.value })}
+                onChange={(e) =>
+                  setNewAppointment({ ...newAppointment, patient: e.target.value })
+                }
               />
 
               <select
                 value={newAppointment.doctor}
-                onChange={(e) => setNewAppointment({ ...newAppointment, doctor: e.target.value })}
+                onChange={(e) =>
+                  setNewAppointment({ ...newAppointment, doctor: e.target.value })
+                }
               >
                 <option value="">Select Doctor</option>
                 <option>Dr. Ramesh</option>
@@ -182,7 +208,9 @@ const Appointments = () => {
 
               <select
                 value={newAppointment.dept}
-                onChange={(e) => setNewAppointment({ ...newAppointment, dept: e.target.value })}
+                onChange={(e) =>
+                  setNewAppointment({ ...newAppointment, dept: e.target.value })
+                }
               >
                 <option value="">Select Department</option>
                 <option>Cardiology</option>
@@ -194,18 +222,24 @@ const Appointments = () => {
               <input
                 type="date"
                 value={newAppointment.date}
-                onChange={(e) => setNewAppointment({ ...newAppointment, date: e.target.value })}
+                onChange={(e) =>
+                  setNewAppointment({ ...newAppointment, date: e.target.value })
+                }
               />
 
               <input
                 type="time"
                 value={newAppointment.time}
-                onChange={(e) => setNewAppointment({ ...newAppointment, time: e.target.value })}
+                onChange={(e) =>
+                  setNewAppointment({ ...newAppointment, time: e.target.value })
+                }
               />
 
               <select
                 value={newAppointment.status}
-                onChange={(e) => setNewAppointment({ ...newAppointment, status: e.target.value })}
+                onChange={(e) =>
+                  setNewAppointment({ ...newAppointment, status: e.target.value })
+                }
               >
                 <option>Pending</option>
                 <option>Confirmed</option>
@@ -213,13 +247,19 @@ const Appointments = () => {
               </select>
 
               <div className="popup-actions">
-                <button className="cancel-btn" onClick={() => setShowForm(false)}>Cancel</button>
-                <button className="save-btn" onClick={handleSave}>Save</button>
+                <button
+                  className="cancel-btn"
+                  onClick={() => setShowForm(false)}
+                >
+                  Cancel
+                </button>
+                <button className="save-btn" onClick={handleSave}>
+                  Save
+                </button>
               </div>
             </div>
           </div>
         )}
-
       </div>
     </>
   );

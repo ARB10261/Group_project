@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../AuthContext";
 import { Link } from "react-router-dom";
+import { Container, Row, Col } from "react-bootstrap";
 
 export default function Dashboard() {
   const { userRole } = useContext(AuthContext);
@@ -8,18 +9,35 @@ export default function Dashboard() {
   const title = userRole ? `${userRole} Dashboard` : "Dashboard";
 
   const renderContent = () => {
+    const cardClass = "dash-card";
+
     switch (userRole) {
       case "Admin":
         return (
           <>
             <p>As an Admin, you can manage the entire hospital system.</p>
-            <div className="dash-grid">
-              <Link to="/patients" className="dash-card">👥 Patient Management</Link>
-              <Link to="/doctors" className="dash-card">👨‍⚕️ Doctor Management</Link>
-              <Link to="/appointments" className="dash-card">📅 Appointment System</Link>
-              <Link to="/records" className="dash-card">📋 Medical Records</Link>
-              <Link to="/reports" className="dash-card">📊 Reports & Analytics</Link>
-            </div>
+
+            <Row>
+              <Col md={4} sm={6} xs={12}>
+                <Link to="/patients" className={cardClass}>👥 Patient Management</Link>
+              </Col>
+
+              <Col md={4} sm={6} xs={12}>
+                <Link to="/doctors" className={cardClass}>👨‍⚕️ Doctor Management</Link>
+              </Col>
+
+              <Col md={4} sm={6} xs={12}>
+                <Link to="/appointments" className={cardClass}>📅 Appointment System</Link>
+              </Col>
+
+              <Col md={4} sm={6} xs={12}>
+                <Link to="/records" className={cardClass}>📋 Medical Records</Link>
+              </Col>
+
+              <Col md={4} sm={6} xs={12}>
+                <Link to="/reports" className={cardClass}>📊 Reports & Analytics</Link>
+              </Col>
+            </Row>
           </>
         );
 
@@ -27,11 +45,20 @@ export default function Dashboard() {
         return (
           <>
             <p>As a Doctor, you can see your patients and appointments.</p>
-            <div className="dash-grid">
-              <Link to="/appointments" className="dash-card">📅 My Appointments</Link>
-              <Link to="/records" className="dash-card">📋 Patient Medical Records</Link>
-              <Link to="/patients" className="dash-card">👥 My Patients</Link>
-            </div>
+
+            <Row>
+              <Col md={4} sm={6} xs={12}>
+                <Link to="/appointments" className={cardClass}>📅 My Appointments</Link>
+              </Col>
+
+              <Col md={4} sm={6} xs={12}>
+                <Link to="/records" className={cardClass}>📋 Patient Medical Records</Link>
+              </Col>
+
+              <Col md={4} sm={6} xs={12}>
+                <Link to="/patients" className={cardClass}>👥 My Patients</Link>
+              </Col>
+            </Row>
           </>
         );
 
@@ -39,10 +66,16 @@ export default function Dashboard() {
         return (
           <>
             <p>As Reception, you can register patients and manage appointments.</p>
-            <div className="dash-grid">
-              <Link to="/patients" className="dash-card">➕ Register / View Patients</Link>
-              <Link to="/appointments" className="dash-card">📅 Book / Reschedule Appointments</Link>
-            </div>
+
+            <Row>
+              <Col md={6} sm={12}>
+                <Link to="/patients" className={cardClass}>➕ Register / View Patients</Link>
+              </Col>
+
+              <Col md={6} sm={12}>
+                <Link to="/appointments" className={cardClass}>📅 Book / Reschedule Appointments</Link>
+              </Col>
+            </Row>
           </>
         );
 
@@ -50,17 +83,21 @@ export default function Dashboard() {
         return (
           <>
             <p>As Nurse, you can assist doctors with patients and records.</p>
-            <div className="dash-grid">
-              <Link to="/patients" className="dash-card">👥 Patient List</Link>
-              <Link to="/records" className="dash-card">📋 Medical Records</Link>
-            </div>
+
+            <Row>
+              <Col md={6} sm={12}>
+                <Link to="/patients" className={cardClass}>👥 Patient List</Link>
+              </Col>
+
+              <Col md={6} sm={12}>
+                <Link to="/records" className={cardClass}>📋 Medical Records</Link>
+              </Col>
+            </Row>
           </>
         );
 
       default:
-        return (
-          <p>Select a module from the top menu to get started.</p>
-        );
+        return <p>Select a module from the top menu to get started.</p>;
     }
   };
 
@@ -77,13 +114,6 @@ export default function Dashboard() {
           margin-bottom: 10px;
         }
 
-        .dash-grid {
-          margin-top: 20px;
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-          gap: 20px;
-        }
-
         .dash-card {
           background: #0f172a;
           color: #e5e7eb;
@@ -93,6 +123,9 @@ export default function Dashboard() {
           font-weight: 500;
           box-shadow: 0 4px 12px rgba(15,23,42,0.4);
           transition: 0.25s ease;
+          display: block;
+          margin-bottom: 20px;
+          text-align: center;
         }
 
         .dash-card:hover {
@@ -102,10 +135,10 @@ export default function Dashboard() {
         }
       `}</style>
 
-      <div className="dashboard-wrapper">
+      <Container fluid className="dashboard-wrapper">
         <h2 className="dashboard-title">{title}</h2>
         {renderContent()}
-      </div>
+      </Container>
     </>
   );
 }
