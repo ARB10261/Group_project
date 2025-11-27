@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import Seva from "../assets/Seva.jpg";
 
 const services = [
@@ -29,6 +30,12 @@ const services = [
 ];
 
 const ServicePage = () => {
+  const navigate = useNavigate();
+
+  const handleAppointmentClick = () => {
+    navigate("/login"); // Navigate to login page on button click
+  };
+
   return (
     <>
       <style>{`
@@ -146,6 +153,11 @@ const ServicePage = () => {
           font-weight: 600;
           border: none;
           cursor: pointer;
+          transition: background-color 0.3s ease;
+        }
+
+        .cta-btn:hover {
+          background-color: #cce7f9;
         }
 
         /* ------------------------ RESPONSIVE DESIGN ------------------------ */
@@ -199,12 +211,9 @@ const ServicePage = () => {
             width: 100%;
           }
         }
-
       `}</style>
 
-      {/* PAGE CONTENT */}
       <div className="service-wrapper">
-
         {/* HERO */}
         <header className="service-hero">
           <div>
@@ -236,7 +245,9 @@ const ServicePage = () => {
           <h2>Need Medical Assistance?</h2>
           <p>Our dedicated team is here to support you at every step.</p>
 
-          <button className="cta-btn">Book an Appointment</button>
+          <button className="cta-btn" onClick={handleAppointmentClick}>
+            Book an Appointment
+          </button>
         </section>
       </div>
     </>
