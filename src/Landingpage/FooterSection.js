@@ -1,5 +1,6 @@
 import React from "react";
 import { FaEnvelope, FaClock, FaLocationDot, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa6";
+import { Link } from "react-router-dom"; // ⭐ add this
 
 const FooterSection = () => {
   return (
@@ -164,9 +165,9 @@ const FooterSection = () => {
             </p>
 
             <div className="social-icons">
-              <a href="#"><FaTwitter /></a>
-              <a href="#"><FaInstagram /></a>
-              <a href="#"><FaLinkedin /></a>
+              <a href="#/"><FaTwitter /></a>
+              <a href="#/"><FaInstagram /></a>
+              <a href="#/"><FaLinkedin /></a>
             </div>
           </div>
 
@@ -174,12 +175,12 @@ const FooterSection = () => {
           <div className="footer-column">
             <h3 className="footer-title">Departments</h3>
             <ul className="footer-list">
-              <li>General Medicine</li>
-              <li>Cardiology</li>
-              <li>Neurology</li>
-              <li>Dental Care</li>
-              <li>Gynecology</li>
-              <li>Laboratory</li>
+              <li><Link to="/general-medicine">General Medicine</Link></li>
+              <li><Link to="/cardiology">Cardiology</Link></li>
+              <li><Link to="/neurology">Neurology</Link></li>
+              <li><Link to="/dental-care">Dental Care</Link></li>
+              <li><Link to="/gynecology">Gynecology</Link></li>
+              <li><Link to="/laboratory">Laboratory</Link></li>
             </ul>
           </div>
 
@@ -187,11 +188,11 @@ const FooterSection = () => {
           <div className="footer-column">
             <h3 className="footer-title">Support & Policies</h3>
             <ul className="footer-list">
-              <li>Terms & Conditions</li>
-              <li>Privacy Policy</li>
-              <li>FAQs</li>
-              <li>Help & Support</li>
-              <li>Company License</li>
+              <li><Link to="/terms-and-conditions">Terms & Conditions</Link></li>
+              <li><Link to="/privacy-policy">Privacy Policy</Link></li>
+              <li><Link to="/faqs">FAQs</Link></li>
+              <li><Link to="/help-support">Help & Support</Link></li>
+              <li><Link to="/company-license">Company License</Link></li>
             </ul>
 
             <div className="subscribe-box">

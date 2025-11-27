@@ -24,6 +24,20 @@ import { useContext } from "react";
 import { AuthContext } from "./AuthContext";
 import DashboardFooter from "./Dashboard/DashboardFooter";
 
+import GeneralMedicinePage from "./Components/GeneralMedicinePage";
+import CardiologyPage from "./Components/CardiologyPage";
+import NeurologyPage from "./Components/NeurologyPage";
+import DentalCarePage from "./Components/DentalCarePage";
+import GynecologyPage from "./Components/GynecologyPage";
+import LaboratoryPage from "./Components/LaboratoryPage";
+
+import TermsAndConditionsPage from "./Components/TermsAndConditionsPage";
+import PrivacyPolicyPage from "./Components/PrivacyPolicyPage";
+import FAQsPage from "./Components/FAQsPage";
+import HelpSupportPage from "./Components/HelpSupportPage";
+import CompanyLicensePage from "./Components/CompanyLicensePage";
+
+
 function App() {
   const { isLoggedIn } = useContext(AuthContext);
 
@@ -63,6 +77,22 @@ function App() {
           <Route path="/appointments" element={<Appointments />} />
           <Route path="/records" element={<Records />} />
           <Route path="/reports" element={<Reports />} />
+
+          {/* Department pages */}
+<Route path="/general-medicine" element={<GeneralMedicinePage />} />
+<Route path="/cardiology" element={<CardiologyPage />} />
+<Route path="/neurology" element={<NeurologyPage />} />
+<Route path="/dental-care" element={<DentalCarePage />} />
+<Route path="/gynecology" element={<GynecologyPage />} />
+<Route path="/laboratory" element={<LaboratoryPage />} />
+
+{/* Support & Policies pages */}
+<Route path="/terms-and-conditions" element={<TermsAndConditionsPage />} />
+<Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+<Route path="/faqs" element={<FAQsPage />} />
+<Route path="/help-support" element={<HelpSupportPage />} />
+<Route path="/company-license" element={<CompanyLicensePage />} />
+
 
         </Routes>
       </div>
