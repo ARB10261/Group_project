@@ -66,13 +66,12 @@ const NeurologyPage = () => {
       >
         {/* Left Info */}
         <div style={{ textAlign: "left", maxWidth: "260px" }}>
-          {/* Point 1 */}
           <FeaturePoint
             number="1"
             title="Comprehensive Care"
             description="From headaches to complex neurological conditions, our team ensures complete evaluation and personalized care."
           />
-          {/* Point 2 */}
+
           <FeaturePoint
             number="2"
             title="Expert Neurologists"
@@ -85,26 +84,25 @@ const NeurologyPage = () => {
           <img
             src={brainImage}
             alt="Brain"
+            loading="lazy"
+            className="lazy-image"
+            onLoad={(e) => e.currentTarget.classList.add("loaded")}
             style={{
               maxWidth: "320px",
               width: "100%",
-              // No borderRadius, no boxShadow, just the floating animation
               ...floatingAnimation,
             }}
           />
         </div>
 
-
-
         {/* Right Info */}
         <div style={{ textAlign: "left", maxWidth: "260px" }}>
-          {/* Point 3 */}
           <FeaturePoint
             number="3"
             title="Advanced Technology"
             description="Equipped with modern MRI, CT, and EEG facilities for accurate and early detection of neurological disorders."
           />
-          {/* Point 4 */}
+
           <FeaturePoint
             number="4"
             title="24/7 Emergency Care"
@@ -113,7 +111,7 @@ const NeurologyPage = () => {
         </div>
       </div>
 
-      {/* Floating keyframes animation */}
+      {/* Floating + Lazy Fade-in Animations */}
       <style>
         {`
           @keyframes float {
@@ -122,7 +120,16 @@ const NeurologyPage = () => {
             100% { transform: translateY(0px); }
           }
 
-          /* Simple responsive helpers (optional) */
+          /* Lazy loaded image fade-in */
+          .lazy-image {
+            opacity: 0;
+            transition: opacity 0.9s ease-in-out;
+          }
+          .lazy-image.loaded {
+            opacity: 1;
+          }
+
+          /* Responsive grid */
           @media (max-width: 768px) {
             .neuro-services-grid {
               grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)) !important;
@@ -139,7 +146,6 @@ const NeurologyPage = () => {
           fontFamily: "Arial, sans-serif",
         }}
       >
-        {/* Section Header */}
         <h2
           style={{
             color: "#283593",
@@ -164,7 +170,6 @@ const NeurologyPage = () => {
           quality of life with patient-centered, evidence-based care.
         </p>
 
-        {/* Services Grid – 6 cards, clean layout */}
         <div
           className="neuro-services-grid"
           style={{
@@ -175,42 +180,41 @@ const NeurologyPage = () => {
             margin: "0 auto",
           }}
         >
-          {/* Card 1 */}
           <ServiceCard
             badge="Brain Health"
             title="Epilepsy & Seizure Care"
             description="Advanced evaluation and treatment for seizure disorders with continuous monitoring and medication management."
             image="/images/epilepsy-care.jpg"
           />
-          {/* Card 2 */}
+
           <ServiceCard
             badge="Emergency Care"
             title="Stroke Management Unit"
             description="Time-critical treatment for stroke patients with dedicated protocols to reduce disability and improve outcomes."
             image="/images/stroke-unit.jpg"
           />
-          {/* Card 3 */}
+
           <ServiceCard
             badge="Spine Care"
             title="Spine & Nerve Disorders"
             description="Management of slipped disc, nerve compression, and spinal cord disorders with minimally invasive options."
             image="/images/spine-disorders.jpg"
           />
-          {/* Card 4 */}
+
           <ServiceCard
             badge="Nerve & Muscle"
             title="Neuromuscular Disorders"
             description="Specialized care for conditions like neuropathy, myopathy, and muscular dystrophy with rehabilitation support."
             image="/images/neuromuscular.jpg"
           />
-          {/* Card 5 */}
+
           <ServiceCard
             badge="Memory Clinic"
             title="Dementia & Cognitive Care"
             description="Assessment and management of memory loss, dementia, and cognitive decline with support for patients and families."
             image="/images/dementia-care.jpg"
           />
-          {/* Card 6 */}
+
           <ServiceCard
             badge="Pediatric Neuro"
             title="Pediatric Neurology"
@@ -223,8 +227,7 @@ const NeurologyPage = () => {
   );
 };
 
-/* === Small reusable components to keep layout clean === */
-
+/* === Reusable Feature Block === */
 const FeaturePoint = ({ number, title, description }) => (
   <>
     <div
@@ -307,6 +310,9 @@ const ServiceCard = ({ badge, title, description, image }) => {
         <img
           src={image}
           alt={title}
+          loading="lazy"
+          className="lazy-image"
+          onLoad={(e) => e.currentTarget.classList.add("loaded")}
           style={{
             width: "100%",
             height: "200px",
@@ -322,6 +328,7 @@ const ServiceCard = ({ badge, title, description, image }) => {
           }
         />
       </div>
+
       <div style={{ padding: "15px 18px", textAlign: "left", flex: 1 }}>
         <p
           style={{
@@ -335,6 +342,7 @@ const ServiceCard = ({ badge, title, description, image }) => {
         >
           {badge}
         </p>
+
         <h3
           style={{
             margin: "0 0 8px",
@@ -344,6 +352,7 @@ const ServiceCard = ({ badge, title, description, image }) => {
         >
           {title}
         </h3>
+
         <p
           style={{
             margin: 0,
