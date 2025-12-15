@@ -1,248 +1,211 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
-import Seva from "../assets/Seva.jpg";
+import { Container, Row, Col, Card } from "react-bootstrap";
 
-const services = [
-  {
-    name: "24/7 Emergency Care",
-    img: "https://i-media.vyaparify.com/vcards/blogs/64783/24-hours-medical-servises-24-7-medical-call-center-emergency-patient-support-first-aid-doctor-holding-in-hand-24x7-sign-and-medicine-icons-network-connection-on-virtual-screen-illustration-vector.jpg"
-  },
-  {
-    name: "Advanced Diagnostics",
-    img: "https://avignadiagnostics.com/creating-clarity/wp-content/uploads/2024/10/Types-of-diagnostic-labs-552x289.jpg"
-  },
-  {
-    name: "Surgical Services",
-    img: "https://ssir.org/images/articles/Fall2019_Feature_Sonderman_EyeSurgery592x333.jpg"
-  },
-  {
-    name: "Ambulance & Transport",
-    img: "https://testcv.tatamotors.com/assets/cv/files/2023-10/Features-of-the-TWA-for-Patient-Transport.jpg"
-  },
-  {
-    name: "Wellness & Preventive Care",
-    img: "https://www.denverhealthmedicalplan.org/sites/default/files/styles/full_width/public/2020-09/preventive_care.jpg"
-  },
-  {
-    name: "Pharmacy Services",
-    img: "https://www.integrityhospital.in/wp-content/uploads/2024/01/IMG_4972.jpeg"
-  }
+import babyImage from "../Images/baby image.jpg";
+import cancerimage from "../Images/cancer image.jpg";
+import cardioimage from "../Images/Cardio image.jpg";
+import Womencareimage from "../Images/Womencare image.jpg";
+import AboutImage from "../assets/AboutImage.jpg";
+import Healthcareimage1 from "../Images/Healthcare image1.jpg";
+import Healthserviceimage from "../Images/Healthservice image.jpg";
+
+const countryList = [
+  { name: "Bosnia", code: "BA" },
+  { name: "Bulgaria", code: "BG" },
+  { name: "Denmark", code: "DK" },
+  { name: "Georgia", code: "GE" },
+  { name: "Greece", code: "GR" },
+  { name: "India", code: "IN" },
+  { name: "Norway", code: "NO" },
+  { name: "Romania", code: "RO" },
+  { name: "Sweden", code: "SE" },
+  { name: "Ukraine", code: "UA" },
+  { name: "Cyprus", code: "CY" },
+  { name: "Hungary", code: "HU" },
+  { name: "Poland", code: "PL" },
+  { name: "Serbia", code: "RS" },
+  { name: "Turkey", code: "TR" },
 ];
 
-const ServicePage = () => {
-  const navigate = useNavigate();
+const specialtyCards = [
+  { name: "Women's Health Center", img: Womencareimage },
+  { name: "Medical Diagnostics", img: Healthcareimage1 },
+  { name: "Global Health Services", img: Healthserviceimage },
+  { name: "Women & Child Hospital", img: babyImage },
+  { name: "Cancer Institute", img: cancerimage },
+  { name: "Cardiology Care", img: cardioimage },
+];
 
+const About = () => {
   return (
-    <>
-      <style>{`
-        .service-wrapper {
-          font-family: Arial, sans-serif;
-          background: #fff;
-        }
+    <div style={{ fontFamily: '"Poppins", sans-serif' }}>
 
-        /* HERO SECTION */
-        .service-hero {
-          height: 650px;
-          display: flex;
-          align-items: center;
-          padding: 60px 7%;
-          justify-content: flex-start;
-          color: #fff;
-          background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url(${Seva});
-          background-size: cover;
-          background-position: center;
-        }
-
-        .service-hero h1 {
-          font-size: 50px;
-          font-weight: 700;
-          margin-bottom: 10px;
-        }
-
-        .service-hero p {
-          font-size: 20px;
-          max-width: 600px;
-          line-height: 1.6;
-        }
-
-        /* SERVICE GRID */
-        .service-section {
-          padding: 60px 7%;
-        }
-
-        .service-title {
-          text-align: center;
-          font-size: 36px;
-          font-weight: 700;
-          color: #0ea5e9;
-          margin-bottom: 40px;
-        }
-
-        .service-grid {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 30px;
-          justify-content: center;
-        }
-
-        .service-card {
-          width: 320px;
-          background: #fff;
-          border-radius: 14px;
-          overflow: hidden;
-          box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
-          transition: 0.3s ease;
-          cursor: pointer;
-        }
-
-        .service-card:hover {
-          transform: translateY(-5px);
-          box-shadow: 0px 6px 16px rgba(0,0,0,0.15);
-        }
-
-        .service-card img {
-          width: 100%;
-          height: 210px;
-          object-fit: cover;
-        }
-
-        .service-card h3 {
-          font-size: 22px;
-          color: #0ea5e9;
-          margin-bottom: 10px;
-          text-align: center;
-        }
-
-        .service-card p {
-          font-size: 16px;
-          color: #555;
-          line-height: 1.6;
-          padding: 0 12px 20px;
-          text-align: center;
-        }
-
-        /* CTA SECTION */
-        .cta-section {
-          background: #0ea5e9;
-          padding: 60px 7%;
-          color: #fff;
-          text-align: center;
-        }
-
-        .cta-section h2 {
-          font-size: 36px;
-          font-weight: 700;
-          margin-bottom: 15px;
-        }
-
-        .cta-section p {
-          font-size: 18px;
-          margin-bottom: 25px;
-        }
-
-        .cta-btn {
-          padding: 14px 35px;
-          background: white;
-          color: #0ea5e9;
-          border-radius: 8px;
-          font-size: 18px;
-          font-weight: 600;
-          border: none;
-          cursor: pointer;
-        }
-
-        /* ------------------------ RESPONSIVE DESIGN ------------------------ */
-
-        @media (max-width: 992px) {
-          .service-hero {
-            height: 500px;
-            padding: 40px 6%;
-          }
-
-          .service-hero h1 {
-            font-size: 38px;
-          }
-
-          .service-hero p {
-            font-size: 18px;
-          }
-        }
-
-        @media (max-width: 600px) {
-          .service-hero {
-            height: 430px;
-            padding: 30px 5%;
-            text-align: left;
-          }
-
-          .service-hero h1 {
-            font-size: 30px;
-          }
-
-          .service-hero p {
-            font-size: 16px;
-            width: 100%;
-          }
-
+      {/* INLINE CSS FOR HOVER EFFECTS */}
+      <style>
+        {`
           .service-card {
             width: 100%;
+            background: #fff;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
+            transition: 0.3s ease;
+            cursor: pointer;
           }
 
-          .service-title {
-            font-size: 28px;
+          .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 6px 16px rgba(0,0,0,0.15);
           }
 
-          .cta-section h2 {
-            font-size: 28px;
+          .country-item {
+            transition: 0.3s ease;
+            padding: 6px 8px;
+            border-radius: 8px;
           }
 
-          .cta-btn {
-            width: 100%;
+          .country-item:hover {
+            background: #f0f9ff;
+            transform: translateX(5px);
           }
-        }
-      `}</style>
+        `}
+      </style>
 
-      {/* PAGE CONTENT */}
-      <div className="service-wrapper">
+      {/* HERO SECTION */}
+      <section
+        style={{
+          backgroundImage: `linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url(${AboutImage})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          minHeight: "80vh",
+          display: "flex",
+          alignItems: "center",
+          color: "#fff",
+          padding: "80px 0",
+        }}
+      >
+        <Container>
+          <h1 style={{ fontSize: "48px", fontWeight: "700", maxWidth: "600px" }}>
+            Where caring for your <br /> health is all we do
+          </h1>
+          <p style={{ maxWidth: "600px", marginTop: "20px", fontSize: "18px" }}>
+            Experience world-class healthcare with HealthCare+, powered by
+            technology and compassion.
+          </p>
+        </Container>
+      </section>
 
-        {/* HERO */}
-        <header className="service-hero">
-          <div>
-            <h1>Our HealthCare+ Services</h1>
-            <p>Delivering world-class care with compassion, innovation and technology.</p>
-          </div>
-        </header>
+      {/* PERSONAL CARE */}
+      <section style={{ background: "#ffffff", padding: "70px 0" }}>
+        <Container>
+          <h2 className="text-center" style={{ color: "#0ea5e9", fontWeight: "700" }}>
+            Personal care & healthy living
+          </h2>
 
-        {/* SERVICE GRID */}
-        <section className="service-section">
-          <h2 className="service-title">What We Offer</h2>
+          <p style={para} className="mt-4 text-center">
+            HealthCare+ is a digital healthcare management system that connects
+            patients and doctors with seamless technology.
+          </p>
 
-          <div className="service-grid">
-            {services.map((item) => (
-              <div key={item.name} className="service-card">
-                <img src={item.img} alt={item.name} />
-                <h3>{item.name}</h3>
-                <p>
-                  Providing trusted and advanced healthcare solutions with modern
-                  technology and expert doctors.
-                </p>
-              </div>
+          <ul
+            className="mt-4"
+            style={{
+              listStyle: "none",
+              padding: 0,
+              maxWidth: "700px",
+              margin: "auto",
+              color: "#111",
+            }}
+          >
+            {[
+              "✔ Easy patient registration",
+              "✔ Doctor availability & smart scheduling",
+              "✔ Automated appointment reminders",
+              "✔ Real-time performance and health reports",
+            ].map((item, idx) => (
+              <li key={idx} style={{ fontSize: "18px", marginBottom: "10px" }}>
+                {item}
+              </li>
             ))}
-          </div>
-        </section>
+          </ul>
+        </Container>
+      </section>
 
-        {/* CTA */}
-        <section className="cta-section">
-          <h2>Need Medical Assistance?</h2>
-          <p>Our dedicated team is here to support you at every step.</p>
+      {/* SPECIALTY CARDS */}
+      <section style={{ background: "#f3f4f6", padding: "70px 0" }}>
+        <Container>
+          <h2 className="text-center" style={{ color: "#0ea5e9", fontWeight: "700" }}>
+            Our Specialty Centers
+          </h2>
 
-          <button className="cta-btn" onClick={() => navigate("/login")}>
-            Book an Appointment
-          </button>
-        </section>
-      </div>
-    </>
+          <Row className="mt-4 g-4">
+            {specialtyCards.map((item) => (
+              <Col key={item.name} xs={12} sm={6} md={4} lg={4}>
+                <Card className="text-center service-card">
+                  <Card.Img
+                    variant="top"
+                    src={item.img}
+                    style={{ height: "200px", objectFit: "cover" }}
+                  />
+                  <Card.Body style={{ background: "#0ea5e9" }}>
+                    <Card.Title style={{ color: "white", fontSize: "20px" }}>
+                      {item.name}
+                    </Card.Title>
+                  </Card.Body>
+                </Card>
+              </Col>
+            ))}
+          </Row>
+        </Container>
+      </section>
+
+      {/* WORLD MAP + COUNTRY LIST */}
+      <section style={{ background: "#ffffff", padding: "70px 0" }}>
+        <Container>
+          <h2 className="text-center mb-5" style={{ color: "#0ea5e9", fontWeight: "700" }}>
+            We serve across the globe
+          </h2>
+
+          <Row className="align-items-center g-4">
+            <Col xs={12} lg={6}>
+              <img
+                src="https://img.freepik.com/free-vector/professional-medical-infographic-with-photo_23-2148370869.jpg?w=740"
+                className="img-fluid rounded shadow"
+                alt="World Map"
+              />
+            </Col>
+
+            <Col xs={12} lg={6}>
+              <Row>
+                {countryList.map((c) => (
+                  <Col xs={6} key={c.name} className="mb-3">
+                    <div className="d-flex align-items-center gap-2 country-item">
+                      <img
+                        src={`https://flagsapi.com/${c.code}/flat/32.png`}
+                        alt={c.name}
+                        style={{ borderRadius: "4px" }}
+                      />
+                      <span style={{ color: "#111", fontWeight: 500 }}>
+                        {c.name}
+                      </span>
+                    </div>
+                  </Col>
+                ))}
+              </Row>
+            </Col>
+          </Row>
+        </Container>
+      </section>
+
+    </div>
   );
 };
 
-export default ServicePage;
+/* STYLE OBJECT */
+const para = {
+  fontSize: "17px",
+  color: "#374151",
+  lineHeight: "1.8",
+};
+
+export default About;

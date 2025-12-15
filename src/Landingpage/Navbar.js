@@ -34,8 +34,12 @@ const Navbar = () => {
         }
 
         .navbar-nav {
-          margin: 0 auto;
-          gap: 20px;
+          gap: 20px; /* Removed margin: 0 auto */
+        }
+
+        .nav-item, .nav-link {
+          position: relative;
+          z-index: 10; /* Prevent overlapping clickable area */
         }
 
         .nav-link {
@@ -54,7 +58,6 @@ const Navbar = () => {
           font-weight: 600;
         }
 
-        /* BUTTONS */
         .btn-custom {
           border-radius: 999px;
           padding: 6px 20px;
@@ -76,7 +79,6 @@ const Navbar = () => {
           filter: invert(90%);
         }
 
-        /* 🔥 MOBILE FIX — REDUCE BUTTON WIDTH */
         @media (max-width: 992px) {
           .auth-buttons {
             display: flex;
@@ -86,8 +88,8 @@ const Navbar = () => {
           }
 
           .auth-buttons .btn-custom {
-            padding: 6px 14px !important; /* smaller buttons */
-            width: auto !important;       /* not full width */
+            padding: 6px 14px !important;
+            width: auto !important;
             font-size: 0.85rem;
           }
         }
@@ -110,13 +112,20 @@ const Navbar = () => {
 
           <div className="collapse navbar-collapse justify-content-between" id="navbarNav">
             <ul className="navbar-nav text-center mx-auto">
-              <li className="nav-item"><NavLink className="nav-link" to="/">Home</NavLink></li>
-              <li className="nav-item"><NavLink className="nav-link" to="/about">About</NavLink></li>
-              <li className="nav-item"><NavLink className="nav-link" to="/service">Services</NavLink></li>
-              <li className="nav-item"><NavLink className="nav-link" to="/contact">Contact</NavLink></li>
+              <li className="nav-item">
+                <NavLink className="nav-link" to="/">Home</NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink className="nav-link" to="/about">About</NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink className="nav-link" to="/service">Services</NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink className="nav-link" to="/contact">Contact</NavLink>
+              </li>
             </ul>
 
-            {/* BUTTONS */}
             <div className="auth-buttons d-flex">
               {!isLoggedIn ? (
                 <>
